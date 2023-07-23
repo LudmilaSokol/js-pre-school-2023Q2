@@ -25,3 +25,49 @@
   flex-direction: column;
   justify-content: center;
 }
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.container .item {
+  list-style: none;
+}
+.container .fs-base {
+  font-size: 20px;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  line-height: 50px;
+  color: #ffffff;
+  background: #0c0c0e;
+}
+.header-container .link {
+  color: #ffffff;
+  text-decoration: none;
+}
+.header-title {
+  flex: 1 0 294px;
+  padding: 20px;
+  font-family: 'Forum-Regular', serif;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+}
+.header-items {
+  display: inline-flex;
+  flex: 1 0 584px;
+  justify-content: space-between;
+}
+.header-item {
+  margin-left: 30px;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+.header-icon {
+  margin: 0 20px;
+}
