@@ -1,0 +1,27 @@
+/*использован less*/
+@font-face {
+  font-family: Forum-Regular;
+  src: url(../assets/fonts/Forum-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: Inter-Regular;
+  src: url(../assets/fonts/Inter-Regular.ttf);
+  font-weight: 400;
+}
+/* #0C0C0E цвет фона header и footer*/
+/* #ffffff цвет основного фона*/
+/* ffffff цвет текста в header и footer*/
+/* #0C0C0E дополнительный цвет текста*/
+/* #000000 цвет текста*/
+/* #121215 второй цвет градиента для Welcom*/
+/* #bb945f дополнительный выделяющий цвет*/
+/* #8E8E8E цвет плайсхолдера*/
+* {
+  box-sizing: border-box;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
