@@ -75,7 +75,10 @@
   color: #bb945f;
 }
 .header-icon {
-  margin: 0 22px 0 18px;
+  margin: 0 23px 0 16px;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
 }
 .main {
   color: #0c0c0e;
@@ -84,19 +87,22 @@
 .main .welcom {
   display: flex;
   align-items: center;
-  height: 600px;
+  height: 595px;
   background: linear-gradient(180deg, #0c0c0e 0%, #121215 0.01%, rgba(18, 18, 21, 0.1) 50%), url("../assets/img/bg-welcome.jpg"), #d3d3d3 50% / cover no-repeat;
 }
 .main .welcom-box {
   display: flex;
+  flex-direction: column;
   flex-shrink: 0;
   align-items: center;
   width: 600px;
   height: 220px;
   padding: 35px 40px;
+  margin-top: 50px;
   background: #0c0c0e;
 }
 .main .welcom-title {
+  margin-top: 5px;
   font-family: 'Forum-Regular', serif;
   font-size: 40px;
   font-weight: 400;
@@ -118,6 +124,7 @@
   text-transform: capitalize;
 }
 .main .section-text {
+  padding-top: 18px;
   text-align: center;
   font-family: 'Inter-Regular', sans-serif;
   font-size: 20px;
@@ -138,11 +145,12 @@
 .main .about-carousel {
   display: flex;
   justify-content: space-around;
+  padding: 0 20px;
 }
 .main .about-pagination {
   display: flex;
   justify-content: center;
-  margin: 40px;
+  margin: 32px;
   height: 16px;
   border-radius: 50%;
 }
