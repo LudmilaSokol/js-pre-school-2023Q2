@@ -51,25 +51,31 @@
 }
 .header-title {
   flex: 1 0 294px;
-  padding: 20px;
+  padding: 20px 24px;
   font-family: 'Forum-Regular', serif;
   font-size: 30px;
   font-weight: 400;
   letter-spacing: 0.6px;
 }
+.header-list {
+  display: flex;
+}
 .header-items {
   display: inline-flex;
   flex: 1 0 584px;
-  justify-content: space-between;
 }
 .header-item {
-  margin-left: 30px;
+  margin-right: 29px;
   font-family: 'Inter-Regular', sans-serif;
   font-size: 20px;
   font-weight: 400;
 }
+.header-item :hover {
+  font-weight: 700;
+  color: #bb945f;
+}
 .header-icon {
-  margin: 0 20px;
+  margin: 0 22px 0 18px;
 }
 .main {
   color: #0c0c0e;
