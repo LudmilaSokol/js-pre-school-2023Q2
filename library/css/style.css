@@ -463,9 +463,13 @@
 .main .contacts-inner-down-h3 {
   margin: 30px 8px 0;
 }
+.main .library-card {
+  padding-top: 31px;
+}
 .main .library-card-inner {
   display: flex;
   justify-content: space-between;
+  padding: 8px 24px;
 }
 .main .library-card .header-find {
   color: #000000;
@@ -478,22 +482,22 @@
   letter-spacing: 0.6px;
 }
 .main .library-card-form {
-  width: 606px;
-  height: 400px;
+  width: 600px;
+  height: 387px;
   margin-bottom: 40px;
   border: 3px solid #bb945f;
   background: #ffffff;
 }
 .main .library-card-form-box {
-  flex-shrink: 0;
-  margin: 20px;
+  margin: 20px 20px 18px;
   padding: 0;
-  width: 560px;
-  height: 272px;
+  width: 556px;
+  height: 270px;
   background: #bb945f;
 }
 .main .library-card-form-box .form-title {
   padding-left: 20px;
+  margin: 16px 0 0 -4px;
   color: #000000;
   font-family: 'Forum-Regular', serif;
   font-size: 30px;
@@ -504,9 +508,10 @@
 }
 .main .library-card-form-box-input {
   width: 93%;
-  height: 50px;
-  padding: 12px 0 8px 20px;
-  margin: 0 20px 25px;
+  height: 68px;
+  padding: 15px 0 8px 20px;
+  margin: 18px 16px 6px;
+  border: 1px solid #bb945f;
   border-radius: 10px;
   background: #ffffff;
 }
@@ -523,7 +528,8 @@
 .main .library-card-form .button-big {
   display: block;
   margin: 0 auto;
-  width: 244px;
+  padding-top: 2px;
+  width: 240px;
   height: 46px;
   color: #0c0c0e;
   font-family: 'Inter-Regular', sans-serif;
@@ -536,7 +542,6 @@
   border: 1px solid #0c0c0e;
 }
 .main .library-card .get-title {
-  margin-right: 20px;
   color: #000000;
   text-align: right;
   font-family: 'Forum-Regular', serif;
@@ -548,7 +553,7 @@
 }
 .main .library-card .get-text {
   width: 456px;
-  margin-right: 20px;
+  margin: 35px 0;
   color: #000000;
   text-align: right;
   font-family: 'Inter-Regular', sans-serif;
@@ -566,8 +571,7 @@
   display: inline-flex;
   width: 75px;
   height: 30px;
-  padding: 10px 0;
-  margin-right: 20px;
+  margin-left: 20px;
   justify-content: center;
   align-items: center;
   color: #0c0c0e;
