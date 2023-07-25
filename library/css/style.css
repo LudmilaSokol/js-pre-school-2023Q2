@@ -163,9 +163,6 @@
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.main .section .fw-black {
-  font-weight: 700;
-}
 .main .section .button {
   background: #ffffff;
   border-radius: 2px;
@@ -432,10 +429,39 @@
   margin: -1px 60px 0 25px;
   background: #bb945f;
 }
+.main .contacts {
+  margin-top: 21px;
+}
 .main .contacts-inner {
   display: flex;
   justify-content: space-between;
-  padding-top: 40px;
+  padding: 40px 20px 0;
+}
+.main .contacts-inner-info .fw-black {
+  padding: 0;
+  font-weight: 700;
+  text-align: left;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.main .contacts-inner-info-text {
+  padding: 0;
+  margin: 0 5px;
+  text-align: left;
+  line-height: 61px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.main .contacts-inner-info .link-phone,
+.main .contacts-inner-info .link-email {
+  color: #000000;
+  text-decoration: none;
+}
+.main .contacts-inner-up-h3 {
+  margin: 0 8px 28px;
+}
+.main .contacts-inner-down-h3 {
+  margin: 30px 8px 0;
 }
 .main .library-card-inner {
   display: flex;
