@@ -41,7 +41,7 @@
       <section class="section welcom">
         <div class="welcom-box">
           <h2 class="welcom-title">
-            Welcome<br>to the Brooklyn Library
+            Welcome<br> to the Brooklyn Library
           </h2>
         </div>
       </section>
@@ -62,9 +62,15 @@
           </div>
         </div>
         <div class="about-pagination">
-          <div class="about-pagination-item active"></div>
-          <div class="about-pagination-item"></div>
-          <div class="about-pagination-item"></div>
+          <div class="about-pagination-box">
+            <div class="about-pagination-box-item active"></div>
+          </div>
+          <div class="about-pagination-box">
+            <div class="about-pagination-box-item"></div>
+          </div>
+          <div class="about-pagination-box">
+            <div class="about-pagination-box-item"></div>
+          </div>
         </div>
       </section>
 
@@ -74,10 +80,26 @@
         <form class="favorites-form">
           <h3 class="section-text favorites-caption">Pick favorites of season</h3>
           <div class="form-radio">
-            <p class="section-text form-radio-text active"><input class="radio-input" type="radio" name="favorites" checked> Winter</p>
-            <p class="section-text form-radio-text"><input class="radio-input" type="radio" name="favorites"> Spring</p>
-            <p class="section-text form-radio-text"><input class="radio-input" type="radio" name="favorites"> Summer</p>
-            <p class="section-text form-radio-text"><input class="radio-input" type="radio" name="favorites"> Autumn</p>
+            <label class="section-text form-radio-text active">
+              <input class="radio-input" type="radio" name="favorites" checked>
+              <span class="radio-button"></span>
+              Winter
+            </label>
+            <label class="section-text form-radio-text">
+              <input class="radio-input" type="radio" name="favorites">
+              <span class="radio-button"></span>
+              Spring
+            </label>
+            <label class="section-text form-radio-text">
+              <input class="radio-input" type="radio" name="favorites">
+              <span class="radio-button"></span>
+              Summer
+            </label>
+            <label class="section-text form-radio-text">
+              <input class="radio-input" type="radio" name="favorites">
+              <span class="radio-button"></span>
+              Autumn
+            </label>
           </div>
         </form>
         <div class="favorites-items">
@@ -114,7 +136,7 @@
             <p class="book-item-title title">The Last Queen</p>
             <p class="book-item-title subtitle">By Clive Irving</p>
             <p class="book-item-text">A timely and revelatory new biography of Queen Elizabeth (and her family) exploring how the Windsors have evolved and thrived as the modern world has changed around them.</p>
-            <button class="button">Buy</button>
+            <button class="button button-own" disabled>Own</button>
             <div class="book book4"></div>
           </div>
           <div class="book-item book-item-hidden">
@@ -150,7 +172,7 @@
             <p class="book-item-title title">Dominicana</p>
             <p class="book-item-title subtitle">By Angie Cruz</p>
             <p class="book-item-text">A fascinating story of a teenage girl who marries a man twice her age with the promise to bring her to America. Her marriage is an opportunity for her family to eventually immigrate. For fans of Isabel Allende and Julia Alvarez.</p>
-            <button class="button">Buy</button>
+            <button class="button button-own" disabled>Own</button>
             <div class="book book8"></div>
           </div>
           <div class="book-item book-item-hidden">
@@ -231,7 +253,7 @@
       <section class="section coffee-shop" id="coffee-shop">
         <h2 class="section-title">Coffee shop</h2>
         <div class="line"></div>
-        <p class="section-text">In our library, we have of cozy coffee shop, welcoming in customers with frothy cappuccinos and friendly conversation. 
+        <p class="section-text coffee-shop-txt">In our library, we have of cozy coffee shop, welcoming in customers with frothy cappuccinos and friendly conversation. 
           you can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and also you can try desserts from bakery.</p>
           <div class="coffee-shop-inner">
             <div class="coffee-shop-inner-box">
@@ -273,32 +295,32 @@
               <h2 class="section-title coffee-shop-title title-right">Desserts &amp; Cakes</h2>
               <ul class="items">
                 <li class="item">
-                  <p class="section-text ta-left">Forest Gateau</p>
+                  <p class="section-text ta-right">Forest Gateau</p>
                   <p class="line-3"></p>
                   <p class="section-text ff-text">$16</p>
                 </li>
                 <li class="item">
-                  <p class="section-text ta-left">Blue Moon</p>
+                  <p class="section-text ta-right">Blue Moon</p>
                   <p class="line-3"></p>
                   <p class="section-text ff-text">$16</p>
                 </li>
                 <li class="item">
-                  <p class="section-text ta-left">Truffle Cake</p>
+                  <p class="section-text ta-right">Truffle Cake</p>
                   <p class="line-3"></p>
                   <p class="section-text ff-text">$15</p>
                 </li>
                 <li class="item">
-                  <p class="section-text ta-left">Chocolate Cake</p>
+                  <p class="section-text ta-right">Chocolate Cake</p>
                   <p class="line-3"></p>
                   <p class="section-text ff-text">$18</p>
                 </li>
                 <li class="item">
-                  <p class="section-text ta-left">Poet&#x60;s Dream Cake</p>
+                  <p class="section-text ta-right">Poet&#x60;s Dream Cake</p>
                   <p class="line-3"></p>
                   <p class="section-text ff-text">$16</p>
                 </li>
                 <li class="item">
-                  <p class="section-text ta-left">Pineapple Cake</p>
+                  <p class="section-text ta-right">Pineapple Cake</p>
                   <p class="line-3"></p>
                   <p class="section-text ff-text">$14</p>
                 </li>

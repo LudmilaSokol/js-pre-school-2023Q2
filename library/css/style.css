@@ -17,6 +17,20 @@
 /* #121215 второй цвет градиента для Welcom*/
 /* #bb945f дополнительный выделяющий цвет*/
 /* #8E8E8E цвет плайсхолдера*/
+.visualli-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.hover-changes {
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
 * {
   box-sizing: border-box;
 }
@@ -73,6 +87,8 @@
 .header-item :hover {
   font-weight: 700;
   color: #bb945f;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
 }
 .header-icon {
   margin: 0 23px 0 16px;
@@ -124,7 +140,7 @@
   text-transform: capitalize;
 }
 .main .section-text {
-  padding-top: 18px;
+  padding: 18px 20px 0;
   text-align: center;
   font-family: 'Inter-Regular', sans-serif;
   font-size: 20px;
@@ -133,14 +149,36 @@
   color: #000000;
 }
 .main .section .ta-left {
-  flex-grow: 1;
+  min-width: 230px;
   text-align: left;
+  padding: 0 0 0 5px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.main .section .ta-right {
+  min-width: 230px;
+  text-align: right;
+  padding: 0;
+  margin-left: -33px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
 }
 .main .section .fw-black {
   font-weight: 700;
 }
 .main .section .button {
   background: #ffffff;
+  border-radius: 2px;
+  border: 1px solid #0c0c0e;
+}
+.main .section .button:hover {
+  background-color: #bb945f;
+  border: 1px solid #bb945f;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+.main .section .button:disabled {
+  background-color: #ffffff;
 }
 .main .about-carousel {
   display: flex;
@@ -150,14 +188,21 @@
 .main .about-pagination {
   display: flex;
   justify-content: center;
-  margin: 32px;
+  margin: 27px 0 43px 0;
   height: 16px;
   border-radius: 50%;
 }
-.main .about-pagination-item {
+.main .about-pagination :hover {
+  cursor: pointer;
+}
+.main .about-pagination-box {
+  width: 26px;
+  height: 26px;
+}
+.main .about-pagination-box-item {
   width: 16px;
   height: 16px;
-  margin: 0 4px;
+  margin: 5px;
   border-radius: 50%;
   background: #0c0c0e;
 }
@@ -167,39 +212,66 @@
 .main .favorites-caption {
   font-weight: 700;
   line-height: normal;
+  text-align: left;
+  padding-left: 29px;
+  padding-top: 20px;
 }
 .main .favorites .form-radio {
   display: flex;
   justify-content: space-between;
-  width: 700px;
+  width: 664px;
+  margin-left: 55px;
 }
 .main .favorites .form-radio-text {
+  padding: 0;
+  margin: 18px 0 0 10px;
   line-height: normal;
 }
 .main .favorites .form-radio .radio-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
   font-family: 'Inter-Regular', sans-serif;
-  margin: 10px;
+  margin: 12px;
+}
+.main .favorites .form-radio .radio-input :checked {
+  background-color: #bb945f;
 }
 .main .favorites .form-radio .active {
   font-weight: 700;
+}
+.main .favorites .form-radio .radio-button {
+  position: absolute;
+  margin-left: -36px;
+  margin-top: 4px;
+  width: 17px;
+  height: 17px;
+  border: 2px solid #000000;
+  border-radius: 50%;
 }
 .main .favorites-items {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0 64px 0 24px;
 }
 .main .favorites-items .book-item-hidden {
   display: none;
 }
 .main .favorites-items .book-item {
-  width: 551px;
-  height: 581px;
+  width: 548px;
+  height: 551px;
   flex-shrink: 0;
-  margin: 40px 0;
+  margin: 39px 0 0 0;
   border: 1px solid #000000;
 }
 .main .favorites-items .book-item-headline {
-  margin: 15px 0 0 20px;
+  margin: 14px 0 0 20px;
   color: #000000;
   font-family: 'Forum-Regular', serif;
   font-size: 20px;
@@ -209,9 +281,9 @@
   text-transform: capitalize;
 }
 .main .favorites-items .book-item-headline-line {
-  width: 50px;
+  width: 58px;
   height: 1px;
-  margin: 0 20px;
+  margin: -2px 20px;
   background: #bb945f;
 }
 .main .favorites-items .book-item-title {
@@ -225,6 +297,7 @@
 }
 .main .favorites-items .book-item .title {
   margin-bottom: 0;
+  margin-top: 20px;
   text-transform: uppercase;
 }
 .main .favorites-items .book-item .subtitle {
@@ -232,9 +305,9 @@
   text-transform: capitalize;
 }
 .main .favorites-items .book-item-text {
-  width: 390px;
-  height: 360px;
-  padding: 20px;
+  width: 393px;
+  height: 358px;
+  padding: 20px 20px 0;
   margin: 0;
   color: #000000;
   font-family: 'Inter-Regular', sans-serif;
@@ -247,7 +320,8 @@
 .main .favorites-items .book-item .button {
   width: 75px;
   height: 30px;
-  margin: 20px;
+  margin-left: 20px;
+  margin-top: -8px;
   color: #0C0C0E;
   text-align: center;
   font-weight: 700;
@@ -256,14 +330,16 @@
   font-style: normal;
   line-height: normal;
   letter-spacing: 1px;
-  border-radius: 2px;
-  border: 1px solid #0c0c0e;
+}
+.main .favorites-items .book-item .button-own {
+  color: #bb945f;
+  border: 1px solid #bb945f;
 }
 .main .favorites-items .book-item .book {
   width: 200px;
   height: 300px;
   flex-shrink: 0;
-  transform: translate(390px, -301px);
+  transform: translate(387px, -285px);
 }
 .main .favorites-items .book-item .book1 {
   background: url(../assets/img/favorites/book1.png), #d3d3d3 50% / cover no-repeat;
@@ -313,33 +389,47 @@
 .main .favorites-items .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
+.main .coffee-shop {
+  margin-top: 39px;
+}
 .main .coffee-shop-title {
   color: #bb945f;
+}
+.main .coffee-shop-txt {
+  letter-spacing: 2px;
 }
 .main .coffee-shop-inner {
   display: flex;
   justify-content: space-between;
+  padding: 0 27px 0 20px;
 }
 .main .coffee-shop-inner-box .title-left {
   text-align: left;
-  padding-left: 20px;
+  padding-left: 6px;
 }
 .main .coffee-shop-inner-box .title-right {
   text-align: right;
+}
+.main .coffee-shop-inner-box .items {
+  margin: 0;
+  padding: 0;
 }
 .main .coffee-shop-inner .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 438px;
+  height: 79px;
 }
 .main .coffee-shop-inner .item .ff-text {
+  padding: 0;
+  margin: 0;
   font-family: 'Forum-Regular', serif;
 }
 .main .coffee-shop-inner .item .line-3 {
   width: 100px;
   height: 1px;
-  margin: 0 60px;
+  margin: -1px 60px 0 25px;
   background: #bb945f;
 }
 .main .contacts-inner {
