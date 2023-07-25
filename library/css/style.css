@@ -46,9 +46,6 @@
 .container .item {
   list-style: none;
 }
-.container .fs-base {
-  font-size: 20px;
-}
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -469,7 +466,7 @@
 .main .library-card-inner {
   display: flex;
   justify-content: space-between;
-  padding: 8px 24px;
+  padding: 8px 24px 0;
 }
 .main .library-card .header-find {
   color: #000000;
@@ -595,7 +592,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 15px;
+  padding: 13px 6px 0;
   width: 100%;
   height: 250px;
   line-height: 50px;
@@ -603,6 +600,7 @@
   background: #0c0c0e;
 }
 .footer-container .line-3 {
+  margin-top: 13px;
   width: 1400px;
   height: 1px;
   background: #ffffff;
@@ -623,8 +621,8 @@
   line-height: 20px;
 }
 .footer-inner .address {
+  flex: 1 0 300px;
   width: 300px;
-  flex-shrink: 0;
 }
 .footer-inner .time {
   text-align: right;
@@ -634,7 +632,19 @@
   justify-content: space-between;
   width: 142px;
   padding: 5px 20px 5px 20px;
+  margin: 0;
+}
+.footer .link {
+  color: #ffffff;
+  text-decoration: none;
 }
 .footer .rss {
   padding-top: 40px;
+}
+.footer .rss .fs-base {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.footer .rss-link {
+  margin-left: 186px;
 }
