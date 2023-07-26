@@ -219,6 +219,10 @@
   margin: 18px 0 0 10px;
   line-height: normal;
 }
+.main .favorites .form-radio-text:hover {
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
 .main .favorites .form-radio .radio-input {
   position: absolute;
   width: 1px;
@@ -231,7 +235,7 @@
   font-family: 'Inter-Regular', sans-serif;
   margin: 12px;
 }
-.main .favorites .form-radio .radio-input :checked {
+.main .favorites .form-radio .radio-input:checked {
   background-color: #bb945f;
 }
 .main .favorites .form-radio .active {
