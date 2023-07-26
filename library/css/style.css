@@ -102,10 +102,11 @@
   background: linear-gradient(180deg, #0c0c0e 0%, #121215 0.01%, rgba(18, 18, 21, 0.1) 50%), url("../assets/img/bg-welcome.jpg"), #d3d3d3 50% / cover no-repeat;
 }
 .main .welcom-box {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  align-items: center;
+  /*display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      align-items: center;*/
+  margin-left: -70%;
   width: 600px;
   height: 220px;
   padding: 35px 40px;
