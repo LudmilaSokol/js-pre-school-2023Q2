@@ -17,20 +17,6 @@
 /* #121215 второй цвет градиента для Welcom*/
 /* #bb945f дополнительный выделяющий цвет*/
 /* #8E8E8E цвет плайсхолдера*/
-.visualli-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-}
-.hover-changes {
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-}
 * {
   box-sizing: border-box;
 }
@@ -92,6 +78,18 @@
   width: 28px;
   height: 28px;
   flex-shrink: 0;
+}
+.header-link-profile {
+  padding-top: 20px;
+}
+.header-link-profile:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+.header-link-profile:focus {
+  outline: none;
 }
 .main {
   color: #0c0c0e;
@@ -637,6 +635,15 @@
 .footer .link {
   color: #ffffff;
   text-decoration: none;
+}
+.footer .link:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+.footer .link:focus {
+  outline: none;
 }
 .footer .rss {
   padding-top: 40px;
