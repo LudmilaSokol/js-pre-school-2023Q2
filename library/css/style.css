@@ -29,6 +29,7 @@ html {
   justify-content: center;
 }
 .container {
+  max-width: 1440px;
   width: 1440px;
   margin: 0 auto;
 }
@@ -39,7 +40,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1440px;
+  max-width: 1440px;
   height: 90px;
   line-height: 50px;
   color: #ffffff;
@@ -57,6 +58,7 @@ html {
   font-size: 30px;
   font-weight: 400;
   letter-spacing: 0.6px;
+  white-space: nowrap;
 }
 .header-list {
   display: flex;
@@ -179,6 +181,7 @@ html {
 .main .about-carousel {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   padding: 0 8px;
 }
 .main .about-pagination {
@@ -239,9 +242,6 @@ html {
 }
 .main .favorites .form-radio .radio-input:checked + .radio-button::before {
   opacity: 1;
-}
-.main .favorites .form-radio .active {
-  font-weight: 700;
 }
 .main .favorites .form-radio .radio-button {
   display: block;
@@ -621,7 +621,7 @@ html {
   flex-direction: column;
   align-items: center;
   padding: 14px 1px 0;
-  width: 1440px;
+  max-width: 1440px;
   height: 250px;
   line-height: 50px;
   color: #ffffff;
@@ -684,4 +684,53 @@ html {
 }
 .footer .rss-link {
   margin-left: 186px;
+}
+@media (max-width: 1024px) {
+  .container {
+    width: 768px;
+  }
+  .header-container {
+    width: 768px;
+  }
+  .header-items {
+    display: none;
+    flex-direction: column;
+  }
+  .main .about-carousel {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main .favorites-items {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main .coffee-shop-inner {
+    flex-direction: column;
+  }
+  .main .coffee-shop-inner-box .items .item-right {
+    margin-left: auto;
+  }
+  .main .contacts-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main .library-card-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main .library-card-inner-get .get-title,
+  .main .library-card-inner-get .get-text {
+    text-align: center;
+  }
+  .main .library-card-inner-get .button-box {
+    justify-content: center;
+  }
+  .footer-container {
+    width: 768px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    min-width: 320px;
+  }
 }
