@@ -721,18 +721,25 @@ html {
     align-items: center;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7d6c296 (feat: add media queries to style.css)
   .main .contacts-inner-info {
     width: 100%;
   }
   .main .contacts-inner-map {
     margin-top: 85px;
   }
+<<<<<<< HEAD
 =======
 >>>>>>> a9c235a (feat: changes to the coffee shop section for adaptive)
+=======
+>>>>>>> 7d6c296 (feat: add media queries to style.css)
   .main .library-card-inner {
     flex-direction: column;
     align-items: center;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
   .main .library-card-inner-find .library-card-form {
     margin-bottom: 0;
@@ -748,18 +755,36 @@ html {
   .main .library-card-inner-get .get-title,
   .main .library-card-inner-get .get-text {
 >>>>>>> a9c235a (feat: changes to the coffee shop section for adaptive)
+=======
+  .main .library-card-inner-find .library-card-form {
+    margin-bottom: 0;
+  }
+  .main .library-card-inner-get .get-text {
+    margin: 40px 60px;
+    width: auto;
+    text-align: center;
+  }
+  .main .library-card-inner-get .get-title {
+    margin: 20px auto;
+>>>>>>> 7d6c296 (feat: add media queries to style.css)
     text-align: center;
   }
   .main .library-card-inner-get .button-box {
     justify-content: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7d6c296 (feat: add media queries to style.css)
     margin-bottom: 40px;
     gap: 20px;
   }
   .main .library-card-inner-get .button-box .button-small {
     margin-left: 0;
+<<<<<<< HEAD
 =======
 >>>>>>> a9c235a (feat: changes to the coffee shop section for adaptive)
+=======
+>>>>>>> 7d6c296 (feat: add media queries to style.css)
   }
   .footer-container {
     width: 768px;
