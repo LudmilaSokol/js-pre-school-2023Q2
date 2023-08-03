@@ -720,16 +720,20 @@ html {
     flex-direction: column;
     align-items: center;
   }
+<<<<<<< HEAD
   .main .contacts-inner-info {
     width: 100%;
   }
   .main .contacts-inner-map {
     margin-top: 85px;
   }
+=======
+>>>>>>> a9c235a (feat: changes to the coffee shop section for adaptive)
   .main .library-card-inner {
     flex-direction: column;
     align-items: center;
   }
+<<<<<<< HEAD
   .main .library-card-inner-find .library-card-form {
     margin-bottom: 0;
   }
@@ -740,15 +744,22 @@ html {
   }
   .main .library-card-inner-get .get-title {
     margin: 20px auto;
+=======
+  .main .library-card-inner-get .get-title,
+  .main .library-card-inner-get .get-text {
+>>>>>>> a9c235a (feat: changes to the coffee shop section for adaptive)
     text-align: center;
   }
   .main .library-card-inner-get .button-box {
     justify-content: center;
+<<<<<<< HEAD
     margin-bottom: 40px;
     gap: 20px;
   }
   .main .library-card-inner-get .button-box .button-small {
     margin-left: 0;
+=======
+>>>>>>> a9c235a (feat: changes to the coffee shop section for adaptive)
   }
   .footer-container {
     width: 768px;
