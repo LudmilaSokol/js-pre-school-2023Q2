@@ -17,11 +17,14 @@
 /* #121215 второй цвет градиента для Welcom*/
 /* #bb945f дополнительный выделяющий цвет*/
 /* #8E8E8E цвет плайсхолдера*/
-* {
-  box-sizing: border-box;
-}
 html {
+  box-sizing: border-box;
   scroll-behavior: smooth;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 .body {
   display: flex;
@@ -30,7 +33,6 @@ html {
 }
 .container {
   max-width: 1440px;
-  width: 1440px;
   margin: 0 auto;
 }
 .container .item {
@@ -73,7 +75,8 @@ html {
   font-size: 20px;
   font-weight: 400;
 }
-.header-item :hover {
+.header-item :hover,
+.header-item :focus {
   font-weight: 700;
   color: #bb945f;
   transition: all 0.3s ease 0s;
@@ -726,22 +729,10 @@ html {
   .main .contacts-inner-map {
     margin-top: 85px;
   }
-
   .main .library-card-inner {
     flex-direction: column;
     align-items: center;
   }
-  .main .library-card-inner-find .library-card-form {
-    margin-bottom: 0;
-  }
-  .main .library-card-inner-get .get-text {
-    margin: 40px 60px;
-    width: auto;
-    text-align: center;
-  }
-  .main .library-card-inner-get .get-title {
-    margin: 20px auto;
-
   .main .library-card-inner-find .library-card-form {
     margin-bottom: 0;
   }
