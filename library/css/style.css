@@ -39,6 +39,7 @@ html {
   list-style: none;
 }
 .header-container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -101,12 +102,19 @@ html {
   outline: none;
 }
 .header-trigger {
-  padding: 0 20px;
+  display: none;
+  padding: 20px;
+  margin-right: 20px;
+  width: 54px;
+  height: 20px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
 }
 .header-burger {
-  display: none;
   position: relative;
   top: -1px;
+  right: 20px;
+  display: block;
   width: 45px;
   height: 2px;
   background-color: #ffffff;
@@ -720,15 +728,38 @@ html {
 .footer .rss-link {
   margin-left: 186px;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1124px) {
   .header {
     min-width: 768px;
   }
-  .header-items {
-    display: none;
-    flex-direction: column;
+  .header-list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 332px;
+    height: 535px;
+    margin-top: 88px;
+    padding: 12px 100px;
+    background-color: #0c0c0e;
+    transform: translateY(-120%);
+    transition: .2s all linear;
   }
-  .header-burger {
+  .header-list-active {
+    transform: translateX(0);
+  }
+  .header-items {
+    flex-direction: column;
+    flex-basis: 118px;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+  }
+  .header-item {
+    margin: 0;
+  }
+  .header-trigger {
     display: block;
   }
   .header-burger.open {
