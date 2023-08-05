@@ -104,7 +104,7 @@ html {
 .header-trigger {
   display: none;
   padding: 20px;
-  margin-right: 20px;
+  margin: 0 10px 0 20px;
   width: 54px;
   height: 20px;
   transition: all 0.3s ease 0s;
@@ -112,7 +112,7 @@ html {
 }
 .header-burger {
   position: relative;
-  top: -1px;
+  top: -2px;
   right: 20px;
   display: block;
   width: 45px;
