@@ -21,9 +21,6 @@ html {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-* {
-  outline: 1px solid red;
-}
 *,
 *::before,
 *::after {
@@ -141,33 +138,6 @@ html {
   color: #0c0c0e;
   background: #ffffff;
 }
-.main .welcom {
-  display: flex;
-  align-items: center;
-  height: 600px;
-  background: linear-gradient(180deg, #0c0c0e 0%, #121215 0.01%, rgba(18, 18, 21, 0.1) 50%), url("../assets/img/bg-welcome.jpg"), #d3d3d3 50% / cover no-repeat;
-}
-.main .welcom-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 600px;
-  height: 220px;
-  padding: 35px 40px;
-  margin-top: 50px;
-  background: #0c0c0e;
-}
-.main .welcom-title {
-  margin-top: 5px;
-  font-family: 'Forum-Regular', serif;
-  font-size: 40px;
-  font-weight: 400;
-  color: #ffffff;
-  text-align: center;
-  line-height: 50px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
 .main .section-title {
   padding: 20px 0;
   margin: 0 auto;
@@ -217,6 +187,33 @@ html {
 }
 .main .section .button:disabled {
   background-color: #ffffff;
+}
+.main .welcom {
+  display: flex;
+  align-items: center;
+  height: 600px;
+  background: linear-gradient(180deg, #0c0c0e 0%, #121215 0.01%, rgba(18, 18, 21, 0.1) 50%), url("../assets/img/bg-welcome.jpg"), #d3d3d3 50% / cover no-repeat;
+}
+.main .welcom-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  height: 220px;
+  padding: 35px 40px;
+  margin-top: 50px;
+  background: #0c0c0e;
+}
+.main .welcom-title {
+  margin-top: 5px;
+  font-family: 'Forum-Regular', serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 .main .about-carousel {
   display: inline-flex;
@@ -863,7 +860,10 @@ html {
 }
 @media (max-width: 768px) {
   .container {
-    min-width: 640px;
+    min-width: 615px;
+  }
+  .main .section-title {
+    width: 95%;
   }
   .main .favorites-form .form-radio {
     width: 85%;
@@ -882,5 +882,8 @@ html {
   }
   .footer .rss-link {
     margin: 0;
+  }
+  .footer .rss .fs-base {
+    font-size: 15px;
   }
 }
