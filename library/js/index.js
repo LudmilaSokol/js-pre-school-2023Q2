@@ -1,3 +1,14 @@
+/* burger handler */
+(function () {
+  const burgerItem = document.querySelector('.header-burger');
+  const menu = document.querySelector('.header-list');
+  const triggerItem = document.querySelector('.header-trigger')
+  triggerItem.addEventListener('click', () => {
+    menu.classList.toggle('header-list-active');
+    burgerItem.classList.toggle('open');
+  });
+}());
+
 console.log('Task: Library#1 - Фиксированная вёрстка 100/100');
 console.log('1. Вёрстка валидная 10/10');
 console.log('2. Вёрстка семантическая 16/16 \n В коде страницы присутствуют следующие элементы (указано минимальное количество, может быть больше):\n - <header>, <main>, <footer> 2/2\n - шесть элементов <section> 2/2\n - только один заголовок <h1> 2/2\n - пять заголовков <h2> 2/2\n - один элемент <nav> 2/2\n - два списка ul > li > a 2/2\n - семь кнопок <button> 2/2\n - два инпута <input> 2/2');
