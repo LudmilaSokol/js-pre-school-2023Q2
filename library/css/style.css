@@ -226,6 +226,9 @@ html {
   width: 100%;
   padding: 0 8px;
 }
+.main .about-arrow {
+  display: none;
+}
 .main .about-pagination {
   display: flex;
   justify-content: center;
@@ -734,8 +737,22 @@ html {
   margin-left: 186px;
 }
 @media (max-width: 1439px) {
+  .main .about-nav {
+    position: relative;
+  }
   .main .about .item-3 {
     display: none;
+  }
+  .main .about-arrow {
+    display: block;
+    position: absolute;
+    top: -310px;
+  }
+  .main .about .arrow-left {
+    left: 50px;
+  }
+  .main .about .arrow-right {
+    right: 50px;
   }
 }
 @media (max-width: 1280px) {
@@ -826,11 +843,11 @@ html {
   .header-burger.open::before {
     transform: rotate(45deg);
   }
-}
-@media (max-width: 1024px) {
   .main .about .item-2 {
     display: none;
   }
+}
+@media (max-width: 1024px) {
   .main .coffee-shop-inner {
     flex-direction: column;
   }
