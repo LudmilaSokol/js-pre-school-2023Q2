@@ -21,6 +21,9 @@ html {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+* {
+  outline: 1px solid red;
+}
 *,
 *::before,
 *::after {
@@ -216,9 +219,11 @@ html {
   background-color: #ffffff;
 }
 .main .about-carousel {
-  display: flex;
-  justify-content: space-around;
+  display: inline-flex;
+  justify-content: center;
+  gap: 25px;
   flex-wrap: wrap;
+  width: 100%;
   padding: 0 8px;
 }
 .main .about-pagination {
@@ -728,6 +733,11 @@ html {
 .footer .rss-link {
   margin-left: 186px;
 }
+@media (max-width: 1439px) {
+  .main .about .item-3 {
+    display: none;
+  }
+}
 @media (max-width: 1280px) {
   .main .favorites-items {
     flex-direction: column;
@@ -818,9 +828,8 @@ html {
   }
 }
 @media (max-width: 1024px) {
-  .main .about-carousel {
-    flex-direction: column;
-    align-items: center;
+  .main .about .item-2 {
+    display: none;
   }
   .main .coffee-shop-inner {
     flex-direction: column;
@@ -849,7 +858,10 @@ html {
     text-align: left;
   }
   .main .contacts-inner-map {
-    width: 100vw;
+    width: 95vw;
+  }
+  .main .contacts-inner-map .iframe {
+    width: 100%;
   }
   .footer .rss-link {
     margin: 0;
