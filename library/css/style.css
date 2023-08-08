@@ -53,7 +53,15 @@ html {
   color: #ffffff;
   text-decoration: none;
 }
+.header-bg {
+  position: absolute;
+  z-index: 15;
+  width: 100%;
+  height: 85px;
+  background: #0c0c0e;
+}
 .header-title {
+  z-index: 20;
   flex: 1 0 294px;
   padding: 20px 24px;
   margin-left: -2px;
@@ -90,6 +98,7 @@ html {
   flex-shrink: 0;
 }
 .header-link-profile {
+  z-index: 20;
   padding-top: 19px;
 }
 .header-link-profile:hover {
@@ -102,6 +111,7 @@ html {
   outline: none;
 }
 .header-trigger {
+  z-index: 20;
   display: none;
   padding: 20px;
   margin: 0 12px 0 20px;
@@ -118,6 +128,7 @@ html {
   width: 45px;
   height: 2px;
   background-color: #ffffff;
+  transition: all 0.6s ease 0s;
 }
 .header-burger::after,
 .header-burger::before {
@@ -127,6 +138,7 @@ html {
   width: 45px;
   height: 2px;
   background-color: #ffffff;
+  transition: all 0.6s ease 0s;
 }
 .header-burger::after {
   transform: translateY(10px);
@@ -816,7 +828,7 @@ html {
 }
 @media (max-width: 1124px) {
   .header-list {
-    display: none;
+    opacity: 0;
     position: absolute;
     top: 0;
     right: 0;
@@ -827,10 +839,10 @@ html {
     padding: 12px 100px;
     background-color: #0c0c0e;
     transform: translateY(-120%);
-    transition: .3s all linear;
+    transition: all 1s linear;
   }
   .header-list-active {
-    display: block;
+    opacity: 1;
     transform: translateX(0);
   }
   .header-items {
