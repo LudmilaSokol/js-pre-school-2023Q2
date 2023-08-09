@@ -757,6 +757,15 @@ html {
     display: block;
     position: absolute;
     top: -275px;
+    cursor: pointer;
+  }
+  .main .about-arrow:hover {
+    width: 24px;
+    height: 25px;
+    background-color: #bb945f;
+    border: 1px solid #bb945f;
+    border-radius: 50%;
+    opacity: 0.5;
   }
   .main .about .arrow-left {
     left: 45px;
