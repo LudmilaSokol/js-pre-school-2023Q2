@@ -72,6 +72,7 @@ html {
   white-space: nowrap;
 }
 .header-list {
+  z-index: 30;
   display: flex;
 }
 .header-items {
@@ -830,11 +831,11 @@ html {
   .header-list {
     opacity: 0;
     position: absolute;
-    top: 0;
+    top: -450px;
     right: 0;
     z-index: 10;
     width: 332px;
-    height: 535px;
+    height: 480px;
     margin-top: 88px;
     padding: 12px 100px;
     background-color: #0c0c0e;
@@ -843,6 +844,7 @@ html {
   }
   .header-list-active {
     opacity: 1;
+    top: 0;
     transform: translateX(0);
   }
   .header-items {
@@ -858,6 +860,9 @@ html {
   }
   .header-trigger {
     display: block;
+    margin-top: 3px;
+    margin-right: 7px;
+    margin-left: 13px;
   }
   .header-burger.open {
     background-color: transparent;
