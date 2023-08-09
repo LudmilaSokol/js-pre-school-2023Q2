@@ -759,10 +759,10 @@ html {
     top: -275px;
   }
   .main .about .arrow-left {
-    left: 75px;
+    left: 45px;
   }
   .main .about .arrow-right {
-    right: 75px;
+    right: 45px;
   }
   .main .about-pagination {
     margin-top: 16px;
@@ -876,6 +876,12 @@ html {
   .main .about .item-2 {
     display: none;
   }
+  .main .about .arrow-left {
+    left: 75px;
+  }
+  .main .about .arrow-right {
+    right: 75px;
+  }
 }
 @media (max-width: 1024px) {
   .main .coffee-shop-inner {
@@ -906,5 +912,13 @@ html {
   }
   .footer .rss .fs-base {
     font-size: 15px;
+  }
+}
+@media (max-width: 680px) {
+  .main .about .arrow-left {
+    left: 45px;
+  }
+  .main .about .arrow-right {
+    right: 45px;
   }
 }
