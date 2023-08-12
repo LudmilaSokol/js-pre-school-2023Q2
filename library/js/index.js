@@ -3,16 +3,16 @@
   const burgerItem = document.querySelector('.header-burger');
   const menu = document.querySelector('.header-list');
   const triggerItem = document.querySelector('.header-trigger')
-  const linkHeaderItem = document.querySelectorAll('.header-items');
+  const linkHeaderItem = document.querySelectorAll('.header-items .link');
 
-  /*при клике по .header-trigger добавляются\удаляются классы
+  /*отслеживет клик по .header-trigger, добавляются\удаляются классы
   для отображения адаптивного меню*/
   triggerItem.addEventListener('click', () => {
     menu.classList.toggle('header-list-active');
     burgerItem.classList.toggle('open');
-  });
+  })
 
-  /* отслеживает клик по пункту адаптивного меню и при переходе
+  /*перебирает все пункты адаптивного меню,  отслеживает клик по пункту адаптивного меню и при переходе
   по ссылке закрывает адаптивное меню*/
   for (let i = 0, length = linkHeaderItem.length; i < length; i++) {
       linkHeaderItem[i].addEventListener('click', () => {
@@ -20,6 +20,33 @@
         burgerItem.classList.remove('open');
     })
   }
+
+ /*отслеживает событие клика в документе*/
+  document.addEventListener('click', (event) => {
+    /*массив объектов, на которых произойдет событие (отразится Клик),
+     проверка наличия в этом массиве элемента menu, если значение true,
+     то клик выполнен по меню*/
+    const clickMenu = event.composedPath().includes(menu);
+    //если клик выполнент по trigger, то значение true
+    const clickToggle = event.composedPath().includes(triggerItem);
+    /* если клик вне триггера и меню (оба значения false),
+     то классы отображения адаптивного меню удаляются*/
+    if (!clickMenu && !clickToggle) {
+      menu.classList.remove('header-list-active');
+      burgerItem.classList.remove('open');
+    }
+  })
+
+  /*при увеличении размера экрана больше 1110px закрывается
+   открытое адаптивное меню*/
+  window.addEventListener('resize', (event) => {
+    const width= document.body.clientWidth;
+
+    if (width > 1110) {
+      menu.classList.remove('header-list-active');
+      burgerItem.classList.remove('open');
+    }
+  })
 
 
 }());
