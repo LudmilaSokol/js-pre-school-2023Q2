@@ -20,6 +20,7 @@
         burgerItem.classList.remove('open');
     })
   }
+
  /*отслеживает событие клика в документе*/
   document.addEventListener('click', (event) => {
     /*массив объектов, на которых произойдет событие (отразится Клик),
@@ -31,6 +32,17 @@
     /* если клик вне триггера и меню (оба значения false),
      то классы отображения адаптивного меню удаляются*/
     if (!clickMenu && !clickToggle) {
+      menu.classList.remove('header-list-active');
+      burgerItem.classList.remove('open');
+    }
+  })
+
+  /*при увеличении размера экрана больше 1110px закрывается
+   открытое адаптивное меню*/
+  window.addEventListener('resize', (event) => {
+    const width= document.body.clientWidth;
+
+    if (width > 1110) {
       menu.classList.remove('header-list-active');
       burgerItem.classList.remove('open');
     }
