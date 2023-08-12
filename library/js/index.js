@@ -3,16 +3,16 @@
   const burgerItem = document.querySelector('.header-burger');
   const menu = document.querySelector('.header-list');
   const triggerItem = document.querySelector('.header-trigger')
-  const linkHeaderItem = document.querySelectorAll('.header-items');
+  const linkHeaderItem = document.querySelectorAll('.header-items .link');
 
-  /*при клике по .header-trigger добавляются\удаляются классы
+  /*отслеживет клик по .header-trigger, добавляются\удаляются классы
   для отображения адаптивного меню*/
   triggerItem.addEventListener('click', () => {
     menu.classList.toggle('header-list-active');
     burgerItem.classList.toggle('open');
-  });
+  })
 
-  /* отслеживает клик по пункту адаптивного меню и при переходе
+  /*перебирает все пункты адаптивного меню,  отслеживает клик по пункту адаптивного меню и при переходе
   по ссылке закрывает адаптивное меню*/
   for (let i = 0, length = linkHeaderItem.length; i < length; i++) {
       linkHeaderItem[i].addEventListener('click', () => {
@@ -20,8 +20,6 @@
         burgerItem.classList.remove('open');
     })
   }
-
-
 }());
 
 console.log('Task: Library#2 - Адаптивная вёрстка 48/50');
