@@ -20,6 +20,23 @@
         burgerItem.classList.remove('open');
     })
   }
+ /*отслеживает событие клика в документе*/
+  document.addEventListener('click', (event) => {
+    /*массив объектов, на которых произойдет событие (отразится Клик),
+     проверка наличия в этом массиве элемента menu, если значение true,
+     то клик выполнен по меню*/
+    const clickMenu = event.composedPath().includes(menu);
+    //если клик выполнент по trigger, то значение true
+    const clickToggle = event.composedPath().includes(triggerItem);
+    /* если клик вне триггера и меню (оба значения false),
+     то классы отображения адаптивного меню удаляются*/
+    if (!clickMenu && !clickToggle) {
+      menu.classList.remove('header-list-active');
+      burgerItem.classList.remove('open');
+    }
+  })
+
+
 }());
 
 console.log('Task: Library#2 - Адаптивная вёрстка 48/50');
