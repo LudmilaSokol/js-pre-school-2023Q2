@@ -433,7 +433,7 @@
 
   <!-- LibraryCard after login in account -->
   <!-- Читательский билет после входа в учетную запись -->
-  <section class="section library-card-you" id="library-card-you">
+  <div class="section library-card-you" id="library-card-you">
     <div class="container">
       <h2 class="section-title">Digital Library Cards</h2>
       <div class="line"></div>
@@ -446,21 +446,23 @@
               <input class="library-card-form-box-input" type="text" placeholder="John Doe">
               <input class="library-card-form-box-input" type="text" placeholder="F00234030">
             </fieldset>
-            <!-- <button class="button button-big">Check the card</button> -->
-            <div class="">
-              <p>visits</p>
-              <img src="assets/img/profile/visits.svg" alt="">
-              <p>23</p>
-            </div>
-            <div class="">
-              <p>bonuses</p>
-              <img src="assets/img/profile/bonuses.svg" alt="">
-              <p>1240</p>
-            </div>
-            <div class="">
-              <p>Books</p>
-              <img src="assets/img/profile/books.svg" alt="">
-              <p>2</p>
+            <!-- блок счетчиков -->
+            <div class="library-card-form-counters">
+              <div class="counter">
+                <p>visits</p>
+                <p class="counter-img"><img src="assets/img/profile/visits.svg" alt=""></p>
+                <p>23</p>
+              </div>
+              <div class="counter">
+                <p>bonuses</p>
+                <p class="counter-img"><img src="assets/img/profile/bonuses.svg" alt=""></p>
+                <p>1240</p>
+              </div>
+              <div class="counter">
+                <p>Books</p>
+                <p class="counter-img"><img src="assets/img/profile/books.svg" alt=""></p>
+                <p>2</p>
+              </div>
             </div>
           </form>
         </div>
@@ -473,7 +475,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <script src="js/index.js"></script>
 </body>
