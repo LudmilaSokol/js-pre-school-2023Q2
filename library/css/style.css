@@ -961,6 +961,82 @@ button {
   left: 100px;
   border: 1px solid #bb945f;
 }
+.modal {
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  width: 250px;
+  height: 262px;
+  padding: 20px 25px;
+  background: #ffffff;
+  border: 1px solid #bb945f;
+}
+.modal-title {
+  margin: 0 0 20px;
+  font-family: 'Forum-Regular', serif;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.modal-label {
+  font-family: 'Inter-Regular', sans-serif;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  color: #000000;
+}
+.modal-input {
+  margin: 10px auto;
+  width: 200px;
+  height: 20px;
+  border: 1px solid #bb945f;
+}
+.modal-button {
+  width: 75px;
+  height: 30px;
+  margin-top: 10px;
+  font-family: 'Inter-Regular', sans-serif;
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: #0c0c0e;
+  border-radius: 2px;
+  border: 1px solid #0c0c0e;
+  background: #ffffff;
+}
+.modal-queston {
+  color: #000000;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.modal-link {
+  color: #0c0c0e;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-decoration-line: underline;
+}
 @media (max-width: 1439px) {
   .main .about-nav {
     position: relative;
