@@ -31,6 +31,7 @@ button {
   outline: none;
 }
 .body {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -902,6 +903,53 @@ button {
   letter-spacing: 1px;
   border-radius: 2px;
   border: 1px solid #0c0c0e;
+}
+.drop-menu {
+  position: absolute;
+  top: 200px;
+  border: 1px solid #bb945f;
+  width: 80px;
+  height: 115px;
+  padding: 5px 0;
+  font-family: 'Inter-Regular', sans-serif;
+  text-align: center;
+  background: #ffffff;
+}
+.drop-menu-title {
+  position: relative;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  color: #000000;
+}
+.drop-menu-title::after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 20px;
+  width: 40px;
+  height: 1px;
+  background: #bb945f;
+  transform: translateX(-50%);
+}
+.drop-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+.drop-menu-item {
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 15px;
+  list-style: none;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+}
+.drop-menu-link {
+  color: #000000;
+  text-decoration: none;
 }
 @media (max-width: 1439px) {
   .main .about-nav {
