@@ -17,6 +17,11 @@
 /* #121215 второй цвет градиента для Welcom*/
 /* #bb945f дополнительный выделяющий цвет*/
 /* #8E8E8E цвет плайсхолдера*/
+.center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -1042,7 +1047,113 @@ button {
   height: 262px;
 }
 .register {
+  display: none;
   height: 382px;
+}
+.modal-profile {
+  display: none;
+  position: absolute;
+  top: 100px;
+  width: 600px;
+  height: 400px;
+  font-family: 'Inter-Regular', sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000000;
+  background: #ffffff;
+}
+.modal-profile .box1 {
+  width: 170px;
+  background: #0c0c0e;
+}
+.modal-profile .box1 .avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 139px auto 15px;
+  width: 80px;
+  height: 80px;
+  color: #bb945f;
+  text-align: center;
+  background: #ffffff;
+  text-transform: capitalize;
+}
+.modal-profile .box1 .name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  background: #ffffff;
+}
+.modal-profile .box2 {
+  flex-grow: 1;
+  padding: 20px;
+}
+.modal-profile .box2-title {
+  margin: 20px 0 40px;
+  font-family: 'Forum-Regular', serif;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.modal-profile .box2 .modal-close {
+  top: 23px;
+  right: 23px;
+}
+.modal-profile .box2-counters {
+  display: flex;
+  gap: 20px;
+}
+.modal-profile .box2-counters .counter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.modal-profile .box2-counters .counter-text {
+  text-align: center;
+  letter-spacing: 0.4px;
+}
+.modal-profile .box2-counters .counter-count {
+  margin-top: -2px;
+  font-size: 10px;
+  letter-spacing: 0.2px;
+}
+.modal-profile .box2-subtitle {
+  margin: 20px 0 30px;
+  color: #0c0c0e;
+  font-size: 25px;
+  font-weight: 400;
+}
+.modal-profile .box2-items {
+  padding-left: 30px;
+}
+.modal-profile .box2-item {
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.modal-profile .box2 .card {
+  margin-top: 40px;
+}
+.modal-profile .box2 .card-title {
+  margin-right: 10px;
+  color: #0c0c0e;
+  text-align: center;
+}
+.modal-profile .box2 .card-number {
+  margin-right: 10px;
+  color: #bb945f;
+  text-align: center;
+}
+.modal-profile .box2 .card-copy-img {
+  margin-bottom: 2px;
 }
 @media (max-width: 1439px) {
   .main .about-nav {
