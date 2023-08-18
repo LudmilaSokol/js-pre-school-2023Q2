@@ -966,7 +966,6 @@ button {
   top: 100px;
   left: 40px;
   width: 250px;
-  height: 262px;
   padding: 20px 25px;
   background: #ffffff;
   border: 1px solid #bb945f;
@@ -1037,6 +1036,13 @@ button {
   line-height: normal;
   letter-spacing: 1px;
   text-decoration-line: underline;
+}
+.log-in {
+  display: none;
+  height: 262px;
+}
+.register {
+  height: 382px;
 }
 @media (max-width: 1439px) {
   .main .about-nav {
