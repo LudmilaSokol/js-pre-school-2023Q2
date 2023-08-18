@@ -915,16 +915,16 @@ button {
   height: 117px;
   padding: 5px 0;
   font-family: 'Inter-Regular', sans-serif;
+  color: #000000;
+  font-style: normal;
   text-align: center;
   background: #ffffff;
 }
 .drop-menu-title {
   position: relative;
   font-size: 15px;
-  font-style: normal;
   font-weight: 700;
   line-height: 20px;
-  color: #000000;
 }
 .drop-menu-title::after {
   position: absolute;
@@ -948,11 +948,9 @@ button {
   font-size: 15px;
   list-style: none;
   font-weight: 400;
-  font-style: normal;
   line-height: 20px;
 }
 .drop-menu-link {
-  color: #000000;
   text-decoration: none;
 }
 .profile-no-aut {
@@ -972,13 +970,15 @@ button {
   left: 40px;
   width: 250px;
   padding: 20px 25px;
+  font-family: 'Inter-Regular', sans-serif;
+  font-style: normal;
+  font-weight: 400;
   background: #ffffff;
   border: 1px solid #bb945f;
 }
 .modal-title {
   margin: 0 0 20px;
   font-family: 'Forum-Regular', serif;
-  font-style: normal;
   font-size: 20px;
   font-weight: 400;
   line-height: 20px;
@@ -993,10 +993,7 @@ button {
   right: 13px;
 }
 .modal-label {
-  font-family: 'Inter-Regular', sans-serif;
-  font-style: normal;
   font-size: 15px;
-  font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.3px;
   color: #000000;
@@ -1011,8 +1008,6 @@ button {
   width: 75px;
   height: 30px;
   margin-top: 10px;
-  font-family: 'Inter-Regular', sans-serif;
-  font-style: normal;
   font-size: 10px;
   font-weight: 700;
   line-height: normal;
@@ -1025,18 +1020,13 @@ button {
 .modal-queston {
   color: #000000;
   text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
-  font-family: 'Inter-Regular', sans-serif;
   font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
   line-height: normal;
 }
 .modal-link {
   margin-left: 8px;
   color: #0c0c0e;
-  font-family: 'Inter-Regular', sans-serif;
   font-size: 10px;
-  font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1px;
