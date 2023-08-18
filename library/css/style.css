@@ -1145,6 +1145,73 @@ button {
 .modal-profile .box2 .card-copy-img {
   margin-bottom: 2px;
 }
+.modal-buy-card {
+  display: none;
+  position: absolute;
+  top: 100px;
+  width: 650px;
+  height: 540px;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  color: #000000;
+  line-height: 20px;
+  background: #ffffff;
+}
+.modal-buy-card .modal-header {
+  height: 60px;
+  margin-bottom: 30px;
+  background: #0c0c0e;
+}
+.modal-buy-card .modal-title {
+  padding: 20px;
+  font-size: 40px;
+  color: #ffffff;
+  letter-spacing: 0.8px;
+}
+.modal-buy-card .modal-close {
+  top: 23px;
+  right: 23px;
+}
+.modal-buy-card-box {
+  display: flex;
+  gap: 40px;
+  padding: 0 40px;
+}
+.modal-buy-card-form {
+  flex: 1 1 200px;
+}
+.modal-buy-card-form .input-mini {
+  margin-right: 5px;
+  width: 45px;
+}
+.modal-buy-card-form .card-form-price {
+  margin-left: 22px;
+  vertical-align: bottom;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #0c0c0e;
+  text-transform: uppercase;
+}
+.modal-buy-card-form .card-form-box {
+  margin-bottom: 10px;
+  padding: 0;
+  border: none;
+}
+.modal-buy-card-form .card-form .modal-button {
+  margin: 0;
+}
+.modal-buy-card-comment {
+  flex-grow: 1;
+  width: 330px;
+  color: #8e8e8e;
+  letter-spacing: 2px;
+}
+.modal-buy-card-comment .modal-text {
+  margin: 0 0 0 -4px;
+}
 @media (max-width: 1439px) {
   .main .about-nav {
     position: relative;
