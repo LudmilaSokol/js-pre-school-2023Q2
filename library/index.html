@@ -429,6 +429,230 @@
     </div>
   </footer>
 
+  <!-- modal windows -->
+
+  <!-- LibraryCard after login in account -->
+  <!-- Читательский билет после входа в учетную запись -->
+  <div class="section library-card-you" id="library-card-you">
+    <div class="container">
+      <h2 class="section-title">Digital Library Cards</h2>
+      <div class="line"></div>
+      <div class="library-card-inner">
+        <div class="library-card-inner-find">
+          <p class="header-find">Your Library card</p>
+          <form class="library-card-form">
+            <fieldset class="library-card-form-box">
+              <p class="form-title">Brooklyn Public Library</p>
+              <input class="library-card-form-box-input" type="text" placeholder="John Doe">
+              <input class="library-card-form-box-input" type="text" placeholder="F00234030">
+            </fieldset>
+            <!-- блок счетчиков -->
+            <div class="library-card-form-counters">
+              <div class="counter">
+                <p>visits</p>
+                <p class="counter-img"><img src="assets/img/profile/visits.svg" alt="Visits icon"></p>
+                <p>23</p>
+              </div>
+              <div class="counter">
+                <p>bonuses</p>
+                <p class="counter-img"><img src="assets/img/profile/bonuses.svg" alt="Bonuses icon"></p>
+                <p>1240</p>
+              </div>
+              <div class="counter">
+                <p>Books</p>
+                <p class="counter-img"><img src="assets/img/profile/books.svg" alt="Books icon"></p>
+                <p>2</p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="library-card-inner-get">
+          <p class="get-title">Visit your profile</p>
+          <p class="get-text">With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
+          <div class="button-box">
+            <button class="button button-small">Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- dropMenu Profile no Auth -->
+  <div class="drop-menu profile-no-aut">
+    <div class="drop-menu-title">Profile</div>
+    <ul class="drop-menu-items">
+      <li class="drop-menu-item"><a href="#" class="drop-menu-link">Log In</a></li>
+      <li class="drop-menu-item"><a href="#" class="drop-menu-link">Register</a></li>
+    </ul>
+  </div>
+
+  <!-- dropMenu Profile with Auth -->
+  <div class="drop-menu profile-with-aut">
+    <div class="drop-menu-title">Profile</div>
+    <ul class="drop-menu-items">
+      <li class="drop-menu-item"><a href="#" class="drop-menu-link">My profile</a></li>
+      <li class="drop-menu-item"><a href="#" class="drop-menu-link">Log Out</a></li>
+    </ul>
+  </div>
+
+  <!-- modal_Log In -->
+  <div class="modal log-in">
+    <h2 class="modal-title">Login</h2>
+    <div class="modal-close">
+      <img src="assets/img/modals/close_btn.svg" alt="Close button">
+    </div>
+    <form action="#">
+      <label class="modal-label">
+        E-mail or readers card
+        <input class="modal-input" type="text">
+      </label>
+      <label class="modal-label">
+        Password
+        <input class="modal-input" type="text">
+      </label>
+      <button class="modal-button">Log In</button>
+    </form>
+    <p class="modal-queston">Don’t have an account?
+      <a class="modal-link" href="#">
+        Register
+      </a>
+    </p>
+  </div>
+
+  <!-- modal_Register -->
+  <div class="modal register">
+    <h2 class="modal-title">Register</h2>
+    <div class="modal-close">
+      <img src="assets/img/modals/close_btn.svg" alt="Close button">
+    </div>
+    <form action="#">
+      <label class="modal-label">
+        First name
+        <input class="modal-input" type="text">
+      </label>
+      <label class="modal-label">
+        Last name
+        <input class="modal-input" type="text">
+      </label>
+      <label class="modal-label">
+        E-mail
+        <input class="modal-input" type="text">
+      </label>
+      <label class="modal-label">
+        Password
+        <input class="modal-input" type="text">
+      </label>
+      <button class="modal-button">Sign Up</button>
+    </form>
+    <p class="modal-queston">Already have an account?
+      <a class="modal-link" href="#">
+        Login
+      </a>
+    </p>
+  </div>
+
+  <!-- modal_profile -->
+  <div class="modal-profile">
+    <div class="box1">
+      <div class="avatar">
+        <p>JD</p>
+      </div>
+      <div class="name">
+        <span>John Doe</span>
+      </div>
+    </div>
+
+    <div class="box2">
+      <h2 class="box2-title">My profile</h2>
+      <div class="modal-close">
+        <img src="assets/img/modals/close_btn.svg" alt="close button">
+      </div>
+
+      <div class="box2-counters">
+        <div class="counter">
+          <span class="counter-text">Visits</span>
+          <span class="counter-img"><img src="assets/img/profile/visits.svg" alt="Visits icon"></span>
+          <span class="counter-count">23</span>
+        </div>
+        <div class="counter">
+          <span class="counter-text">Bonuses</span>
+          <span class="counter-img"><img src="assets/img/profile/bonuses.svg" alt="Bonuses icon"></span>
+          <span class="counter-count">1240</span>
+        </div>
+        <div class="counter">
+          <span class="counter-text">Books</span>
+          <span class="counter-img"><img src="assets/img/profile/books.svg" alt="Books icon"></span>
+          <span class="counter-count">2</span>
+        </div>
+      </div>
+      <h3 class="box2-subtitle">Rented books</h3>
+      <!-- аренда книг -->
+      <div class="box2-rented">
+        <ul class="box2-items">
+          <li class="box2-item">The Last Queen, Clive Irving</li>
+          <li class="box2-item">Dominicana, Angie Cruz</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-title">Card number</span>
+        <span class="card-number">F00234030</span>
+        <span class="card-copy"><img class="card-copy-img" src="assets/img/profile/icon_copy.svg" alt="Copy button"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buy a library card -->
+  <div class="modal-buy-card">
+    <div class="modal-header">
+      <h2 class="modal-title">
+        Buy a library card
+      </h2>
+      <div class="modal-close">
+        <img src="assets/img/modals/close_btn_white.svg" alt="Close button">
+      </div>
+    </div>
+    <div class="modal-buy-card-box">
+      <div class="modal-buy-card-form">
+        <form class="card-form" action="#">
+          <fieldset class="card-form-box">
+            <label class="modal-label">
+              Bank card number
+              <input class="modal-input" type="text">
+            </label>
+            <label class="modal-label">
+              Expiration code<br>
+              <input class="modal-input input-mini" type="text">
+              <input class="modal-input input-mini" type="text">
+            </label><br>
+            <label class="modal-label">
+              CVC<br>
+              <input class="modal-input input-mini" type="text">
+            </label><br>
+          </fieldset>
+          <fieldset class="card-form-box">
+            <label class="modal-label">
+              Cardholder name
+              <input class="modal-input" type="text">
+            </label>
+            <label class="modal-label">
+              Postal code
+              <input class="modal-input" type="text">
+            </label>
+            <label class="modal-label">
+              City / Town
+              <input class="modal-input" type="text">
+            </label>
+          </fieldset>
+          <button class="modal-button">Buy</button>
+          <span class="card-form-price">$ 25.00</span>
+        </form>
+      </div>
+      <div class="modal-buy-card-comment">
+        <p class="modal-text">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.
+        </p>
+      </div>
+    </div>
+  </div>
+
   <script src="js/index.js"></script>
 </body>
 </html>

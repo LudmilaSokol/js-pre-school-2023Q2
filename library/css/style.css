@@ -17,6 +17,11 @@
 /* #121215 второй цвет градиента для Welcom*/
 /* #bb945f дополнительный выделяющий цвет*/
 /* #8E8E8E цвет плайсхолдера*/
+.center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -26,7 +31,12 @@ html {
 *::after {
   box-sizing: inherit;
 }
+input,
+button {
+  outline: none;
+}
 .body {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,14 +157,15 @@ html {
 .header-burger::before {
   transform: translateY(-10px);
 }
-.main {
+.section {
   color: #0c0c0e;
   background: #ffffff;
 }
-.main .section-title {
+.section-title {
   padding: 20px 0;
   margin: 0 auto;
   font-family: 'Forum-Regular', serif;
+  color: #0c0c0e;
   font-size: 40px;
   font-weight: 400;
   line-height: 40px;
@@ -162,7 +173,7 @@ html {
   text-align: center;
   text-transform: capitalize;
 }
-.main .section-text {
+.section-text {
   padding: 20px 20px 0;
   text-align: center;
   font-family: 'Inter-Regular', sans-serif;
@@ -171,14 +182,14 @@ html {
   line-height: 40px;
   color: #000000;
 }
-.main .section .ta-left {
+.section .ta-left {
   min-width: 230px;
   text-align: left;
   padding: 0 0 0 5px;
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.main .section .ta-right {
+.section .ta-right {
   min-width: 230px;
   text-align: right;
   padding: 0;
@@ -187,19 +198,26 @@ html {
   text-transform: capitalize;
   white-space: nowrap;
 }
-.main .section .button {
+.section .button {
   background: #ffffff;
   border-radius: 2px;
   border: 1px solid #0c0c0e;
 }
-.main .section .button:hover {
+.section .button:hover {
   background-color: #bb945f;
   border: 1px solid #bb945f;
   transition: all 0.3s ease 0s;
   cursor: pointer;
 }
-.main .section .button:disabled {
+.section .button:disabled {
   background-color: #ffffff;
+}
+.line {
+  margin: 0 auto;
+  width: 50px;
+  height: 1px;
+  flex-shrink: 0;
+  background: #0c0c0e;
 }
 .main .welcom {
   display: flex;
@@ -573,6 +591,7 @@ html {
   margin-bottom: 40px;
   border: 3px solid #bb945f;
   background: #ffffff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .main .library-card-form-box {
   margin: 20px 20px 18px;
@@ -580,6 +599,7 @@ html {
   width: 556px;
   height: 270px;
   background: #bb945f;
+  border: 1px solid #bb945f;
 }
 .main .library-card-form-box .form-title {
   padding-left: 20px;
@@ -597,6 +617,12 @@ html {
   height: 68px;
   padding: 15px 0 8px 20px;
   margin: 18px 16px 6px;
+  font-family: 'Forum-Regular', serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
   border: 1px solid #bb945f;
   border-radius: 10px;
   background: #ffffff;
@@ -604,12 +630,6 @@ html {
 .main .library-card-form-box-input::placeholder {
   height: 50px;
   color: #8e8e8e;
-  font-family: 'Forum-Regular', serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 50px;
-  letter-spacing: 0.6px;
 }
 .main .library-card-form .button-big {
   display: block;
@@ -626,6 +646,9 @@ html {
   letter-spacing: 1px;
   border-radius: 2px;
   border: 1px solid #0c0c0e;
+}
+.main .library-card-form .button-big:hover {
+  border: none;
 }
 .main .library-card .get-title {
   color: #000000;
@@ -670,12 +693,8 @@ html {
   border-radius: 2px;
   border: 1px solid #0c0c0e;
 }
-.main .line {
-  margin: 0 auto;
-  width: 50px;
-  height: 1px;
-  flex-shrink: 0;
-  background: #0c0c0e;
+.main .library-card .button-small:hover {
+  border: none;
 }
 .footer-container {
   display: flex;
@@ -745,6 +764,453 @@ html {
 }
 .footer .rss-link {
   margin-left: 186px;
+}
+.library-card-you {
+  display: none;
+  padding-top: 31px;
+  height: 614px;
+}
+.library-card-you .library-card-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 21px 0;
+}
+.library-card-you .header-find {
+  color: #000000;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  line-height: normal;
+  letter-spacing: 0.6px;
+}
+.library-card-you .library-card-form {
+  width: 600px;
+  height: 387px;
+  margin-bottom: 40px;
+  border: 3px solid #bb945f;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.library-card-you .library-card-form-box {
+  margin: 20px 20px 15px 20px;
+  padding: 0;
+  width: 556px;
+  height: 270px;
+  background: #bb945f;
+  border: 1px solid #bb945f;
+}
+.library-card-you .library-card-form-box .form-title {
+  padding-left: 20px;
+  margin: 16px 0 0 -4px;
+  color: #000000;
+  font-family: 'Forum-Regular', serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+}
+.library-card-you .library-card-form-box-input {
+  width: 93%;
+  height: 68px;
+  padding: 15px 0 8px 20px;
+  margin: 18px 16px 6px;
+  font-family: 'Forum-Regular', serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+  border: 1px solid #bb945f;
+  border-radius: 10px;
+  background: #ffffff;
+}
+.library-card-you .library-card-form-box-input::placeholder {
+  height: 50px;
+  color: #bb945f;
+}
+.library-card-you .library-card-form .button-big {
+  display: block;
+  margin: 0 auto;
+  padding-top: 2px;
+  width: 240px;
+  height: 46px;
+  color: #0c0c0e;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  border: 1px solid #0c0c0e;
+}
+.library-card-you .library-card-form-counters {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  font-family: 'Inter-Regular', sans-serif;
+  color: #000000;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+}
+.library-card-you .library-card-form-counters .counter-img {
+  height: 21px;
+}
+.library-card-you .library-card-form-counters .counter p {
+  margin: 0;
+  text-align: center;
+}
+.library-card-you .get-title {
+  color: #000000;
+  text-align: right;
+  font-family: 'Forum-Regular', serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.6px;
+}
+.library-card-you .get-text {
+  width: 456px;
+  margin: 35px 0;
+  color: #000000;
+  text-align: right;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0.4px;
+}
+.library-card-you .button-box {
+  display: flex;
+  justify-content: flex-end;
+}
+.library-card-you .button-small {
+  display: inline-flex;
+  width: 75px;
+  height: 30px;
+  margin-left: 20px;
+  justify-content: center;
+  align-items: center;
+  color: #0c0c0e;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  border: 1px solid #0c0c0e;
+}
+.drop-menu {
+  position: absolute;
+  width: 80px;
+  height: 117px;
+  padding: 5px 0;
+  font-family: 'Inter-Regular', sans-serif;
+  color: #000000;
+  font-style: normal;
+  text-align: center;
+  background: #ffffff;
+}
+.drop-menu-title {
+  position: relative;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+}
+.drop-menu-title::after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 25px;
+  width: 40px;
+  height: 1px;
+  background: #bb945f;
+  transform: translateX(-50%);
+}
+.drop-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 20px 0;
+}
+.drop-menu-item {
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 15px;
+  list-style: none;
+  font-weight: 400;
+  line-height: 20px;
+}
+.drop-menu-link {
+  text-decoration: none;
+}
+.profile-no-aut {
+  display: none;
+  top: 200px;
+  border: 1px solid #bb945f;
+}
+.profile-with-aut {
+  display: none;
+  top: 200px;
+  left: 100px;
+  border: 1px solid #bb945f;
+}
+.modal {
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  width: 250px;
+  padding: 20px 25px;
+  font-family: 'Inter-Regular', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  background: #ffffff;
+  border: 1px solid #bb945f;
+}
+.modal-title {
+  margin: 0 0 20px;
+  font-family: 'Forum-Regular', serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.modal-close {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+}
+.modal-label {
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  color: #000000;
+}
+.modal-input {
+  margin: 10px auto;
+  width: 200px;
+  height: 20px;
+  border: 1px solid #bb945f;
+}
+.modal-button {
+  width: 75px;
+  height: 30px;
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: #0c0c0e;
+  border-radius: 2px;
+  border: 1px solid #0c0c0e;
+  background: #ffffff;
+}
+.modal-queston {
+  color: #000000;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+  font-size: 10px;
+  line-height: normal;
+}
+.modal-link {
+  margin-left: 8px;
+  color: #0c0c0e;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-decoration-line: underline;
+}
+.log-in {
+  display: none;
+  height: 262px;
+}
+.register {
+  display: none;
+  height: 382px;
+}
+.modal-profile {
+  display: none;
+  position: absolute;
+  top: 100px;
+  width: 600px;
+  height: 400px;
+  font-family: 'Inter-Regular', sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000000;
+  background: #ffffff;
+}
+.modal-profile .box1 {
+  width: 170px;
+  background: #0c0c0e;
+}
+.modal-profile .box1 .avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 139px auto 15px;
+  width: 80px;
+  height: 80px;
+  color: #bb945f;
+  text-align: center;
+  background: #ffffff;
+  text-transform: capitalize;
+}
+.modal-profile .box1 .name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  background: #ffffff;
+}
+.modal-profile .box2 {
+  flex-grow: 1;
+  padding: 20px;
+}
+.modal-profile .box2-title {
+  margin: 20px 0 40px;
+  font-family: 'Forum-Regular', serif;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.modal-profile .box2 .modal-close {
+  top: 23px;
+  right: 23px;
+}
+.modal-profile .box2-counters {
+  display: flex;
+  gap: 20px;
+}
+.modal-profile .box2-counters .counter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.modal-profile .box2-counters .counter-text {
+  text-align: center;
+  letter-spacing: 0.4px;
+}
+.modal-profile .box2-counters .counter-count {
+  margin-top: -2px;
+  font-size: 10px;
+  letter-spacing: 0.2px;
+}
+.modal-profile .box2-subtitle {
+  margin: 20px 0 30px;
+  color: #0c0c0e;
+  font-size: 25px;
+  font-weight: 400;
+}
+.modal-profile .box2-items {
+  padding-left: 30px;
+}
+.modal-profile .box2-item {
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.modal-profile .box2 .card {
+  margin-top: 40px;
+}
+.modal-profile .box2 .card-title {
+  margin-right: 10px;
+  color: #0c0c0e;
+  text-align: center;
+}
+.modal-profile .box2 .card-number {
+  margin-right: 10px;
+  color: #bb945f;
+  text-align: center;
+}
+.modal-profile .box2 .card-copy-img {
+  margin-bottom: 2px;
+}
+.modal-buy-card {
+  display: none;
+  position: absolute;
+  top: 100px;
+  width: 650px;
+  height: 540px;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  color: #000000;
+  line-height: 20px;
+  background: #ffffff;
+}
+.modal-buy-card .modal-header {
+  height: 60px;
+  margin-bottom: 30px;
+  background: #0c0c0e;
+}
+.modal-buy-card .modal-title {
+  padding: 20px;
+  font-size: 40px;
+  color: #ffffff;
+  letter-spacing: 0.8px;
+}
+.modal-buy-card .modal-close {
+  top: 23px;
+  right: 23px;
+}
+.modal-buy-card-box {
+  display: flex;
+  gap: 40px;
+  padding: 0 40px;
+}
+.modal-buy-card-form {
+  flex: 1 1 200px;
+}
+.modal-buy-card-form .input-mini {
+  margin-right: 5px;
+  width: 45px;
+}
+.modal-buy-card-form .card-form-price {
+  margin-left: 22px;
+  vertical-align: bottom;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #0c0c0e;
+  text-transform: uppercase;
+}
+.modal-buy-card-form .card-form-box {
+  margin-bottom: 10px;
+  padding: 0;
+  border: none;
+}
+.modal-buy-card-form .card-form .modal-button {
+  margin: 0;
+}
+.modal-buy-card-comment {
+  flex-grow: 1;
+  width: 330px;
+  color: #8e8e8e;
+  letter-spacing: 2px;
+}
+.modal-buy-card-comment .modal-text {
+  margin: 0 0 0 -4px;
 }
 @media (max-width: 1439px) {
   .main .about-nav {
