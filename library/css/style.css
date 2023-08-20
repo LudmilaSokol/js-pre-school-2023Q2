@@ -266,6 +266,9 @@ button {
 .main .about-pagination :hover {
   cursor: pointer;
 }
+.main .about-pagination .pagination-hidden {
+  display: none;
+}
 .main .about-pagination-box {
   width: 26px;
   height: 26px;
