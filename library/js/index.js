@@ -1,5 +1,4 @@
 /* burger handler */
-(function () {
   const burgerItem = document.querySelector('.header-burger');
   const menu = document.querySelector('.header-list');
   const triggerItem = document.querySelector('.header-trigger')
@@ -48,8 +47,15 @@
     }
   })
 
+  /* кэширование изображений слайдера */
+  function preloadSummerImages() {
+    for(let i = 1; i <= 6; i++) {
+      const img = new Image();
+      img.src = `./assets/img/about/image-${i}.jpg`;
+    }
+  }
+  preloadSummerImages();
 
-}());
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
 console.log('1. Вёрстка соответствует макету. Ширина экрана 768px 26/26');
