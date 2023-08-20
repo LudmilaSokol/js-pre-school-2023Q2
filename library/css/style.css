@@ -247,33 +247,43 @@ button {
   text-transform: uppercase;
 }
 .main .about-carousel {
+  width: 1400px;
+  padding: 0 8px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.main .about-carousel-box {
   display: inline-flex;
   justify-content: center;
+  flex-direction: row;
   gap: 25px;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 0 8px;
+  width: 2350px;
+}
+.main .about-carousel-item {
+  width: 450px;
+  height: 560px;
 }
 .main .about-arrow {
   display: none;
 }
 .main .about-pagination {
-  display: flex;
-  justify-content: center;
-  margin: 32px 0 35px 0;
-  border-radius: 50%;
+  margin: 35px auto;
+  width: 78px;
+  overflow: hidden;
 }
 .main .about-pagination :hover {
   cursor: pointer;
 }
-.main .about-pagination .pagination-hidden {
-  display: none;
-}
 .main .about-pagination-box {
+  display: flex;
+  justify-content: center;
+  width: 130px;
+}
+.main .about-pagination-inner {
   width: 26px;
   height: 26px;
 }
-.main .about-pagination-box-item {
+.main .about-pagination-inner-item {
   width: 16px;
   height: 16px;
   margin: 5px;
