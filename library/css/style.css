@@ -17,11 +17,6 @@
 /* #121215 второй цвет градиента для Welcom*/
 /* #bb945f дополнительный выделяющий цвет*/
 /* #8E8E8E цвет плайсхолдера*/
-.center-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -47,6 +42,10 @@ button {
 }
 .container .item {
   list-style: none;
+}
+/* класс для отображения скрытого элемента из js*/
+.visible-item {
+  display: block;
 }
 .header-container {
   position: relative;
@@ -109,6 +108,7 @@ button {
   flex-shrink: 0;
 }
 .header-link-profile {
+  position: relative;
   z-index: 20;
   padding-top: 19px;
 }
@@ -928,7 +928,7 @@ button {
   border: 1px solid #0c0c0e;
 }
 .drop-menu {
-  position: absolute;
+  position: relative;
   top: 90px;
   right: 20px;
   width: 80px;
@@ -1228,11 +1228,11 @@ button {
   margin: 0 0 0 -4px;
 }
 @media (max-width: 1439px) {
+  .main .about-carousel {
+    width: 450px;
+  }
   .main .about-nav {
     position: relative;
-  }
-  .main .about .item-3 {
-    display: none;
   }
   .main .about-arrow {
     display: block;
@@ -1255,6 +1255,7 @@ button {
     right: 45px;
   }
   .main .about-pagination {
+    width: 130px;
     margin-top: 16px;
   }
 }
@@ -1362,9 +1363,6 @@ button {
   }
   .header-burger.open::before {
     transform: rotate(45deg);
-  }
-  .main .about .item-2 {
-    display: none;
   }
   .main .about .arrow-left {
     left: 75px;
