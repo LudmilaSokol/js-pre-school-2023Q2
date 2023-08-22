@@ -254,14 +254,17 @@ button {
 }
 .main .about-carousel-box {
   display: inline-flex;
-  justify-content: center;
   flex-direction: row;
   gap: 25px;
   width: 2350px;
 }
 .main .about-carousel-item {
+  display: none;
   width: 450px;
   height: 560px;
+}
+.main .about-carousel-item.active {
+  display: block;
 }
 .main .about-arrow {
   display: none;
@@ -270,9 +273,6 @@ button {
   margin: 35px auto;
   width: 78px;
   overflow: hidden;
-}
-.main .about-pagination :hover {
-  cursor: pointer;
 }
 .main .about-pagination-box {
   display: flex;
@@ -290,8 +290,13 @@ button {
   border-radius: 50%;
   background: #0c0c0e;
 }
-.main .about-pagination .active {
+.main .about-pagination-inner-item.active,
+.main .about-pagination-inner-item.active:hover {
   background: #bb945f;
+  cursor: auto;
+}
+.main .about-pagination-inner-item:hover {
+  cursor: pointer;
 }
 .main .favorites-caption {
   font-weight: 700;
@@ -924,6 +929,8 @@ button {
 }
 .drop-menu {
   position: absolute;
+  top: 90px;
+  right: 20px;
   width: 80px;
   height: 117px;
   padding: 5px 0;
@@ -968,14 +975,9 @@ button {
 }
 .profile-no-aut {
   display: none;
-  top: 200px;
-  border: 1px solid #bb945f;
 }
 .profile-with-aut {
   display: none;
-  top: 200px;
-  left: 100px;
-  border: 1px solid #bb945f;
 }
 .modal {
   position: absolute;
