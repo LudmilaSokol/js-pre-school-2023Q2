@@ -294,7 +294,7 @@ button {
 .main .about-pagination-inner-item.active,
 .main .about-pagination-inner-item.active:hover {
   background: #bb945f;
-  cursor: auto;
+  cursor: initial;
 }
 .main .about-pagination-inner-item:hover {
   cursor: pointer;
@@ -359,23 +359,23 @@ button {
   cursor: pointer;
   opacity: 0;
 }
-.main .favorites-items {
+.main .favorites-items-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 60px 0 20px;
 }
-.main .favorites-items .book-item-hidden {
+.main .favorites-items-box .book-item-hidden {
   display: none;
 }
-.main .favorites-items .book-item {
+.main .favorites-items-box .book-item {
   width: 550px;
   height: 555px;
   flex-shrink: 0;
   margin: 39px 0 0 0;
   border: 1px solid #000000;
 }
-.main .favorites-items .book-item-headline {
+.main .favorites-items-box .book-item-headline {
   margin: 14px 0 0 20px;
   color: #000000;
   font-family: 'Forum-Regular', serif;
@@ -385,13 +385,13 @@ button {
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.main .favorites-items .book-item-headline-line {
+.main .favorites-items-box .book-item-headline-line {
   width: 58px;
   height: 1px;
   margin: -1px 20px;
   background: #bb945f;
 }
-.main .favorites-items .book-item-title {
+.main .favorites-items-box .book-item-title {
   padding-left: 20px;
   color: #000000;
   font-family: 'Inter-Regular', sans-serif;
@@ -400,16 +400,16 @@ button {
   line-height: 40px;
   letter-spacing: 2px;
 }
-.main .favorites-items .book-item .title {
+.main .favorites-items-box .book-item .title {
   margin-bottom: 0;
   margin-top: 20px;
   text-transform: uppercase;
 }
-.main .favorites-items .book-item .subtitle {
+.main .favorites-items-box .book-item .subtitle {
   margin: 0;
   text-transform: capitalize;
 }
-.main .favorites-items .book-item-text {
+.main .favorites-items-box .book-item-text {
   width: 393px;
   height: 356px;
   padding: 20px 20px 0;
@@ -422,7 +422,7 @@ button {
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.main .favorites-items .book-item .button {
+.main .favorites-items-box .book-item .button {
   width: 74px;
   height: 30px;
   margin-left: 20px;
@@ -435,63 +435,63 @@ button {
   line-height: normal;
   letter-spacing: 1px;
 }
-.main .favorites-items .book-item .button-own {
+.main .favorites-items-box .book-item .button-own {
   color: #bb945f;
   border: 1px solid #bb945f;
   cursor: auto;
 }
-.main .favorites-items .book-item .book {
+.main .favorites-items-box .book-item .book {
   width: 200px;
   height: 300px;
   flex-shrink: 0;
   transform: translate(390px, -285px);
 }
-.main .favorites-items .book-item .book1 {
+.main .favorites-items-box .book-item .book1 {
   background: url(../assets/img/favorites/book1.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book2 {
+.main .favorites-items-box .book-item .book2 {
   background: url(../assets/img/favorites/book2.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book3 {
+.main .favorites-items-box .book-item .book3 {
   background: url(../assets/img/favorites/book3.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/spring-book1.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/spring-book2.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/spring-book3.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items .book-item .book4 {
+.main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
 .main .coffee-shop {
@@ -1269,11 +1269,11 @@ button {
   }
 }
 @media (max-width: 1280px) {
-  .main .favorites-items {
+  .main .favorites-items-box {
     flex-direction: column;
     align-items: center;
   }
-  .main .favorites-items .book-item {
+  .main .favorites-items-box .book-item {
     margin-top: 40px;
   }
   .main .contacts-inner {
