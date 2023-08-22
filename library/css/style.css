@@ -253,14 +253,15 @@ button {
   overflow: hidden;
 }
 .main .about-carousel-box {
+  position: relative;
   display: inline-flex;
   flex-direction: row;
   gap: 25px;
   width: 2350px;
+  transition: 1s;
 }
 .main .about-carousel-item {
-  display: none;
-  width: 450px;
+  width: 462px;
   height: 560px;
 }
 .main .about-carousel-item.active {
@@ -1251,8 +1252,16 @@ button {
   .main .about .arrow-left {
     left: 45px;
   }
+  .main .about .arrow-left.disabled {
+    cursor: initial;
+    background: none;
+  }
   .main .about .arrow-right {
     right: 45px;
+  }
+  .main .about .arrow-right.disabled {
+    cursor: initial;
+    background: none;
   }
   .main .about-pagination {
     width: 130px;

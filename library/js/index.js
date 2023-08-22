@@ -1,7 +1,7 @@
 /* burger handler */
   const burgerItem = document.querySelector('.header-burger');
   const menu = document.querySelector('.header-list');
-  const triggerItem = document.querySelector('.header-trigger')
+  const triggerItem = document.querySelector('.header-trigger');
   const linkHeaderItem = document.querySelectorAll('.header-items .link');
 
   /*отслеживет клик по .header-trigger, добавляются\удаляются классы
@@ -56,6 +56,89 @@
   }
   preloadSummerImages();
 
+
+
+/* карусель в about */
+
+/* поиск стрелок навигации */
+const arrowLeft = document.querySelector('.arrow-left');
+const arrowRight = document.querySelector('.arrow-right');
+/* массив кнопок пагинации */
+const btmsPagination = document.querySelectorAll('.about-pagination-inner-item');
+/* контейнер для карусели */
+const carouselBox = document.querySelector(".about-carousel-box");
+/* значение left  для carouselBox */
+let position = 0;
+/* индекс текущего слайда (для сопоставления с кнопками) */
+let indexItem = 0;
+
+/* переход на след. слайд (сдвиг справа налево) */
+const nextItem = () => {
+  arrowLeft.classList.remove('disabled');
+  if (position < (btmsPagination.length - 2) * 475) {
+    position = position + 475;
+    indexItem ++;
+    carouselBox.style.left = -position + 'px';
+  } else if (position < (btmsPagination.length - 1) * 475) {
+    position = position + 475;
+    indexItem ++;
+    carouselBox.style.left = -position + 'px';
+    arrowRight.classList.add('disabled');
+  }
+  activeBtn(indexItem);
+}
+
+/* слушаем клик по стрелке вправо и применяем функцию сдвига вправо*/
+arrowRight.addEventListener('click', nextItem);
+
+/* переход на предыдущий слайд (сдвиг слева направо) */
+const prevItem = () => {
+  arrowRight.classList.remove('disabled');
+  if (position > 475) {
+    position = position - 475;
+    indexItem --;
+    carouselBox.style.left = -position + 'px';
+  } else if (position > 0){
+    position = position - 475;
+    indexItem --;
+    carouselBox.style.left = -position + 'px';
+    arrowLeft.classList.add('disabled');
+  }
+  activeBtn(indexItem);
+}
+
+/* слушаем клик по стрелке влево и применяем функцию сдвига влево*/
+arrowLeft.addEventListener('click', prevItem);
+
+
+/* перелистываем слайды по кнопкам */
+btmsPagination.forEach((btnItem, indexItem) => {
+  btnItem.addEventListener('click', () => {
+    if (indexItem > 0) {
+      if (btmsPagination[indexItem - 1].classList.contains('active') || btmsPagination[indexItem + 1].classList.contains('active')) {
+        position = 475 * indexItem;
+        carouselBox.style.left = -position + 'px';
+        activeBtn(indexItem);
+      }
+    } else {
+      if (btmsPagination[indexItem + 1].classList.contains('active')) {
+        position = 475 * indexItem;
+        carouselBox.style.left = -position + 'px';
+        activeBtn(indexItem);
+      }
+    }
+  })
+})
+
+/* выделяем активную кнопку по номеру */
+const activeBtn = (indexItem) => {
+  /* для всех элементов кнопок удаляем класс active, если такой есть */
+  for (let btnItem of btmsPagination) {
+    btnItem.classList.remove('active');
+  }
+  /* текущей кнопке добавить класс active */
+  btmsPagination[indexItem].classList.add('active');
+}
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
 console.log('1. Вёрстка соответствует макету. Ширина экрана 768px 26/26');
