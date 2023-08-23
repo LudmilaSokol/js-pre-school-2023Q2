@@ -144,16 +144,32 @@ const activeBtn = (indexItem) => {
 const radioBtns = document.querySelectorAll('.form-radio-text');
 const booksBoxs = document.querySelectorAll('.favorites-items-box');
 
+
+const fadeIn = (el) => {
+  el.style.opacity = 0;
+  el.style.transition = `opacity 100000ms`;
+  setTimeout(() => {
+    el.style.opacity = 1;
+  }, 10);
+};
+
+
+
 radioBtns.forEach((item, index) => {
  item.addEventListener('click', () => {
   /* для всех элементов категорий карточек устанавливаем класс (не показывать) */
   for (let item of booksBoxs) {
-    item.classList.add('hidden');
-  }
+    // if (!item.classList.contains('hidden')) {
+    //   fadeIn(item);
+      item.classList.add('hidden')
+    // }
+  };
   /* показываем текущую категорию карточек */
   booksBoxs[index].classList.remove('hidden');
  })
 })
+
+
 
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');

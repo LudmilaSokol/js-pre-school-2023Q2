@@ -359,14 +359,24 @@ button {
   cursor: pointer;
   opacity: 0;
 }
+.main .favorites-items {
+  position: relative;
+  margin-bottom: 1240px;
+}
 .main .favorites-items-box {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 60px 0 20px;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: .4s;
 }
 .main .favorites-items-box.hidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s, visibility 0.5s linear 1s;
 }
 .main .favorites-items-box .book-item {
   width: 550px;
