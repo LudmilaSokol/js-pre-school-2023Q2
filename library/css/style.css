@@ -365,7 +365,7 @@ button {
   justify-content: space-between;
   margin: 0 60px 0 20px;
 }
-.main .favorites-items-box .book-item-hidden {
+.main .favorites-items-box.hidden {
   display: none;
 }
 .main .favorites-items-box .book-item {
@@ -458,41 +458,41 @@ button {
 .main .favorites-items-box .book-item .book4 {
   background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
+.main .favorites-items-box .book-item .book5 {
   background: url(../assets/img/favorites/spring-book1.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
+.main .favorites-items-box .book-item .book6 {
   background: url(../assets/img/favorites/spring-book2.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
+.main .favorites-items-box .book-item .book7 {
   background: url(../assets/img/favorites/spring-book3.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
-  background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
+.main .favorites-items-box .book-item .book8 {
+  background: url(../assets/img/favorites/spring-book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
-  background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
+.main .favorites-items-box .book-item .book9 {
+  background: url(../assets/img/favorites/summer-book1.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
-  background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
+.main .favorites-items-box .book-item .book10 {
+  background: url(../assets/img/favorites/summer-book2.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
-  background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
+.main .favorites-items-box .book-item .book11 {
+  background: url(../assets/img/favorites/summer-book3.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
-  background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
+.main .favorites-items-box .book-item .book12 {
+  background: url(../assets/img/favorites/summer-book4.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
-  background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
+.main .favorites-items-box .book-item .book13 {
+  background: url(../assets/img/favorites/autumn-book1.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
-  background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
+.main .favorites-items-box .book-item .book14 {
+  background: url(../assets/img/favorites/autumn-book2.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
-  background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
+.main .favorites-items-box .book-item .book15 {
+  background: url(../assets/img/favorites/autumn-book3.png), #d3d3d3 50% / cover no-repeat;
 }
-.main .favorites-items-box .book-item .book4 {
-  background: url(../assets/img/favorites/book4.png), #d3d3d3 50% / cover no-repeat;
+.main .favorites-items-box .book-item .book16 {
+  background: url(../assets/img/favorites/autumn-book4.png), #d3d3d3 50% / cover no-repeat;
 }
 .main .coffee-shop {
   margin-top: 41px;

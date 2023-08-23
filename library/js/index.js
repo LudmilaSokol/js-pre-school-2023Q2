@@ -140,5 +140,21 @@ const activeBtn = (indexItem) => {
   btmsPagination[indexItem].classList.add('active');
 }
 
+/* слайдер в favorites */
+const radioBtns = document.querySelectorAll('.form-radio-text');
+const booksBoxs = document.querySelectorAll('.favorites-items-box');
+
+radioBtns.forEach((item, index) => {
+ item.addEventListener('click', () => {
+  /* для всех элементов категорий карточек устанавливаем класс (не показывать) */
+  for (let item of booksBoxs) {
+    item.classList.add('hidden');
+  }
+  /* показываем текущую категорию карточек */
+  booksBoxs[index].classList.remove('hidden');
+ })
+})
+
+
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
 console.log('1. Вёрстка соответствует макету. Ширина экрана 768px 26/26');
