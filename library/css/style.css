@@ -1279,9 +1279,22 @@ button {
   }
 }
 @media (max-width: 1280px) {
+  .main .favorites-container {
+    position: relative;
+    height: 2640px;
+  }
+  .main .favorites-form {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding-bottom: 10px;
+    background-color: #e9dcca;
+  }
   .main .favorites-items-box {
     flex-direction: column;
     align-items: center;
+    left: 0;
+    right: 0;
   }
   .main .favorites-items-box .book-item {
     margin-top: 40px;
