@@ -12,8 +12,10 @@
 
   <header class="header">
     <div class="container header-container">
+
       <h1 class="header-title">Brooklyn Public Library</h1>
       <p class="header-bg"></p>
+<!-- навигация -->
       <nav class="list header-list">
         <ul class="items header-items">
           <li class="item header-item">
@@ -33,10 +35,37 @@
           </li>
         </ul>
       </nav>
-
-      <a class="header-link-profile" href="#">
-        <img class="header-icon" src="assets/img/icon_profile.svg" alt="Icon profile">
-      </a>
+<!-- иконка профля -->
+      <div class="header-link-profile">
+        <div class="header-icon">
+          <img class="" src="assets/img/icon_profile.svg" alt="Icon profile">
+        </div>
+<!-- dropMenu Profile no Auth -->
+        <div class="drop-menu profile-no-aut">
+          <div class="drop-menu-title">Profile</div>
+          <ul class="drop-menu-items">
+            <li class="drop-menu-item">
+              <div class="drop-menu-link">Log In</div>
+            </li>
+            <li class="drop-menu-item">
+              <div class="drop-menu-link">Register</div>
+            </li>
+          </ul>
+        </div>
+<!-- dropMenu Profile with Auth -->
+        <div class="drop-menu profile-with-aut">
+          <div class="drop-menu-title">Profile</div>
+          <ul class="drop-menu-items">
+            <li class="drop-menu-item">
+              <div class="drop-menu-link">My profile</div>
+            </li>
+            <li class="drop-menu-item">
+              <div class="drop-menu-link">Log Out</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+<!-- триггер для отображения-скрытия адаптивного меню -->
       <div class="header-trigger" href="#">
         <span class="header-burger"></span>
       </div>
@@ -497,23 +526,7 @@
       </div>
     </div>
   </div>
-  <!-- dropMenu Profile no Auth -->
-  <div class="drop-menu profile-no-aut">
-    <div class="drop-menu-title">Profile</div>
-    <ul class="drop-menu-items">
-      <li class="drop-menu-item"><a href="#" class="drop-menu-link">Log In</a></li>
-      <li class="drop-menu-item"><a href="#" class="drop-menu-link">Register</a></li>
-    </ul>
-  </div>
 
-  <!-- dropMenu Profile with Auth -->
-  <div class="drop-menu profile-with-aut">
-    <div class="drop-menu-title">Profile</div>
-    <ul class="drop-menu-items">
-      <li class="drop-menu-item"><a href="#" class="drop-menu-link">My profile</a></li>
-      <li class="drop-menu-item"><a href="#" class="drop-menu-link">Log Out</a></li>
-    </ul>
-  </div>
 
   <!-- modal_Log In -->
   <div class="modal log-in">

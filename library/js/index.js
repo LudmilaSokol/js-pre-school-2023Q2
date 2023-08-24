@@ -22,6 +22,8 @@
 
  /*отслеживает событие клика в документе*/
   document.addEventListener('click', (event) => {
+
+    //адаптивное меню
     /*массив объектов, на которых произойдет событие (отразится Клик),
      проверка наличия в этом массиве элемента menu, если значение true,
      то клик выполнен по меню*/
@@ -33,6 +35,13 @@
     if (!clickMenu && !clickToggle) {
       menu.classList.remove('header-list-active');
       burgerItem.classList.remove('open');
+    }
+
+    //меню авторизации
+    const clickDropMenu = event.composedPath().includes(dropMenu);
+    const clicIconUser = event.composedPath().includes(iconUser);
+    if (!clickDropMenu && !clicIconUser) {
+      dropMenu[0].classList.add('profile-no-aut');
     }
   })
 
@@ -140,29 +149,17 @@ const activeBtn = (indexItem) => {
   btmsPagination[indexItem].classList.add('active');
 }
 
+
+
 /* слайдер в favorites */
 const radioBtns = document.querySelectorAll('.form-radio-text');
 const booksBoxs = document.querySelectorAll('.favorites-items-box');
-
-
-const fadeIn = (el) => {
-  el.style.opacity = 0;
-  el.style.transition = `opacity 100000ms`;
-  setTimeout(() => {
-    el.style.opacity = 1;
-  }, 10);
-};
-
-
 
 radioBtns.forEach((item, index) => {
  item.addEventListener('click', () => {
   /* для всех элементов категорий карточек устанавливаем класс (не показывать) */
   for (let item of booksBoxs) {
-    // if (!item.classList.contains('hidden')) {
-    //   fadeIn(item);
       item.classList.add('hidden')
-    // }
   };
   /* показываем текущую категорию карточек */
   booksBoxs[index].classList.remove('hidden');
@@ -170,6 +167,31 @@ radioBtns.forEach((item, index) => {
 })
 
 
+
+/* профиль */
+const iconUser = document.querySelector('.header-icon');
+const dropMenu = document.querySelectorAll('.drop-menu');
+
+/* открытие меню до авторизации при коике на иконку с профилем пользователя */
+iconUser.addEventListener('click', () => {
+  dropMenu[0].classList.remove('profile-no-aut');
+})
+
+//  /*отслеживает событие клика в документе*/
+//  document.addEventListener('click', (event) => {
+//   /*массив объектов, на которых произойдет событие (отразится Клик),
+//    проверка наличия в этом массиве элемента menu, если значение true,
+//    то клик выполнен по меню*/
+//   const clickMenu = event.composedPath().includes(menu);
+//   //если клик выполнент по trigger, то значение true
+//   const clickToggle = event.composedPath().includes(triggerItem);
+//   /* если клик вне триггера и меню (оба значения false),
+//    то классы отображения адаптивного меню удаляются*/
+//   if (!clickMenu && !clickToggle) {
+//     menu.classList.remove('header-list-active');
+//     burgerItem.classList.remove('open');
+//   }
+// })
 
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
