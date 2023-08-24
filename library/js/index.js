@@ -4,6 +4,13 @@
   const triggerItem = document.querySelector('.header-trigger');
   const linkHeaderItem = document.querySelectorAll('.header-items .link');
 
+  /* профиль, авторизация */
+  const iconUser = document.querySelector('.header-icon');
+  // 2 элемента
+  const dropMenu = document.querySelectorAll('.drop-menu');
+
+
+
   /*отслеживет клик по .header-trigger, добавляются\удаляются классы
   для отображения адаптивного меню*/
   triggerItem.addEventListener('click', () => {
@@ -38,7 +45,7 @@
     }
 
     //меню авторизации
-    const clickDropMenu = event.composedPath().includes(dropMenu);
+    const clickDropMenu = event.composedPath().includes(dropMenu[0]);
     const clicIconUser = event.composedPath().includes(iconUser);
     if (!clickDropMenu && !clicIconUser) {
       dropMenu[0].classList.add('profile-no-aut');
@@ -58,7 +65,7 @@
 
   /* кэширование изображений слайдера */
   function preloadSummerImages() {
-    for(let i = 1; i <= 6; i++) {
+    for(let i = 1; i <= 5; i++) {
       const img = new Image();
       img.src = `./assets/img/about/image-${i}.jpg`;
     }
@@ -168,30 +175,49 @@ radioBtns.forEach((item, index) => {
 
 
 
-/* профиль */
-const iconUser = document.querySelector('.header-icon');
-const dropMenu = document.querySelectorAll('.drop-menu');
+/* авторизация, регистрация */
 
 /* открытие меню до авторизации при коике на иконку с профилем пользователя */
 iconUser.addEventListener('click', () => {
   dropMenu[0].classList.remove('profile-no-aut');
 })
 
-//  /*отслеживает событие клика в документе*/
-//  document.addEventListener('click', (event) => {
-//   /*массив объектов, на которых произойдет событие (отразится Клик),
-//    проверка наличия в этом массиве элемента menu, если значение true,
-//    то клик выполнен по меню*/
-//   const clickMenu = event.composedPath().includes(menu);
-//   //если клик выполнент по trigger, то значение true
-//   const clickToggle = event.composedPath().includes(triggerItem);
-//   /* если клик вне триггера и меню (оба значения false),
-//    то классы отображения адаптивного меню удаляются*/
-//   if (!clickMenu && !clickToggle) {
-//     menu.classList.remove('header-list-active');
-//     burgerItem.classList.remove('open');
-//   }
-// })
+  /* кнопки для вызова окна регистрации (массив из 2х кнопок) */
+  const regWindows = document.querySelectorAll('.reg');
+  /* массив из 2х элементов: log-in, register*/
+  const modalWindows = document.querySelectorAll('.pop-up');
+
+/* открытие окна регистрации */
+regWindows.forEach((item) => {
+  item.addEventListener('click', () => {
+    modalWindows[1].classList.remove('hidden');
+    modalWindows[1].firstElementChild.classList.remove('hidden');
+    dropMenu[0].classList.add('profile-no-aut');
+  })
+})
+
+
+  // определяем все кнопки Закрыть (4 кнопки - 4 окна)
+  const closeBtn = document.querySelectorAll('.modal-close');
+
+  /* закрытие pop-up */
+  modalWindows.forEach((event, index) => {
+    modalWindows[index].addEventListener('click', (event) => {
+      const clickModal = event.composedPath().includes(modalWindows[index].firstElementChild);
+      if (!clickModal) {
+        modalWindows[index].classList.add('hidden');
+        modalWindows[index].firstElementChild.classList.add('hidden');
+      }
+    })
+    closeBtn[index].addEventListener('click', () => {
+      modalWindows[index].classList.add('hidden');
+      modalWindows[index].firstElementChild.classList.add('hidden');
+    })
+  })
+
+
+
+
 
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');

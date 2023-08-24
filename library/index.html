@@ -48,7 +48,7 @@
               <div class="drop-menu-link">Log In</div>
             </li>
             <li class="drop-menu-item">
-              <div class="drop-menu-link">Register</div>
+              <div class="drop-menu-link reg">Register</div>
             </li>
           </ul>
         </div>
@@ -446,7 +446,7 @@
               <p class="get-title">Get a reader card</p>
               <p class="get-text">You will be able to see a reader card after logging into account or you can register a new account</p>
               <div class="button-box">
-                <button class="button button-small">Sign Up</button>
+                <button class="button button-small reg">Sign Up</button>
                 <button class="button button-small">Log in</button>
               </div>
             </div>
@@ -529,60 +529,65 @@
 
 
   <!-- modal_Log In -->
-  <div class="modal log-in">
-    <h2 class="modal-title">Login</h2>
-    <div class="modal-close">
-      <img src="assets/img/modals/close_btn.svg" alt="Close button">
+  <div class="pop-up hidden">
+    <div class="modal log-in hidden">
+      <h2 class="modal-title">Login</h2>
+      <div class="modal-close">
+        <img src="assets/img/modals/close_btn.svg" alt="Close button">
+      </div>
+      <form action="#">
+        <label class="modal-label">
+          E-mail or readers card
+          <input class="modal-input" type="text">
+        </label>
+        <label class="modal-label">
+          Password
+          <input class="modal-input" type="text">
+        </label>
+        <button class="modal-button">Log In</button>
+      </form>
+      <p class="modal-queston">Don’t have an account?
+        <span class="modal-link">
+          Register
+        </span>
+      </p>
     </div>
-    <form action="#">
-      <label class="modal-label">
-        E-mail or readers card
-        <input class="modal-input" type="text">
-      </label>
-      <label class="modal-label">
-        Password
-        <input class="modal-input" type="text">
-      </label>
-      <button class="modal-button">Log In</button>
-    </form>
-    <p class="modal-queston">Don’t have an account?
-      <a class="modal-link" href="#">
-        Register
-      </a>
-    </p>
   </div>
 
   <!-- modal_Register -->
-  <div class="modal register">
-    <h2 class="modal-title">Register</h2>
-    <div class="modal-close">
-      <img src="assets/img/modals/close_btn.svg" alt="Close button">
+  <div class="pop-up hidden">
+    <div class="modal register hidden">
+      <h2 class="modal-title">Register</h2>
+      <div class="modal-close">
+        <img src="assets/img/modals/close_btn.svg" alt="Close button">
+      </div>
+      <form action="#">
+        <label class="modal-label">
+          First name
+          <input class="modal-input" type="text">
+        </label>
+        <label class="modal-label">
+          Last name
+          <input class="modal-input" type="text">
+        </label>
+        <label class="modal-label">
+          E-mail
+          <input class="modal-input" type="text">
+        </label>
+        <label class="modal-label">
+          Password
+          <input class="modal-input" type="text">
+        </label>
+        <button class="modal-button">Sign Up</button>
+      </form>
+      <p class="modal-queston">Already have an account?
+        <a class="modal-link" href="#">
+          Login
+        </a>
+      </p>
     </div>
-    <form action="#">
-      <label class="modal-label">
-        First name
-        <input class="modal-input" type="text">
-      </label>
-      <label class="modal-label">
-        Last name
-        <input class="modal-input" type="text">
-      </label>
-      <label class="modal-label">
-        E-mail
-        <input class="modal-input" type="text">
-      </label>
-      <label class="modal-label">
-        Password
-        <input class="modal-input" type="text">
-      </label>
-      <button class="modal-button">Sign Up</button>
-    </form>
-    <p class="modal-queston">Already have an account?
-      <a class="modal-link" href="#">
-        Login
-      </a>
-    </p>
   </div>
+
 
   <!-- modal_profile -->
   <div class="modal-profile">

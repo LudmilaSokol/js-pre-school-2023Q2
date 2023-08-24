@@ -47,6 +47,11 @@ button {
 .open {
   display: block;
 }
+/* класс по умолчанию стоит на элементе, который скрыт.
+Для отображения элемента надо убрать этот*/
+.hidden {
+  visibility: hidden;
+}
 .header-container {
   position: relative;
   display: flex;
@@ -995,19 +1000,29 @@ button {
   border-radius: 2px;
   border: 1px solid #0c0c0e;
 }
-.modal {
+.pop-up {
   position: absolute;
-  top: 100px;
-  left: 40px;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(142, 142, 142, 0.3);
+}
+.pop-up .modal {
+  position: fixed;
+  top: calc(20vw);
   width: 250px;
   padding: 20px 25px;
   font-family: 'Inter-Regular', sans-serif;
   font-style: normal;
   font-weight: 400;
   background: #ffffff;
-  border: 1px solid #bb945f;
 }
-.modal-title {
+.pop-up .modal-title {
   margin: 0 0 20px;
   font-family: 'Forum-Regular', serif;
   font-size: 20px;
@@ -1018,24 +1033,25 @@ button {
   letter-spacing: 0.4px;
   text-transform: uppercase;
 }
-.modal-close {
+.pop-up .modal-close {
   position: absolute;
   top: 13px;
   right: 13px;
+  cursor: pointer;
 }
-.modal-label {
+.pop-up .modal-label {
   font-size: 15px;
   line-height: 20px;
   letter-spacing: 0.3px;
   color: #000000;
 }
-.modal-input {
+.pop-up .modal-input {
   margin: 10px auto;
   width: 200px;
   height: 20px;
   border: 1px solid #bb945f;
 }
-.modal-button {
+.pop-up .modal-button {
   width: 75px;
   height: 30px;
   margin-top: 10px;
@@ -1048,13 +1064,23 @@ button {
   border: 1px solid #0c0c0e;
   background: #ffffff;
 }
-.modal-queston {
+.pop-up .modal-button:hover {
+  background-color: #bb945f;
+  border: 1px solid #bb945f;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+.pop-up .modal-queston {
   color: #000000;
   text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
   font-size: 10px;
   line-height: normal;
 }
-.modal-link {
+.pop-up .modal-queston :hover {
+  cursor: pointer;
+  color: #bb945f;
+}
+.pop-up .modal-link {
   margin-left: 8px;
   color: #0c0c0e;
   font-size: 10px;
@@ -1063,12 +1089,10 @@ button {
   letter-spacing: 1px;
   text-decoration-line: underline;
 }
-.log-in {
-  display: none;
+.pop-up .log-in {
   height: 262px;
 }
-.register {
-  display: none;
+.pop-up .register {
   height: 382px;
 }
 .modal-profile {
