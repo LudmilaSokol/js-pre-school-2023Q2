@@ -217,7 +217,64 @@ regWindows.forEach((item) => {
 
 
 
+/* проверка валидации */
 
+function validation(modalForm){
+  let result = true;
+  let allInput = document.querySelector('.modal-form').querySelectorAll('.modal-input');
+  let emailInput = document.querySelector('.modal-form').querySelector('[type = "email"]');
+
+  /* вывод ошибки (реакция на ошибку) */
+  function createError (event, text) {
+    event.classList.add('error');
+    event.setAttribute('placeholder', text);
+  }
+ /* отмена вывода ошибки (реакции на ошибку) */
+  function removeError (event) {
+    if (event.classList.contains('error')){
+      event.classList.remove('error');
+      event.removeAttribute('placeholder');
+    }
+  }
+
+    /* обработчик событий для инпутов */
+
+  allInput.forEach((event) => {
+    removeError(event);
+    if (event.value === '') {
+      removeError(event);
+      createError(event, 'заполните поле');
+      result = false;
+    } else {
+      if(event.dataset.minLength){
+        if (event.value.length < event.dataset.minLength) {
+          removeError(event);
+          createError(event, `минимум ${event.dataset.minLength} символов`);
+          event.value = '';
+          result = false;
+        }
+      }
+      // if(emailInput){
+      //   if (){
+      //     /* проверка поля на валидацию */
+      //   }
+      //     console.log(event);
+      // }
+
+    }
+ })
+
+  return result;
+}
+
+document.querySelector('.modal-form').addEventListener('submit', (event) => {
+  //отмена стандартного поведения (перезагрузки?)
+  event.preventDefault();
+
+  if (validation(this) === true){
+    console.log('проверка успешна');
+  }
+})
 
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');

@@ -1014,7 +1014,10 @@ button {
 }
 .pop-up .modal {
   position: fixed;
-  top: calc(20vw);
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
   width: 250px;
   padding: 20px 25px;
   font-family: 'Inter-Regular', sans-serif;
@@ -1047,9 +1050,19 @@ button {
 }
 .pop-up .modal-input {
   margin: 10px auto;
+  padding: 0 8px;
   width: 200px;
   height: 20px;
   border: 1px solid #bb945f;
+  font-size: 12px;
+  line-height: 24px;
+}
+.pop-up .modal-input.error {
+  border-color: #e03535;
+}
+.pop-up .modal-input::placeholder {
+  color: #e03535;
+  font-size: 13px;
 }
 .pop-up .modal-button {
   width: 75px;
