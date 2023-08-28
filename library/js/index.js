@@ -219,10 +219,14 @@ regWindows.forEach((item) => {
 
 /* проверка валидации */
 
-function validation(modalForm){
+let modalForm = document.querySelector('.modal-form');
+//let form = document.forms['register'];
+//console.log(form);
+
+function validation(event){
   let result = true;
-  let allInput = document.querySelector('.modal-form').querySelectorAll('.modal-input');
-  let emailInput = document.querySelector('.modal-form').querySelector('[type = "email"]');
+  let allInput = modalForm.querySelectorAll('.modal-input');
+  let emailInput = modalForm.querySelector('[type = "email"]');
 
   /* вывод ошибки (реакция на ошибку) */
   function createError (event, text) {
@@ -255,7 +259,7 @@ function validation(modalForm){
         }
       }
       // if(emailInput){
-      //   if (){
+      //   if (emailInput.){
       //     /* проверка поля на валидацию */
       //   }
       //     console.log(event);
@@ -267,14 +271,57 @@ function validation(modalForm){
   return result;
 }
 
-document.querySelector('.modal-form').addEventListener('submit', (event) => {
+modalForm.addEventListener('submit', (event) => {
   //отмена стандартного поведения (перезагрузки?)
   event.preventDefault();
 
   if (validation(this) === true){
     console.log('проверка успешна');
+
+    /* вызываем функцию создания массива из элементов формы */
+    objectForForm();
+    localStorage.setItem(cardNumber(), JSON.stringify(objectForForm()));
+
+    /* очистка формы */
+    clearForm ();
   }
 })
+
+/* генерация Card Number */
+function cardNumber () {
+  let result;
+
+  result = (Math.round(Math.random()*1e11)).toString(16);
+  if (result.length > 9) {
+    result = slice(result, -1);
+  }
+  return result;
+}
+
+/* формирование объекта из элемента формы */
+function objectForForm (){
+    let allInput = modalForm.querySelectorAll('.modal-input');
+    //создаем пустой объект
+    let object = {};
+
+    // перебираем поля формы
+    allInput.forEach((event) => {
+    // создаем классический объект
+    object[event.name] = event.value;
+    });
+    /* отмечаем активного пользователя */
+    object['active'] = false;
+
+    return object;
+}
+
+/* очистка формы */
+function clearForm () {
+  let allInput = modalForm.querySelectorAll('.modal-input');
+  allInput.forEach((event) => {
+    event.value = '';
+  })
+}
 
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
