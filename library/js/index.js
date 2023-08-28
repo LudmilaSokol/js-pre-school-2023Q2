@@ -158,6 +158,7 @@ const activeBtn = (indexItem) => {
 
 
 
+
 /* слайдер в favorites */
 const radioBtns = document.querySelectorAll('.form-radio-text');
 const booksBoxs = document.querySelectorAll('.favorites-items-box');
@@ -175,16 +176,18 @@ radioBtns.forEach((item, index) => {
 
 
 
+
+
 /* авторизация, регистрация */
 
-/* открытие меню до авторизации при коике на иконку с профилем пользователя */
+/* открытие меню до авторизации при клике на иконку с профилем пользователя */
 iconUser.addEventListener('click', () => {
   dropMenu[0].classList.remove('profile-no-aut');
 })
 
-  /* кнопки для вызова окна регистрации (массив из 2х кнопок) */
+  /* кнопки для вызова окна регистрации (массив из 3х кнопок) */
   const regWindows = document.querySelectorAll('.reg');
-  /* массив из 2х элементов: log-in, register*/
+  /* массив из 2х элементов: log-in - 0, register - 1*/
   const modalWindows = document.querySelectorAll('.pop-up');
 
 /* открытие окна регистрации */
@@ -192,6 +195,22 @@ regWindows.forEach((item) => {
   item.addEventListener('click', () => {
     modalWindows[1].classList.remove('hidden');
     modalWindows[1].firstElementChild.classList.remove('hidden');
+    modalWindows[0].classList.add('hidden');
+    modalWindows[0].firstElementChild.classList.add('hidden');
+    dropMenu[0].classList.add('profile-no-aut');
+  })
+})
+
+/* открытие окна авторизации */
+//находим все кнопки вызова окна авторизации
+const loginWindows = document.querySelectorAll('.login-btn');
+
+loginWindows.forEach((item) => {
+  item.addEventListener('click', () => {
+    modalWindows[0].classList.remove('hidden');
+    modalWindows[0].firstElementChild.classList.remove('hidden');
+    modalWindows[1].classList.add('hidden');
+    modalWindows[1].firstElementChild.classList.add('hidden');
     dropMenu[0].classList.add('profile-no-aut');
   })
 })
@@ -220,8 +239,6 @@ regWindows.forEach((item) => {
 /* проверка валидации */
 
 let modalForm = document.querySelector('.modal-form');
-//let form = document.forms['register'];
-//console.log(form);
 
 function validation(event){
   let result = true;
@@ -322,6 +339,9 @@ function clearForm () {
     event.value = '';
   })
 }
+
+/* переход в форму авторизации */
+const logIn = 
 
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
