@@ -217,7 +217,111 @@ regWindows.forEach((item) => {
 
 
 
+/* проверка валидации */
 
+let modalForm = document.querySelector('.modal-form');
+//let form = document.forms['register'];
+//console.log(form);
+
+function validation(event){
+  let result = true;
+  let allInput = modalForm.querySelectorAll('.modal-input');
+  let emailInput = modalForm.querySelector('[type = "email"]');
+
+  /* вывод ошибки (реакция на ошибку) */
+  function createError (event, text) {
+    event.classList.add('error');
+    event.setAttribute('placeholder', text);
+  }
+ /* отмена вывода ошибки (реакции на ошибку) */
+  function removeError (event) {
+    if (event.classList.contains('error')){
+      event.classList.remove('error');
+      event.removeAttribute('placeholder');
+    }
+  }
+
+    /* обработчик событий для инпутов */
+
+  allInput.forEach((event) => {
+    removeError(event);
+    if (event.value === '') {
+      removeError(event);
+      createError(event, 'заполните поле');
+      result = false;
+    } else {
+      if(event.dataset.minLength){
+        if (event.value.length < event.dataset.minLength) {
+          removeError(event);
+          createError(event, `минимум ${event.dataset.minLength} символов`);
+          event.value = '';
+          result = false;
+        }
+      }
+      // if(emailInput){
+      //   if (emailInput.){
+      //     /* проверка поля на валидацию */
+      //   }
+      //     console.log(event);
+      // }
+
+    }
+ })
+
+  return result;
+}
+
+modalForm.addEventListener('submit', (event) => {
+  //отмена стандартного поведения (перезагрузки?)
+  event.preventDefault();
+
+  if (validation(this) === true){
+    console.log('проверка успешна');
+
+    /* вызываем функцию создания массива из элементов формы */
+    objectForForm();
+    localStorage.setItem(cardNumber(), JSON.stringify(objectForForm()));
+
+    /* очистка формы */
+    clearForm ();
+  }
+})
+
+/* генерация Card Number */
+function cardNumber () {
+  let result;
+
+  result = (Math.round(Math.random()*1e11)).toString(16);
+  if (result.length > 9) {
+    result = slice(result, -1);
+  }
+  return result;
+}
+
+/* формирование объекта из элемента формы */
+function objectForForm (){
+    let allInput = modalForm.querySelectorAll('.modal-input');
+    //создаем пустой объект
+    let object = {};
+
+    // перебираем поля формы
+    allInput.forEach((event) => {
+    // создаем классический объект
+    object[event.name] = event.value;
+    });
+    /* отмечаем активного пользователя */
+    object['active'] = false;
+
+    return object;
+}
+
+/* очистка формы */
+function clearForm () {
+  let allInput = modalForm.querySelectorAll('.modal-input');
+  allInput.forEach((event) => {
+    event.value = '';
+  })
+}
 
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
