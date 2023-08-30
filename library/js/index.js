@@ -237,13 +237,15 @@ loginWindows.forEach((item) => {
 
 
 /* проверка валидации */
-
+/* форма регистрации */
 let modalForm = document.querySelector('.modal-form');
+/* форма авторизации */
+let modalForm1 = document.querySelector('.modal-form1');
 
-function validation(event){
+function validation(form, event){
   let result = true;
-  let allInput = modalForm.querySelectorAll('.modal-input');
-  let emailInput = modalForm.querySelector('[type = "email"]');
+  let allInput = form.querySelectorAll('.modal-input');
+  let emailInput = form.querySelector('[type = "email"]');
 
   /* вывод ошибки (реакция на ошибку) */
   function createError (event, text) {
@@ -288,16 +290,62 @@ function validation(event){
   return result;
 }
 
+/* submit для регистрации */
 modalForm.addEventListener('submit', (event) => {
   //отмена стандартного поведения (перезагрузки?)
   event.preventDefault();
+  const form = modalForm;
 
-  if (validation(this) === true){
+  if (validation(form) === true){
     console.log('проверка успешна');
 
     /* вызываем функцию создания массива из элементов формы */
-    objectForForm();
-    localStorage.setItem(cardNumber(), JSON.stringify(objectForForm()));
+    let object = objectForForm(form);
+
+    /* первые символы имени и фамилии */
+    let firstLetterName = object['first-name'].charAt(0) + object['last-name'].charAt(0);
+    console.log(firstLetterName);
+    object['icon'] = firstLetterName;
+
+    /* запись объекта в localStorage */
+    localStorage.setItem(cardNumber(), JSON.stringify(objectForForm(form)));
+    // /* находим иконку пользователя в header */
+    // const iconProfile = document.querySelector('.header-icon').firstElementChild;
+
+    /* очистка формы */
+    clearForm ();
+  }
+})
+
+/* submit для авторизации */
+modalForm1.addEventListener('submit', (event) => {
+  //отмена стандартного поведения (перезагрузки?)
+  event.preventDefault();
+  const form = modalForm1;
+
+  if (validation(form) === true){
+    console.log('проверка успешна');
+    /* создаем объект для данных, введенных в форме авторизации */
+    const objectA = objectForForm(form);
+    console.log(objectA);
+    /* загружаем объекты из localStorage */
+    //const arrInLocalStorage = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      let key = localStorage.key(i);
+      let object = JSON.parse(localStorage.getItem(key));
+      console.log(object);
+
+      if ((object['email'] === objectA['email-or-card'] || key === objectA['emailOrCard']) && (object['password'] === objectA['password'])){
+        /* если данные введенные в окне авторизации есть в localStorage */
+        /* меняем статус на пользователь активен */
+        object['active'] = true;
+        /* сохраняем измененное значение в localStoreg (со значением true) */
+        localStorage.setItem(key, JSON.stringify(object));
+        /* перейти к режиму авторизации */
+        authorizedUser();
+      }
+      //console.log(object);
+    }
 
     /* очистка формы */
     clearForm ();
@@ -310,14 +358,14 @@ function cardNumber () {
 
   result = (Math.round(Math.random()*1e11)).toString(16);
   if (result.length > 9) {
-    result = slice(result, -1);
+    result = result.slice(0, -1);
   }
   return result;
 }
 
 /* формирование объекта из элемента формы */
-function objectForForm (){
-    let allInput = modalForm.querySelectorAll('.modal-input');
+function objectForForm (form){
+    let allInput = form.querySelectorAll('.modal-input');
     //создаем пустой объект
     let object = {};
 
@@ -340,9 +388,26 @@ function clearForm () {
   })
 }
 
-/* переход в форму авторизации */
-const logIn = 
+/* клик по buy */
+const bookItems = document.querySelectorAll('.book-item');
 
+bookItems.forEach((event) => {
+  const btnBuy = event.querySelectorAll('.button');
+  btnBuy.forEach((event) => {
+    event.addEventListener('click', () => {
+      /* открытие окна авторизации */
+      modalWindows[0].classList.remove('hidden');
+      modalWindows[0].firstElementChild.classList.remove('hidden');
+    })
+  })
+})
+
+/* состояние при авторизации */
+// authorizedUser() {
+//       // localStorage.setItem(cardNumber(), JSON.stringify(objectForForm()));
+//     // // /* находим иконку пользователя в header */
+//     // // const iconProfile = document.querySelector('.header-icon').firstElementChild;
+// }
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
 console.log('1. Вёрстка соответствует макету. Ширина экрана 768px 26/26');
