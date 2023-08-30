@@ -124,6 +124,19 @@ button {
 .header-icon:focus {
   outline: none;
 }
+.header-icon-name {
+  padding-top: 4px;
+  width: 28px;
+  height: 28px;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 15px;
+  color: #bb945f;
+  text-align: center;
+  line-height: 20px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+}
 .header-link-profile {
   position: relative;
 }
