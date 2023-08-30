@@ -307,13 +307,21 @@ modalForm.addEventListener('submit', (event) => {
     console.log(firstLetterName);
     object['icon'] = firstLetterName;
 
+    /* меняем статус на пользователь активен */
+    object['active'] = true;
+
     /* запись объекта в localStorage */
-    localStorage.setItem(cardNumber(), JSON.stringify(objectForForm(form)));
-    // /* находим иконку пользователя в header */
-    // const iconProfile = document.querySelector('.header-icon').firstElementChild;
+    localStorage.setItem(cardNumber(), JSON.stringify(object));
 
     /* очистка формы */
     clearForm ();
+
+    /* закрыть форму */
+    modalWindows[1].classList.add('hidden');
+    modalWindows[1].firstElementChild.classList.add('hidden');
+
+    /* перейти к режиму авторизации */
+    authorizedUser(cardNumber(), object);
   }
 })
 
@@ -327,13 +335,16 @@ modalForm1.addEventListener('submit', (event) => {
     console.log('проверка успешна');
     /* создаем объект для данных, введенных в форме авторизации */
     const objectA = objectForForm(form);
-    console.log(objectA);
+
+    //console.log(objectA);
+
     /* загружаем объекты из localStorage */
     //const arrInLocalStorage = [];
     for (let i = 0; i < localStorage.length; i++) {
       let key = localStorage.key(i);
       let object = JSON.parse(localStorage.getItem(key));
-      console.log(object);
+
+      //console.log(object);
 
       if ((object['email'] === objectA['email-or-card'] || key === objectA['emailOrCard']) && (object['password'] === objectA['password'])){
         /* если данные введенные в окне авторизации есть в localStorage */
@@ -341,8 +352,11 @@ modalForm1.addEventListener('submit', (event) => {
         object['active'] = true;
         /* сохраняем измененное значение в localStoreg (со значением true) */
         localStorage.setItem(key, JSON.stringify(object));
+
         /* перейти к режиму авторизации */
-        authorizedUser();
+        authorizedUser(key, object);
+      } else {
+        alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
       }
       //console.log(object);
     }
@@ -403,11 +417,20 @@ bookItems.forEach((event) => {
 })
 
 /* состояние при авторизации */
-// authorizedUser() {
-//       // localStorage.setItem(cardNumber(), JSON.stringify(objectForForm()));
-//     // // /* находим иконку пользователя в header */
-//     // // const iconProfile = document.querySelector('.header-icon').firstElementChild;
-// }
+function authorizedUser(key, object) {
+  //смена иконки пользователя
+  /* находим иконку пользователя в header */
+  const iconProfile = document.querySelector('.header-icon').firstElementChild;
+  /* аббревиатура из первых букв ФИ */
+  const iconUser = object.icon;
+
+  /* заменяем iconProfile на object.icon.value */
+  iconProfile.outerHTML = '<div class="header-icon-name">' + iconUser + '</div>';
+
+  console.log(iconUser);
+
+  console.log(key, object);
+}
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
 console.log('1. Вёрстка соответствует макету. Ширина экрана 768px 26/26');
