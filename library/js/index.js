@@ -424,10 +424,22 @@ function authorizedUser(key, object) {
   /* аббревиатура из первых букв ФИ */
   const iconUser = object.icon;
 
+  const contentTitle = `${object['first-name']} ${object['last-name']}`;
+
   /* заменяем iconProfile на object.icon.value */
-  iconProfile.outerHTML = '<div class="header-icon-name">' + iconUser + '</div>';
+  iconProfile.outerHTML = '<div class="header-icon-name" title="">' + iconUser + '</div>';
+
+  /* вывод полного имени пользователя при наведении на иконку */
+  // определение элемента для наведения
+  const headerIconName = document.querySelector('.header-icon-name');
+  // отслеживание наведения
+  headerIconName.addEventListener('mouseover', () => {
+    headerIconName.title = contentTitle;
+  })
 
   console.log(iconUser);
+
+  console.log(contentTitle);
 
   console.log(key, object);
 }
