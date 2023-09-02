@@ -379,38 +379,42 @@ modalForm1.addEventListener('submit', (event) => {
 
   if (validation(form) === true){
     console.log('проверка успешна');
-    /* создаем объект для данных, введенных в форме авторизации */
+    // создаем объект для данных, введенных в форме авторизации
     const objectA = objectForForm(form);
+    console.log(objectA);
 
-     /* загружаем объекты из localStorage */
-
-      // проверяем что localStorage не пустой
+    // загружаем объекты из localStorage
+    // если введенные данные совпадают с имеющимися в localStorage, то flag = true
+    let flag = false;
+    // проверяем что localStorage не пустой
     if (localStorage.length !== 0) {
       for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
         let object = JSON.parse(localStorage.getItem(key));
 
-        if ((object['email'] === objectA['email-or-card'] || key === objectA['emailOrCard']) && (object['password'] === objectA['password'])){
-          /* если данные введенные в окне авторизации есть в localStorage */
-          /* меняем статус на пользователь активен */
-          object['active'] = true;
-          /* сохраняем измененное значение в localStoreg (со значением true) */
-          localStorage.setItem(key, JSON.stringify(object));
+        if ((object['email'] === objectA['email-or-card'] || key === objectA['email-or-card']) && (object['password'] === objectA['password'])){
+          flag = true;
+        // если данные введенные в окне авторизации есть в localStorage
+        // меняем статус на пользователь активен
+        object['active'] = true;
+        // сохраняем измененное значение в localStoreg (со значением true)
+        localStorage.setItem(key, JSON.stringify(object));
 
-          // закрыть окно авторизации
-          modalWindows[0].classList.add('hidden');
-          modalWindows[0].firstElementChild.classList.add('hidden');
+        // закрыть окно авторизации
+        modalWindows[0].classList.add('hidden');
+        modalWindows[0].firstElementChild.classList.add('hidden');
 
-          /* перейти к режиму авторизации */
-          authorizedUser(key, object);
-        } else {
-          alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
+        // перейти к режиму авторизации
+        authorizedUser(key, object);
         }
       }
     } else {
       alert('Перейдите к окну регистрации');
     }
-
+    // если пользователя нет в базе localStorage
+    if (flag !== true) {
+      alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
+    }
     /* очистка формы */
     clearForm ();
   }
