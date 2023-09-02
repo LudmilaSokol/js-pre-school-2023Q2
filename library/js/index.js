@@ -509,6 +509,16 @@ function authorizedUser(key, object) {
   btnMyProfile.addEventListener('click', () => {
     modalWindows[2].classList.remove('hidden');
     modalWindows[2].firstElementChild.classList.remove('hidden');
+    // отображение инициалов пользователя в модальном окне
+    const avatar = document.querySelector('.avatar').firstElementChild;
+    avatar.outerHTML = `<p> ${iconUser} </p>`;
+    // отображение ИФ пользователя в модальном окне
+    let nameUser = document.querySelector('.name');
+    nameUser.firstElementChild.outerHTML = `<span> ${contentTitle} </span>`;
+    nameUser.setAttribute('style', 'font-size: 13px; line-height: 16px');
+    // отображение счетчика визитов
+    let countVisites = document.querySelector('.count-visits');
+    countVisites.textContent = object['visits'];
   })
 
   /* отслеживаение клика по Log Out */
@@ -520,11 +530,6 @@ function authorizedUser(key, object) {
     localStorage.setItem(key, JSON.stringify(object));
     closeAut(key, object);
   })
-
-
-  //console.log(iconUser);
-
-  //console.log(contentTitle);
 
   console.log(key, object);
 }
