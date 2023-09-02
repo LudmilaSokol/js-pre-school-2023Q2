@@ -397,6 +397,8 @@ modalForm1.addEventListener('submit', (event) => {
         // если данные введенные в окне авторизации есть в localStorage
         // меняем статус на пользователь активен
         object['active'] = true;
+        //считаем количество визитов
+        object['visits'] = object.visits + 1;
         // сохраняем измененное значение в localStoreg (со значением true)
         localStorage.setItem(key, JSON.stringify(object));
 
@@ -444,6 +446,9 @@ function objectForForm (form){
     });
     /* отмечаем активного пользователя */
     object['active'] = false;
+    // счетчик visits
+    let visits = 1;
+    object['visits'] = visits;
 
     return object;
 }
