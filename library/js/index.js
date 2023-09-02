@@ -326,7 +326,27 @@ modalForm.addEventListener('submit', (event) => {
     /* вызываем функцию создания массива из элементов формы */
     let object = objectForForm(form);
 
-    /* первые символы имени и фамилии */
+    /* проверяем на совпадение введенной почты с имеющейся базой
+     (если такая почта уже есть, то пользователь зарегистрирован) */
+      // если email уникален, то flag = false
+      let flag = false;
+      if (localStorage.length !== 0) {
+
+      for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let objectA = JSON.parse(localStorage.getItem(key));
+        console.log(key, objectA);
+        /* если данные email введенные в окне регистрации совпадают
+         с email в localStorage то меняем флаг*/
+        if (object['email'] === objectA['email']){
+          flag = true;
+        }
+      }
+    }
+    if (flag === true){
+      alert(`Пользователь с email ${object['email']} уже зарегистрирован`)
+    } else {
+          /* первые символы имени и фамилии */
     let firstLetterName = object['first-name'].charAt(0) + object['last-name'].charAt(0);
     //console.log(firstLetterName);
     object['icon'] = firstLetterName;
@@ -345,8 +365,9 @@ modalForm.addEventListener('submit', (event) => {
     modalWindows[1].classList.add('hidden');
     modalWindows[1].firstElementChild.classList.add('hidden');
 
-    /* перейти к режиму авторизации */
+    /* перейти в режим авторизации */
     authorizedUser(key, object);
+    }
   }
 })
 
@@ -361,9 +382,7 @@ modalForm1.addEventListener('submit', (event) => {
     /* создаем объект для данных, введенных в форме авторизации */
     const objectA = objectForForm(form);
 
-    //console.log(objectA);
-
-    /* загружаем объекты из localStorage */
+     /* загружаем объекты из localStorage */
 
       // проверяем что localStorage не пустой
     if (localStorage.length !== 0) {
