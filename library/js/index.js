@@ -355,6 +355,7 @@ modalForm.addEventListener('submit', (event) => {
     object['active'] = true;
 
     let key = cardNumber();
+
     /* запись объекта в localStorage */
     localStorage.setItem(key, JSON.stringify(object));
 
@@ -494,7 +495,8 @@ function authorizedUser(key, object) {
     // меняем контент в заголовке
   headerDropMenu.textContent = `${key}`;
     // меняем размер шрифта в заголовке
-  headerDropMenu.style.fontSize = '13px';
+  headerDropMenu.style.fontSize = '12px';
+  headerDropMenu.style.textTransform = 'uppercase'
 
   /* вывод полного имени пользователя при наведении на иконку */
   // определение элемента для наведения
