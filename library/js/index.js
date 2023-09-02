@@ -211,7 +211,7 @@ dropMenu.forEach((index) => {
 
   /* кнопки для вызова окна регистрации (массив из 3х кнопок) */
   const regWindows = document.querySelectorAll('.reg');
-  /* массив из 3х элементов: log-in - 0, register - 1, my-profile - 2*/
+  /* массив из 4х элементов: log-in - 0, register - 1, my-profile - 2, buy-card - 3*/
   const modalWindows = document.querySelectorAll('.pop-up');
 
 /* открытие окна регистрации */
@@ -469,9 +469,30 @@ bookItems.forEach((event) => {
   const btnBuy = event.querySelectorAll('.button');
   btnBuy.forEach((event) => {
     event.addEventListener('click', () => {
-      /* открытие окна авторизации */
-      modalWindows[0].classList.remove('hidden');
-      modalWindows[0].firstElementChild.classList.remove('hidden');
+      // проверяем наличие активного пользователя в local Storage
+      // flag = false если нет активного пользователя
+      let flag = false;
+      if (localStorage.length !== 0) {
+
+      for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let object = JSON.parse(localStorage.getItem(key));
+        //console.log(key, object);
+        /* если есть активный пользователь, то меняем флаг на true*/
+        if (object['active'] === true){
+          flag = true;
+        }
+      }
+    }
+    if (flag === false){
+            /* открытие окна авторизации */
+            modalWindows[0].classList.remove('hidden');
+            modalWindows[0].firstElementChild.classList.remove('hidden');
+    } else {
+      // действия при авторизированном пользователе
+      openBuyCard();
+    }
+
     })
   })
 })
@@ -542,6 +563,12 @@ function authorizedUser(key, object) {
   })
 
   console.log(key, object);
+}
+
+/* отслеживание клика по кнопкам Buy при авторизированном пользователе*/
+function openBuyCard () {
+  modalWindows[3].classList.remove('hidden');
+  modalWindows[3].firstElementChild.classList.remove('hidden');
 }
 
 /* отмена режима авторизации (выход из режима) */

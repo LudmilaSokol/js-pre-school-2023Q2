@@ -1205,6 +1205,11 @@ button {
   font-size: 25px;
   font-weight: 400;
 }
+.modal-profile .box2-rented {
+  width: 350px;
+  height: 48px;
+  overflow: auto;
+}
 .modal-profile .box2-items {
   padding-left: 30px;
 }
@@ -1230,9 +1235,11 @@ button {
   margin-bottom: 2px;
 }
 .modal-buy-card {
-  display: none;
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
   width: 650px;
   height: 540px;
   font-family: 'Inter-Regular', sans-serif;

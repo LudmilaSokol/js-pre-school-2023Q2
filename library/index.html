@@ -628,8 +628,8 @@
         <!-- аренда книг -->
         <div class="box2-rented">
           <ul class="box2-items">
-            <li class="box2-item">The Last Queen, Clive Irving</li>
-            <li class="box2-item">Dominicana, Angie Cruz</li>
+            <p>The list is empty</p>
+            <li class="box2-item"></li>
           </ul>
         </div>
         <div class="card">
@@ -643,57 +643,60 @@
 
 
   <!-- Buy a library card -->
-  <div class="modal-buy-card">
-    <div class="modal-header">
-      <h2 class="modal-title">
-        Buy a library card
-      </h2>
-      <div class="modal-close">
-        <img src="assets/img/modals/close_btn_white.svg" alt="Close button">
+  <div class="pop-up hidden">
+    <div class="modal-buy-card hidden">
+      <div class="modal-header">
+        <h2 class="modal-title">
+          Buy a library card
+        </h2>
+        <div class="modal-close">
+          <img src="assets/img/modals/close_btn_white.svg" alt="Close button">
+        </div>
       </div>
-    </div>
-    <div class="modal-buy-card-box">
-      <div class="modal-buy-card-form">
-        <form class="card-form" action="#">
-          <fieldset class="card-form-box">
-            <label class="modal-label">
-              Bank card number
-              <input class="modal-input" type="text">
-            </label>
-            <label class="modal-label">
-              Expiration code<br>
-              <input class="modal-input input-mini" type="text">
-              <input class="modal-input input-mini" type="text">
-            </label><br>
-            <label class="modal-label">
-              CVC<br>
-              <input class="modal-input input-mini" type="text">
-            </label><br>
-          </fieldset>
-          <fieldset class="card-form-box">
-            <label class="modal-label">
-              Cardholder name
-              <input class="modal-input" type="text">
-            </label>
-            <label class="modal-label">
-              Postal code
-              <input class="modal-input" type="text">
-            </label>
-            <label class="modal-label">
-              City / Town
-              <input class="modal-input" type="text">
-            </label>
-          </fieldset>
-          <button class="modal-button">Buy</button>
-          <span class="card-form-price">$ 25.00</span>
-        </form>
-      </div>
-      <div class="modal-buy-card-comment">
-        <p class="modal-text">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.
-        </p>
+      <div class="modal-buy-card-box">
+        <div class="modal-buy-card-form">
+          <form class="card-form" action="#">
+            <fieldset class="card-form-box">
+              <label class="modal-label">
+                Bank card number
+                <input class="modal-input" type="text">
+              </label>
+              <label class="modal-label">
+                Expiration code<br>
+                <input class="modal-input input-mini" type="text">
+                <input class="modal-input input-mini" type="text">
+              </label><br>
+              <label class="modal-label">
+                CVC<br>
+                <input class="modal-input input-mini" type="text">
+              </label><br>
+            </fieldset>
+            <fieldset class="card-form-box">
+              <label class="modal-label">
+                Cardholder name
+                <input class="modal-input" type="text">
+              </label>
+              <label class="modal-label">
+                Postal code
+                <input class="modal-input" type="text">
+              </label>
+              <label class="modal-label">
+                City / Town
+                <input class="modal-input" type="text">
+              </label>
+            </fieldset>
+            <button class="modal-button">Buy</button>
+            <span class="card-form-price">$ 25.00</span>
+          </form>
+        </div>
+        <div class="modal-buy-card-comment">
+          <p class="modal-text">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.
+          </p>
+        </div>
       </div>
     </div>
   </div>
+
 
   <script src="js/index.js"></script>
 </body>
