@@ -196,7 +196,6 @@ for (let i = 0; i < localStorage.length; i++) {
   } else {
     alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
   }
-  //console.log(object);
 }
 
 /* открытие меню до авторизации при клике на иконку с профилем пользователя */
@@ -364,26 +363,28 @@ modalForm1.addEventListener('submit', (event) => {
     //console.log(objectA);
 
     /* загружаем объекты из localStorage */
-    //const arrInLocalStorage = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      let key = localStorage.key(i);
-      let object = JSON.parse(localStorage.getItem(key));
 
-      //console.log(object);
+      // проверяем что localStorage не пустой
+    if (localStorage.length !== 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let object = JSON.parse(localStorage.getItem(key));
 
-      if ((object['email'] === objectA['email-or-card'] || key === objectA['emailOrCard']) && (object['password'] === objectA['password'])){
-        /* если данные введенные в окне авторизации есть в localStorage */
-        /* меняем статус на пользователь активен */
-        object['active'] = true;
-        /* сохраняем измененное значение в localStoreg (со значением true) */
-        localStorage.setItem(key, JSON.stringify(object));
+        if ((object['email'] === objectA['email-or-card'] || key === objectA['emailOrCard']) && (object['password'] === objectA['password'])){
+          /* если данные введенные в окне авторизации есть в localStorage */
+          /* меняем статус на пользователь активен */
+          object['active'] = true;
+          /* сохраняем измененное значение в localStoreg (со значением true) */
+          localStorage.setItem(key, JSON.stringify(object));
 
-        /* перейти к режиму авторизации */
-        authorizedUser(key, object);
-      } else {
-        alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
+          /* перейти к режиму авторизации */
+          authorizedUser(key, object);
+        } else {
+          alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
+        }
       }
-      //console.log(object);
+    } else {
+      alert('Перейдите к окну регистрации');
     }
 
     /* очистка формы */
