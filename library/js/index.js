@@ -44,10 +44,10 @@
       burgerItem.classList.remove('open');
     }
 
-    //меню авторизации
+    //меню пользователя при авторизации и регистрации
     const clickDropMenu = event.composedPath().includes(dropMenu[index]);
-    console.log(clickDropMenu);
-    const clicIconUser = event.composedPath().includes(iconUser);
+      const clicIconUser = event.composedPath().includes(iconUser);
+
     if (!clickDropMenu && !clicIconUser) {
       if (!iconUser.firstElementChild.classList.contains('header-icon-name')) {
         dropMenu[0].classList.add('profile-no-aut');
@@ -315,7 +315,7 @@ modalForm.addEventListener('submit', (event) => {
 
     /* первые символы имени и фамилии */
     let firstLetterName = object['first-name'].charAt(0) + object['last-name'].charAt(0);
-    console.log(firstLetterName);
+    //console.log(firstLetterName);
     object['icon'] = firstLetterName;
 
     /* меняем статус на пользователь активен */
@@ -440,6 +440,14 @@ function authorizedUser(key, object) {
   /* заменяем iconProfile на object.icon.value */
   iconProfile.outerHTML = '<div class="header-icon-name" title="">' + iconUser + '</div>';
 
+  /* вывод Card Number в заголовке DropMenu */
+    // находим заголовок (Profile)
+  let headerDropMenu = document.querySelector('.profile-with-aut').firstElementChild;
+    // меняем контент в заголовке
+  headerDropMenu.textContent = `${key}`;
+    // меняем размер шрифта в заголовке
+  headerDropMenu.style.fontSize = '13px';
+
   /* вывод полного имени пользователя при наведении на иконку */
   // определение элемента для наведения
   const headerIconName = document.querySelector('.header-icon-name');
@@ -448,9 +456,13 @@ function authorizedUser(key, object) {
     headerIconName.title = contentTitle;
   })
 
-  console.log(iconUser);
 
-  console.log(contentTitle);
+
+
+
+  //console.log(iconUser);
+
+  //console.log(contentTitle);
 
   console.log(key, object);
 }
