@@ -496,7 +496,7 @@ function authorizedUser(key, object) {
   headerDropMenu.textContent = `${key}`;
     // меняем размер шрифта в заголовке
   headerDropMenu.style.fontSize = '12px';
-  headerDropMenu.style.textTransform = 'uppercase'
+  headerDropMenu.style.textTransform = 'uppercase';
 
   /* вывод полного имени пользователя при наведении на иконку */
   // определение элемента для наведения
@@ -511,16 +511,24 @@ function authorizedUser(key, object) {
   btnMyProfile.addEventListener('click', () => {
     modalWindows[2].classList.remove('hidden');
     modalWindows[2].firstElementChild.classList.remove('hidden');
+
     // отображение инициалов пользователя в модальном окне
     const avatar = document.querySelector('.avatar').firstElementChild;
     avatar.outerHTML = `<p> ${iconUser} </p>`;
+
     // отображение ИФ пользователя в модальном окне
     let nameUser = document.querySelector('.name');
     nameUser.firstElementChild.outerHTML = `<span> ${contentTitle} </span>`;
     nameUser.setAttribute('style', 'font-size: 13px; line-height: 16px');
+
     // отображение счетчика визитов
     let countVisites = document.querySelector('.count-visits');
     countVisites.textContent = object['visits'];
+
+    // отображение card Number
+    let cardNumber = document.querySelector('.card-number');
+    cardNumber.textContent = key;
+    cardNumber.style.textTransform = 'uppercase';
   })
 
   /* отслеживаение клика по Log Out */
