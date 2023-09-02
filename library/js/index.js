@@ -28,7 +28,7 @@
   }
 
  /*отслеживает событие клика в документе*/
-  document.addEventListener('click', (event) => {
+  document.addEventListener('click', (event, index) => {
 
     //адаптивное меню
     /*массив объектов, на которых произойдет событие (отразится Клик),
@@ -45,10 +45,15 @@
     }
 
     //меню авторизации
-    const clickDropMenu = event.composedPath().includes(dropMenu[0]);
+    const clickDropMenu = event.composedPath().includes(dropMenu[index]);
+    console.log(clickDropMenu);
     const clicIconUser = event.composedPath().includes(iconUser);
     if (!clickDropMenu && !clicIconUser) {
-      dropMenu[0].classList.add('profile-no-aut');
+      if (!iconUser.firstElementChild.classList.contains('header-icon-name')) {
+        dropMenu[0].classList.add('profile-no-aut');
+      } else {
+        dropMenu[1].classList.add('profile-with-aut');
+      }
     }
   })
 
@@ -181,8 +186,14 @@ radioBtns.forEach((item, index) => {
 /* авторизация, регистрация */
 
 /* открытие меню до авторизации при клике на иконку с профилем пользователя */
-iconUser.addEventListener('click', () => {
-  dropMenu[0].classList.remove('profile-no-aut');
+dropMenu.forEach((index) => {
+  iconUser.addEventListener('click', () => {
+    if (!iconUser.firstElementChild.classList.contains('header-icon-name')) {
+      dropMenu[0].classList.remove('profile-no-aut');
+    } else {
+      dropMenu[1].classList.remove('profile-with-aut');
+    }
+  })
 })
 
   /* кнопки для вызова окна регистрации (массив из 3х кнопок) */
