@@ -81,19 +81,19 @@
 
 /* карусель в about */
 
-/* поиск стрелок навигации */
+  // поиск стрелок навигации
 const arrowLeft = document.querySelector('.arrow-left');
 const arrowRight = document.querySelector('.arrow-right');
-/* массив кнопок пагинации */
+  // массив кнопок пагинации
 const btmsPagination = document.querySelectorAll('.about-pagination-inner-item');
-/* контейнер для карусели */
+  /* контейнер для карусели */
 const carouselBox = document.querySelector(".about-carousel-box");
-/* значение left  для carouselBox */
+  /* значение left  для carouselBox */
 let position = 0;
-/* индекс текущего слайда (для сопоставления с кнопками) */
+  /* индекс текущего слайда (для сопоставления с кнопками) */
 let indexItem = 0;
 
-/* переход на след. слайд (сдвиг справа налево) */
+  /* переход на след. слайд (сдвиг справа налево) */
 const nextItem = () => {
   arrowLeft.classList.remove('disabled');
   if (position < (btmsPagination.length - 2) * 475) {
@@ -109,10 +109,10 @@ const nextItem = () => {
   activeBtn(indexItem);
 }
 
-/* слушаем клик по стрелке вправо и применяем функцию сдвига вправо*/
+  /* слушаем клик по стрелке вправо и применяем функцию сдвига вправо*/
 arrowRight.addEventListener('click', nextItem);
 
-/* переход на предыдущий слайд (сдвиг слева направо) */
+    /* переход на предыдущий слайд (сдвиг слева направо) */
 const prevItem = () => {
   arrowRight.classList.remove('disabled');
   if (position > 475) {
@@ -128,11 +128,10 @@ const prevItem = () => {
   activeBtn(indexItem);
 }
 
-/* слушаем клик по стрелке влево и применяем функцию сдвига влево*/
+  /* слушаем клик по стрелке влево и применяем функцию сдвига влево*/
 arrowLeft.addEventListener('click', prevItem);
 
-
-/* перелистываем слайды по кнопкам */
+  /* перелистываем слайды по кнопкам */
 btmsPagination.forEach((btnItem, indexItem) => {
   btnItem.addEventListener('click', () => {
     if (indexItem > 0) {
@@ -151,7 +150,7 @@ btmsPagination.forEach((btnItem, indexItem) => {
   })
 })
 
-/* выделяем активную кнопку по номеру */
+  /* выделяем активную кнопку по номеру */
 const activeBtn = (indexItem) => {
   /* для всех элементов кнопок удаляем класс active, если такой есть */
   for (let btnItem of btmsPagination) {
@@ -184,6 +183,21 @@ radioBtns.forEach((item, index) => {
 
 
 /* авторизация, регистрация */
+
+/* проверка local Storage на активного пользователя */
+for (let i = 0; i < localStorage.length; i++) {
+  let key = localStorage.key(i);
+  let object = JSON.parse(localStorage.getItem(key));
+
+  // если есть активный пользователь
+  if (object['active'] === true){
+    /* перейти к режиму авторизации */
+    authorizedUser(key, object);
+  } else {
+    alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
+  }
+  //console.log(object);
+}
 
 /* открытие меню до авторизации при клике на иконку с профилем пользователя */
 dropMenu.forEach((index) => {
