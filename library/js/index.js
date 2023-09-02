@@ -471,6 +471,12 @@ function authorizedUser(key, object) {
     headerIconName.title = contentTitle;
   })
 
+  /* отслеживание клика по MyProfile  и переход к соответствующему окну */
+  const btnMyProfile = document.querySelector('.my-profile')
+  btnMyProfile.addEventListener('click', () => {
+    modalWindows[2].classList.remove('hidden');
+    modalWindows[2].firstElementChild.classList.remove('hidden');
+  })
 
 
 
