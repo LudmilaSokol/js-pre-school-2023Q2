@@ -86,14 +86,14 @@ const arrowLeft = document.querySelector('.arrow-left');
 const arrowRight = document.querySelector('.arrow-right');
   // массив кнопок пагинации
 const btmsPagination = document.querySelectorAll('.about-pagination-inner-item');
-  /* контейнер для карусели */
+  // контейнер для карусели
 const carouselBox = document.querySelector(".about-carousel-box");
-  /* значение left  для carouselBox */
+  // значение left  для carouselBox
 let position = 0;
-  /* индекс текущего слайда (для сопоставления с кнопками) */
+  // индекс текущего слайда (для сопоставления с кнопками)
 let indexItem = 0;
 
-  /* переход на след. слайд (сдвиг справа налево) */
+  // переход на след. слайд (сдвиг справа налево)
 const nextItem = () => {
   arrowLeft.classList.remove('disabled');
   if (position < (btmsPagination.length - 2) * 475) {
@@ -109,10 +109,10 @@ const nextItem = () => {
   activeBtn(indexItem);
 }
 
-  /* слушаем клик по стрелке вправо и применяем функцию сдвига вправо*/
+  // слушаем клик по стрелке вправо и применяем функцию сдвига вправо
 arrowRight.addEventListener('click', nextItem);
 
-    /* переход на предыдущий слайд (сдвиг слева направо) */
+    // переход на предыдущий слайд (сдвиг слева направо)
 const prevItem = () => {
   arrowRight.classList.remove('disabled');
   if (position > 475) {
@@ -128,10 +128,10 @@ const prevItem = () => {
   activeBtn(indexItem);
 }
 
-  /* слушаем клик по стрелке влево и применяем функцию сдвига влево*/
+  // слушаем клик по стрелке влево и применяем функцию сдвига влево
 arrowLeft.addEventListener('click', prevItem);
 
-  /* перелистываем слайды по кнопкам */
+  // перелистываем слайды по кнопкам
 btmsPagination.forEach((btnItem, indexItem) => {
   btnItem.addEventListener('click', () => {
     if (indexItem > 0) {
@@ -150,13 +150,13 @@ btmsPagination.forEach((btnItem, indexItem) => {
   })
 })
 
-  /* выделяем активную кнопку по номеру */
+  // выделяем активную кнопку по номеру
 const activeBtn = (indexItem) => {
-  /* для всех элементов кнопок удаляем класс active, если такой есть */
+  // для всех элементов кнопок удаляем класс active, если такой есть
   for (let btnItem of btmsPagination) {
     btnItem.classList.remove('active');
   }
-  /* текущей кнопке добавить класс active */
+  // текущей кнопке добавить класс active
   btmsPagination[indexItem].classList.add('active');
 }
 
@@ -193,9 +193,9 @@ for (let i = 0; i < localStorage.length; i++) {
   if (object['active'] === true){
     /* перейти к режиму авторизации */
     authorizedUser(key, object);
-  } else {
-    alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
-  }
+   } //else {
+  //   alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
+  // }
 }
 
 /* открытие меню до авторизации при клике на иконку с профилем пользователя */
@@ -211,7 +211,7 @@ dropMenu.forEach((index) => {
 
   /* кнопки для вызова окна регистрации (массив из 3х кнопок) */
   const regWindows = document.querySelectorAll('.reg');
-  /* массив из 2х элементов: log-in - 0, register - 1*/
+  /* массив из 3х элементов: log-in - 0, register - 1, my-profile - 2*/
   const modalWindows = document.querySelectorAll('.pop-up');
 
 /* открытие окна регистрации */
@@ -377,6 +377,10 @@ modalForm1.addEventListener('submit', (event) => {
           /* сохраняем измененное значение в localStoreg (со значением true) */
           localStorage.setItem(key, JSON.stringify(object));
 
+          // закрыть окно авторизации
+          modalWindows[0].classList.add('hidden');
+          modalWindows[0].firstElementChild.classList.add('hidden');
+
           /* перейти к режиму авторизации */
           authorizedUser(key, object);
         } else {
@@ -478,7 +482,15 @@ function authorizedUser(key, object) {
     modalWindows[2].firstElementChild.classList.remove('hidden');
   })
 
-
+  /* отслеживаение клика по Log Out */
+  const btnLogOut = document.querySelector('.out');
+  btnLogOut.addEventListener('click', () => {
+    // выход из режима авторизации
+    object['active'] = false;
+    console.log(key, object);
+    localStorage.setItem(key, JSON.stringify(object));
+    closeAut(key, object);
+  })
 
 
   //console.log(iconUser);
@@ -486,6 +498,17 @@ function authorizedUser(key, object) {
   //console.log(contentTitle);
 
   console.log(key, object);
+}
+
+/* отмена режима авторизации (выход из режима) */
+function closeAut (key, object) {
+  // меняем иконку с инициалов на профиль
+  // находим иконку пользователя в header
+  const iconProfile = document.querySelector('.header-icon').firstElementChild;
+  iconProfile.outerHTML = '<img class="" src="assets/img/icon_profile.svg" alt="Icon profile">';
+
+  // закрываем drop-меню
+  dropMenu[1].classList.add('profile-with-aut');
 }
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
