@@ -334,8 +334,9 @@ modalForm.addEventListener('submit', (event) => {
     /* меняем статус на пользователь активен */
     object['active'] = true;
 
+    let key = cardNumber();
     /* запись объекта в localStorage */
-    localStorage.setItem(cardNumber(), JSON.stringify(object));
+    localStorage.setItem(key, JSON.stringify(object));
 
     /* очистка формы */
     clearForm ();
@@ -345,7 +346,7 @@ modalForm.addEventListener('submit', (event) => {
     modalWindows[1].firstElementChild.classList.add('hidden');
 
     /* перейти к режиму авторизации */
-    authorizedUser(cardNumber(), object);
+    authorizedUser(key, object);
   }
 })
 
@@ -397,7 +398,7 @@ modalForm1.addEventListener('submit', (event) => {
 })
 
 /* генерация Card Number */
-function cardNumber () {
+function cardNumber() {
   let result;
 
   result = (Math.round(Math.random()*1e11)).toString(16);
