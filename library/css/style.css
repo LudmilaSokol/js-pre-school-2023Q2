@@ -1294,6 +1294,9 @@ button {
 .modal-buy-card-form .card-form .modal-button {
   margin: 0;
 }
+.modal-buy-card-form .card-form .modal-button[disabled] {
+  background-color: #ffffff;
+}
 .modal-buy-card-comment {
   flex-grow: 1;
   width: 330px;

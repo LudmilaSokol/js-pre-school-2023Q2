@@ -261,10 +261,13 @@ loginWindows.forEach((item) => {
 
 
 /* проверка валидации */
+
 /* форма регистрации */
 let modalForm = document.querySelector('.modal-form');
 /* форма авторизации */
 let modalForm1 = document.querySelector('.modal-form1');
+/* форма покупки абонемента */
+let modalForm2 = document.querySelector('.card-form');
 
 function validation(form, event){
   let result = true;
@@ -424,6 +427,9 @@ modalForm1.addEventListener('submit', (event) => {
   }
 })
 
+/* submit для формы покупки абонемента */
+
+
 /* генерация Card Number */
 function cardNumber() {
   let result;
@@ -570,6 +576,8 @@ function authorizedUser(key, object) {
 function openBuyCard () {
   modalWindows[3].classList.remove('hidden');
   modalWindows[3].firstElementChild.classList.remove('hidden');
+  //кнопка buy становится не активной
+  document.querySelector('.card-form').querySelector('.modal-button').disabled = true;
 }
 
 /* отмена режима авторизации (выход из режима) */
