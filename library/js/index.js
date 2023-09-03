@@ -411,13 +411,14 @@ modalForm1.addEventListener('submit', (event) => {
         authorizedUser(key, object);
         }
       }
+      // если пользователя нет в базе localStorage
+      if (flag !== true) {
+        alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
+      }
     } else {
       alert('Перейдите к окну регистрации');
     }
-    // если пользователя нет в базе localStorage
-    if (flag !== true) {
-      alert('Введите данные, заданные при регистрации. Или перейдите к окну регистрации');
-    }
+
     /* очистка формы */
     clearForm ();
   }
