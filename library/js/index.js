@@ -303,6 +303,8 @@ function validation(form/*, event*/){
           event.value = '';
           result = false;
         }
+      } else {
+        removeError (event);
       }
       // if(emailInput){
       //   if (emailInput.){
@@ -456,6 +458,10 @@ function objectForForm (form){
     // счетчик visits
     let visits = 1;
     object['visits'] = visits;
+    // количество купленных книг
+    // создаем объект для книг в объекте пользователя
+    object.books = {};
+    //object.books = '';
 
     return object;
 }
@@ -534,7 +540,7 @@ function authorizedUser(key, object) {
   })
 
   /* отслеживание клика по MyProfile  и переход к соответствующему окну */
-  const btnMyProfile = document.querySelector('.my-profile')
+  const btnMyProfile = document.querySelector('.my-profile');
   btnMyProfile.addEventListener('click', () => {
     modalWindows[2].classList.remove('hidden');
     modalWindows[2].firstElementChild.classList.remove('hidden');
@@ -551,6 +557,9 @@ function authorizedUser(key, object) {
     // отображение счетчика визитов
     let countVisites = document.querySelector('.count-visits');
     countVisites.textContent = object['visits'];
+
+    // отображение счетчика купленных книг
+    countingBooks();
 
     // отображение card Number
     let cardNumber = document.querySelector('.card-number');
@@ -576,12 +585,11 @@ function authorizedUser(key, object) {
 function openBuyCard () {
   modalWindows[3].classList.remove('hidden');
   modalWindows[3].firstElementChild.classList.remove('hidden');
-  
+
   // с неактивной кнопкой до конца не разобралась
   // completionBuyCard();
 }
 
-  /* submit для формы покупки абонемента */
   /* проверка заполнения всех полей формы, иначе кнопка buy отключена*/
 
   // function completionBuyCard() {
@@ -604,6 +612,7 @@ function openBuyCard () {
   //   clearForm ();
   // }
 
+    /* submit для формы покупки абонемента */
   modalForm2.addEventListener('submit', (event) => {
     //отмена стандартного поведения (перезагрузки?)
     event.preventDefault();

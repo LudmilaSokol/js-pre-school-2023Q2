@@ -659,30 +659,30 @@
             <fieldset class="card-form-box">
               <label class="modal-label">
                 Bank card number
-                <input class="modal-input" type="text">
+                <input class="modal-input" type="text" required pattern="[0-9]{16}">
               </label>
               <label class="modal-label">
                 Expiration code<br>
-                <input class="modal-input input-mini" type="text">
-                <input class="modal-input input-mini" type="text">
+                <input class="modal-input input-mini" type="text" required pattern="[0-9]{2}">
+                <input class="modal-input input-mini" type="text" required pattern="[0-9]{2}">
               </label><br>
               <label class="modal-label">
                 CVC<br>
-                <input class="modal-input input-mini" type="text">
+                <input class="modal-input input-mini" type="text" required pattern="[0-9]{3}">
               </label><br>
             </fieldset>
             <fieldset class="card-form-box">
               <label class="modal-label">
                 Cardholder name
-                <input class="modal-input" type="text">
+                <input class="modal-input" type="text" required>
               </label>
               <label class="modal-label">
                 Postal code
-                <input class="modal-input" type="text">
+                <input class="modal-input" type="text" required>
               </label>
               <label class="modal-label">
                 City / Town
-                <input class="modal-input" type="text">
+                <input class="modal-input" type="text" required>
               </label>
             </fieldset>
             <button class="modal-button" type="submit">Buy</button>
