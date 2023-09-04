@@ -269,7 +269,7 @@ let modalForm1 = document.querySelector('.modal-form1');
 /* форма покупки абонемента */
 let modalForm2 = document.querySelector('.card-form');
 
-function validation(form, event){
+function validation(form/*, event*/){
   let result = true;
   let allInput = form.querySelectorAll('.modal-input');
   let emailInput = form.querySelector('[type = "email"]');
@@ -363,7 +363,7 @@ modalForm.addEventListener('submit', (event) => {
     localStorage.setItem(key, JSON.stringify(object));
 
     /* очистка формы */
-    clearForm ();
+    clearForm (form);
 
     /* закрыть форму */
     modalWindows[1].classList.add('hidden');
@@ -423,11 +423,10 @@ modalForm1.addEventListener('submit', (event) => {
     }
 
     /* очистка формы */
-    clearForm ();
+    clearForm (form);
   }
 })
 
-/* submit для формы покупки абонемента */
 
 
 /* генерация Card Number */
@@ -462,14 +461,14 @@ function objectForForm (form){
 }
 
 /* очистка формы */
-function clearForm () {
-  let allInput = modalForm.querySelectorAll('.modal-input');
+function clearForm (form) {
+  let allInput = form.querySelectorAll('.modal-input');
   allInput.forEach((event) => {
     event.value = '';
   })
 }
 
-/* клик по buy */
+/* клик по buy в favorites */
 const bookItems = document.querySelectorAll('.book-item');
 
 bookItems.forEach((event) => {
@@ -497,9 +496,9 @@ bookItems.forEach((event) => {
             modalWindows[0].firstElementChild.classList.remove('hidden');
     } else {
       // действия при авторизированном пользователе
+      // открываем окно покупки
       openBuyCard();
     }
-
     })
   })
 })
@@ -572,12 +571,58 @@ function authorizedUser(key, object) {
   console.log(key, object);
 }
 
-/* отслеживание клика по кнопкам Buy при авторизированном пользователе*/
+/* форма покупки карты открыта
+ отслеживание клика по кнопкам Buy при авторизированном пользователе*/
 function openBuyCard () {
   modalWindows[3].classList.remove('hidden');
   modalWindows[3].firstElementChild.classList.remove('hidden');
-  //кнопка buy становится не активной
-  document.querySelector('.card-form').querySelector('.modal-button').disabled = true;
+  
+  // с неактивной кнопкой до конца не разобралась
+  // completionBuyCard();
+}
+
+  /* submit для формы покупки абонемента */
+  /* проверка заполнения всех полей формы, иначе кнопка buy отключена*/
+
+  // function completionBuyCard() {
+  //   const form = modalForm2;
+  //   console.log(form);
+  //   const allInput = form.querySelectorAll('.modal-input');
+  //   console.log(allInput);
+  //   let schet = 0;
+  //   //document.querySelector('.card-form').querySelector('.modal-button').disabled = true;
+  //   allInput.forEach((event) => {
+  //     if (event.value !== '') {
+  //       schet = schet + 1;
+  //       console.log(schet);
+  //     }
+  //   })
+
+  //   if (schet === 7) {
+  //     document.querySelector('.card-form').querySelector('.modal-button').disabled = false;
+  //   }
+  //   clearForm ();
+  // }
+
+  modalForm2.addEventListener('submit', (event) => {
+    //отмена стандартного поведения (перезагрузки?)
+    event.preventDefault();
+    const form = modalForm2;
+
+    if (validation(form) === true){
+      console.log('проверка успешна');
+          /* очистка формы */
+     clearForm (form);
+     /* закрыть форму */
+     closeBuyCard();
+    }
+
+  })
+
+  /* закрыть форму покупки абонемента */
+function closeBuyCard() {
+  modalWindows[3].classList.add('hidden');
+  modalWindows[3].firstElementChild.classList.add('hidden');
 }
 
 /* отмена режима авторизации (выход из режима) */
