@@ -500,8 +500,9 @@ bookItems.forEach((event) => {
   btnBuy.forEach((event) => {
     event.addEventListener('click', () => {
       // проверяем наличие активного пользователя в local Storage
-      // flag = false если нет активного пользователя
-      let flag = false;
+      // flagActiveUser = false если нет активного пользователя
+      let flagActiveUser = false;
+      let flagLibraryCard = false;
       if (localStorage.length !== 0) {
       for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
@@ -509,18 +510,25 @@ bookItems.forEach((event) => {
         //console.log(key, object);
         /* если есть активный пользователь, то меняем флаг на true*/
         if (object['active'] === true){
-          flag = true;
+          flagActiveUser = true;
+          if (object['library card'] === true) {
+            flagLibraryCard = true;
+          }
         }
       }
     }
-    if (flag === false){
+    if (flagActiveUser === false){
             /* открытие окна авторизации */
             modalWindows[0].classList.remove('hidden');
             modalWindows[0].firstElementChild.classList.remove('hidden');
+    } else if (flagLibraryCard === false) {
+      // действия при авторизированном пользователе и не купленном абонементе
+      // открываем окно покупки абонемента
+      openBuyCard ();
     } else {
-      // действия при авторизированном пользователе
-      // открываем окно покупки
-      openBuyCard();
+      /* действия при авторизированном пользователе и купленном абонементе
+       (купить книгу при клике на buy в карточке книги)*/
+       rentedBooks ();
     }
     })
   })
@@ -648,6 +656,11 @@ function openBuyCard () {
     }
 
   })}
+
+  /* покупка книги при наличии абонемента */
+  function rentedBooks () {
+    
+  }
 
   /* закрыть форму покупки абонемента */
 function closeBuyCard() {
