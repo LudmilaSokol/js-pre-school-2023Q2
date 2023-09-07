@@ -459,6 +459,7 @@ function objectForForm (form){
     let visits = 1;
     object['visits'] = visits;
     // количество купленных книг
+    object['counter books'] = 0;
     // создаем объект для книг в объекте пользователя
     object.books = {};
     // отмечаем наличие абонемента
@@ -498,6 +499,7 @@ const bookItems = document.querySelectorAll('.book-item');
 bookItems.forEach((event) => {
   const btnBuy = event.querySelectorAll('.button');
   btnBuy.forEach((event) => {
+    let nextElBtnBuy;
     event.addEventListener('click', () => {
       // проверяем наличие активного пользователя в local Storage
       // flagActiveUser = false если нет активного пользователя
@@ -510,6 +512,8 @@ bookItems.forEach((event) => {
         //console.log(key, object);
         /* если есть активный пользователь, то меняем флаг на true*/
         if (object['active'] === true){
+          //запоминаем следующий элемент за кнопкой buy (они отличаются классами)
+          nextElBtnBuy = event.nextElementSibling;
           flagActiveUser = true;
           if (object['library card'] === true) {
             flagLibraryCard = true;
@@ -528,7 +532,7 @@ bookItems.forEach((event) => {
     } else {
       /* действия при авторизированном пользователе и купленном абонементе
        (купить книгу при клике на buy в карточке книги)*/
-       rentedBooks ();
+       rentedBooks (nextElBtnBuy);
     }
     })
   })
@@ -657,9 +661,17 @@ function openBuyCard () {
 
   })}
 
-  /* покупка книги при наличии абонемента */
-  function rentedBooks () {
-    
+  /* покупка книги при наличии абонемента.
+  функция получает следующий элемент div после кнопки buy из Favorites */
+  function rentedBooks (event) {
+    console.log(event);
+    //отключаем кнопку, заменяем надпись на кнопке
+    event.previousElementSibling.classList.add('button-own');
+    event.previousElementSibling.setAttribute('disabled', true);
+    event.previousElementSibling.textContent = 'Own';
+
+    console.log(event.previousElementSibling);
+
   }
 
   /* закрыть форму покупки абонемента */
