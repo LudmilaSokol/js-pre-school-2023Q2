@@ -601,12 +601,12 @@ function authorizedUser(key, object) {
   btnLogOut.addEventListener('click', () => {
     // выход из режима авторизации
     object['active'] = false;
-    console.log(key, object);
+    //console.log(key, object);
     localStorage.setItem(key, JSON.stringify(object));
     closeAut(key, object);
   })
 
-  console.log(key, object);
+ // console.log(key, object);
 }
 
 /* форма покупки карты открыта
@@ -661,17 +661,83 @@ function openBuyCard () {
 
   })}
 
+  
   /* покупка книги при наличии абонемента.
   функция получает следующий элемент div после кнопки buy из Favorites */
   function rentedBooks (event) {
-    console.log(event);
+    //console.log(event);
     //отключаем кнопку, заменяем надпись на кнопке
+    replaceBuyWithOwn (event);
+
+    // получаем key активного пользователя и увеличиваем у него счетчик купленных книг.
+    const keyActiveUser = findAncAtiveUser();
+    const object = JSON.parse(localStorage.getItem(keyActiveUser));
+    object['counter books'] = object['counter books'] + 1;
+    /* получаем название книги и автора, ищем в родительском элементе*/
+    const parent = event.parentElement;
+    const nameBook = parent.querySelector('.title').textContent;
+    console.log(nameBook);
+    const authorBook = parent.querySelector('.subtitle').textContent.slice(3);
+    console.log(authorBook);
+
+    //получаем key для карточки книги
+    const keyBook = event.classList[1].toString();
+    console.log(keyBook);
+    let flagBook = false;
+    console.log(flagBook, 'флаг для книги');
+    console.log(object);
+    console.log('объект для кликнтого buy');
+    console.log(object.books);
+    console.log('содержимое объекта books');
+    //ищем данный key в объекте Книги
+    // if (object.books.length === 0) {
+    //   flagBook = false;
+    //   console.log(flagBook);
+    //   console.log(object.books.length);
+    // } else {
+      for (key in object.books) {
+        console.log(key);
+        if (key === keyBook) {
+          // кнопка buy должна быть переименована в own и не активна
+          replaceBuyWithOwn (event);
+          flagBook = true;
+          console.log(flagBook, 'флаг для книги, совпадения есть');
+        } else {
+          // если такого равенства не найдено, то объект с таким ключом добавляем в объект books
+          flagBook = false;
+          console.log(flagBook, 'флаг для книги, не совпало');
+        }
+      }
+   // }
+    console.log(flagBook);
+    for (let i = 0; object.books.length; i++) {
+      console.log(object.books[i]);
+      if (object.books[i] === keyBook) {
+        // кнопка buy должна быть переименована в own и не активна
+        replaceBuyWithOwn (event);
+      } else {
+        // если такого равенства не найдено, то объект с таким ключом добавляем в объект books
+        flagBook = false;
+      }
+    }
+    console.log(flagBook);
+
+    if (flagBook === false) {
+      object.books[keyBook] = `${nameBook}, ${authorBook}`;
+      console.log(keyBook);
+    };
+
+    // записываем его в local storage изменения
+    localStorage.setItem(keyActiveUser, JSON.stringify(object));
+    console.log(object);
+  }
+
+  /* заменить buy на own */
+  function replaceBuyWithOwn (event) {
     event.previousElementSibling.classList.add('button-own');
     event.previousElementSibling.setAttribute('disabled', true);
     event.previousElementSibling.textContent = 'Own';
-
-    console.log(event.previousElementSibling);
-
+    //console.log(event.previousElementSibling);
   }
 
   /* закрыть форму покупки абонемента */
