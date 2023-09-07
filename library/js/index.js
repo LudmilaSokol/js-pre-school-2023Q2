@@ -461,7 +461,8 @@ function objectForForm (form){
     // количество купленных книг
     // создаем объект для книг в объекте пользователя
     object.books = {};
-    //object.books = '';
+    // отмечаем наличие абонемента
+    object['library card'] = false;
 
     return object;
 }
@@ -472,6 +473,23 @@ function clearForm (form) {
   allInput.forEach((event) => {
     event.value = '';
   })
+}
+
+/* определяем key активного пользователя */
+function findAncAtiveUser () {
+  let keyActiveUser;
+  if (localStorage.length !== 0) {
+    for (let i = 0; i < localStorage.length; i++) {
+     let key = localStorage.key(i);
+      let object = JSON.parse(localStorage.getItem(key));
+      //console.log(key, object);
+      /* если есть активный пользователь, то запоминаем ключ для активного пользователя*/
+      if (object['active'] === true){
+        keyActiveUser = key;
+      }
+    }
+  }
+  return keyActiveUser;
 }
 
 /* клик по buy в favorites */
@@ -485,7 +503,6 @@ bookItems.forEach((event) => {
       // flag = false если нет активного пользователя
       let flag = false;
       if (localStorage.length !== 0) {
-
       for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
         let object = JSON.parse(localStorage.getItem(key));
@@ -587,7 +604,7 @@ function openBuyCard () {
   modalWindows[3].firstElementChild.classList.remove('hidden');
 
   // с неактивной кнопкой до конца не разобралась
-  // completionBuyCard();
+  completionBuyCard();
 }
 
   /* проверка заполнения всех полей формы, иначе кнопка buy отключена*/
@@ -613,20 +630,24 @@ function openBuyCard () {
   // }
 
     /* submit для формы покупки абонемента */
-  modalForm2.addEventListener('submit', (event) => {
+   function completionBuyCard (object)  {
+    modalForm2.addEventListener('submit', (event) => {
     //отмена стандартного поведения (перезагрузки?)
     event.preventDefault();
     const form = modalForm2;
-
+    const key = findAncAtiveUser();
+    const object = JSON.parse(localStorage.getItem(key));
     if (validation(form) === true){
-      console.log('проверка успешна');
+      object['library card'] = true;
+      localStorage.setItem(key, JSON.stringify(object));
+      alert('Оплата прошла успешно');
           /* очистка формы */
      clearForm (form);
      /* закрыть форму */
      closeBuyCard();
     }
 
-  })
+  })}
 
   /* закрыть форму покупки абонемента */
 function closeBuyCard() {
