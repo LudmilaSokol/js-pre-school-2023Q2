@@ -326,7 +326,7 @@ modalForm.addEventListener('submit', (event) => {
   const form = modalForm;
 
   if (validation(form) === true){
-    console.log('проверка успешна');
+    //console.log('проверка успешна');
 
     /* вызываем функцию создания массива из элементов формы */
     let object = objectForForm(form);
@@ -340,7 +340,7 @@ modalForm.addEventListener('submit', (event) => {
       for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
         let objectA = JSON.parse(localStorage.getItem(key));
-        console.log(key, objectA);
+        //console.log(key, objectA);
         /* если данные email введенные в окне регистрации совпадают
          с email в localStorage то меняем флаг*/
         if (object['email'] === objectA['email']){
@@ -384,10 +384,10 @@ modalForm1.addEventListener('submit', (event) => {
   const form = modalForm1;
 
   if (validation(form) === true){
-    console.log('проверка успешна');
+    //console.log('проверка успешна');
     // создаем объект для данных, введенных в форме авторизации
     const objectA = objectForForm(form);
-    console.log(objectA);
+    //console.log(objectA);
 
     // загружаем объекты из localStorage
     // если введенные данные совпадают с имеющимися в localStorage, то flag = true
@@ -405,6 +405,11 @@ modalForm1.addEventListener('submit', (event) => {
         object['active'] = true;
         //считаем количество визитов
         object['visits'] = object.visits + 1;
+
+        //если есть купленные книги, то заменяем кнопки buy на own
+        // if (object['counter books'] > 0) {
+
+        // }
         // сохраняем измененное значение в localStoreg (со значением true)
         localStorage.setItem(key, JSON.stringify(object));
 
@@ -459,7 +464,8 @@ function objectForForm (form){
     let visits = 1;
     object['visits'] = visits;
     // количество купленных книг
-    object['counter books'] = 0;
+    let books = 0;
+    object['counter books'] = books;
     // создаем объект для книг в объекте пользователя
     object.books = {};
     // отмечаем наличие абонемента
@@ -543,9 +549,9 @@ function authorizedUser(key, object) {
   //смена иконки пользователя
   /* находим иконку пользователя в header */
   const iconProfile = document.querySelector('.header-icon').firstElementChild;
+
   /* аббревиатура из первых букв ФИ */
   const iconUser = object.icon;
-
   const contentTitle = `${object['first-name']} ${object['last-name']}`;
 
   /* заменяем iconProfile на object.icon.value */
@@ -568,6 +574,19 @@ function authorizedUser(key, object) {
     headerIconName.title = contentTitle;
   })
 
+  // проверяем есть ли купленные книги
+  if (object['counter books'] > 0) {
+    // просматриваем все книги в local storage, и если их значение совпадает со значениями ключей объекта books,
+    // отключаем кнопку buy, заменяем надпись на кнопке
+    console.log(object['counter books']);
+    // сравниваем классы последующих элементов кнопок buy с ключами объекта books в локал сторадж,
+    //при совпадении заменяем buy на own
+    markPurchasedBooks (key, object);
+    //replaceBuyWithOwn (event);
+  } else {
+    console.log(object['counter books']);
+  }
+
   /* отслеживание клика по MyProfile  и переход к соответствующему окну */
   const btnMyProfile = document.querySelector('.my-profile');
   btnMyProfile.addEventListener('click', () => {
@@ -588,7 +607,8 @@ function authorizedUser(key, object) {
     countVisites.textContent = object['visits'];
 
     // отображение счетчика купленных книг
-    countingBooks();
+   let countBooks = document.querySelector('.count-books');
+   countBooks.textContent = object['counter books'];
 
     // отображение card Number
     let cardNumber = document.querySelector('.card-number');
@@ -608,6 +628,43 @@ function authorizedUser(key, object) {
 
  // console.log(key, object);
 }
+
+/*сравниваем классы последующих элементов кнопок buy с ключами объекта books в локал сторадж,
+    при совпадении заменяем buy на own*/
+function markPurchasedBooks (key, object) {
+  const bookItems = document.querySelectorAll('.book-item');
+  //следующий элемент за кнопкой buy (они отличаются классами)
+  let nextElBtnBuy;
+  // определяем класс
+  let classNextElBtnBuy;
+  bookItems.forEach((event) => {
+    // находим кнопкy buy
+    const btnBuy = event.querySelector('.button');
+    //console.log(event);
+
+    nextElBtnBuy = btnBuy.nextElementSibling;
+    //console.log(nextElBtnBuy);
+
+    classNextElBtnBuy = nextElBtnBuy.classList[1].toString();
+    //console.log(classNextElBtnBuy + ' класс для след элемента buy');
+      // сравниваем этот класс с ключами объекта booksto
+    //ищем classNextElBtnBuy в объекте Книги
+    for (kl in object.books) {
+      //console.log(kl + ' ключ для книги в object.books');
+      if (kl === classNextElBtnBuy) {
+        // кнопка buy должна быть переименована в own и не активна
+        replaceBuyWithOwn (nextElBtnBuy);
+       // flagBook = true;
+        //console.log(flagBook, 'флаг для книги, совпадения есть');
+      } //else {
+        // если такого равенства не найдено, то объект с таким ключом добавляем в объект books
+        //flagBook = false;
+        //console.log(flagBook, 'флаг для книги, не совпало');
+      //}
+    }
+   // }
+    })
+  }
 
 /* форма покупки карты открыта
  отслеживание клика по кнопкам Buy при авторизированном пользователе*/
@@ -642,11 +699,12 @@ function openBuyCard () {
   // }
 
     /* submit для формы покупки абонемента */
-   function completionBuyCard (object)  {
+   function completionBuyCard ()  {
     modalForm2.addEventListener('submit', (event) => {
-    //отмена стандартного поведения (перезагрузки?)
+    //отмена стандартного поведения
     event.preventDefault();
     const form = modalForm2;
+    // key активного пользователя
     const key = findAncAtiveUser();
     const object = JSON.parse(localStorage.getItem(key));
     if (validation(form) === true){
@@ -661,75 +719,86 @@ function openBuyCard () {
 
   })}
 
-  
+
   /* покупка книги при наличии абонемента.
   функция получает следующий элемент div после кнопки buy из Favorites */
   function rentedBooks (event) {
     //console.log(event);
-    //отключаем кнопку, заменяем надпись на кнопке
-    replaceBuyWithOwn (event);
 
-    // получаем key активного пользователя и увеличиваем у него счетчик купленных книг.
+    // получаем key активного пользователя и значение для этого key (object)
     const keyActiveUser = findAncAtiveUser();
     const object = JSON.parse(localStorage.getItem(keyActiveUser));
-    object['counter books'] = object['counter books'] + 1;
+
     /* получаем название книги и автора, ищем в родительском элементе*/
     const parent = event.parentElement;
     const nameBook = parent.querySelector('.title').textContent;
-    console.log(nameBook);
+      //console.log(nameBook);
     const authorBook = parent.querySelector('.subtitle').textContent.slice(3);
-    console.log(authorBook);
+      //console.log(authorBook);
 
-    //получаем key для карточки книги
+      //получаем key для карточки книги
     const keyBook = event.classList[1].toString();
-    console.log(keyBook);
-    let flagBook = false;
-    console.log(flagBook, 'флаг для книги');
-    console.log(object);
-    console.log('объект для кликнтого buy');
-    console.log(object.books);
-    console.log('содержимое объекта books');
-    //ищем данный key в объекте Книги
-    // if (object.books.length === 0) {
-    //   flagBook = false;
-    //   console.log(flagBook);
-    //   console.log(object.books.length);
-    // } else {
-      for (key in object.books) {
-        console.log(key);
-        if (key === keyBook) {
-          // кнопка buy должна быть переименована в own и не активна
-          replaceBuyWithOwn (event);
-          flagBook = true;
-          console.log(flagBook, 'флаг для книги, совпадения есть');
-        } else {
-          // если такого равенства не найдено, то объект с таким ключом добавляем в объект books
-          flagBook = false;
-          console.log(flagBook, 'флаг для книги, не совпало');
-        }
-      }
-   // }
-    console.log(flagBook);
-    for (let i = 0; object.books.length; i++) {
-      console.log(object.books[i]);
-      if (object.books[i] === keyBook) {
-        // кнопка buy должна быть переименована в own и не активна
-        replaceBuyWithOwn (event);
-      } else {
-        // если такого равенства не найдено, то объект с таким ключом добавляем в объект books
-        flagBook = false;
-      }
-    }
-    console.log(flagBook);
 
-    if (flagBook === false) {
-      object.books[keyBook] = `${nameBook}, ${authorBook}`;
-      console.log(keyBook);
-    };
+      //добавляем значения в local storage
+    object.books[keyBook] = `${nameBook}, ${authorBook}`;
 
-    // записываем его в local storage изменения
+      // увеличиваем у активного пользователя счетчик купленных книг.
+    object['counter books'] = object['counter books'] + 1;
+
+      // записываем изменения в local storage изменения
     localStorage.setItem(keyActiveUser, JSON.stringify(object));
-    console.log(object);
+
+      // кнопку buy  меняем на own и делаем не активной
+      replaceBuyWithOwn (event);
+
+      return (object);
+
+
+  //   //console.log(keyBook);
+  //   let flagBook = false;
+  //   //console.log(flagBook, 'флаг для книги');
+  //   //console.log(object);
+  //   //console.log('объект для кликнтого buy');
+  //   //console.log(object.books);
+  //   //console.log('содержимое объекта books');
+
+  //   //ищем данный key в объекте Книги
+  //   for (key in object.books) {
+  //     //console.log(key);
+  //     if (key === keyBook) {
+  //       // кнопка buy должна быть переименована в own и не активна
+  //       replaceBuyWithOwn (event);
+  //       flagBook = true;
+  //       //console.log(flagBook, 'флаг для книги, совпадения есть');
+  //     } else {
+  //       // если такого равенства не найдено, то объект с таким ключом добавляем в объект books
+  //       flagBook = false;
+  //       //console.log(flagBook, 'флаг для книги, не совпало');
+  //     }
+  //   }
+  //  // }
+  //   //console.log(flagBook);
+  //   for (let i = 0; object.books.length; i++) {
+  //     //console.log(object.books[i]);
+  //     if (object.books[i] === keyBook) {
+  //       // кнопка buy должна быть переименована в own и не активна
+  //       replaceBuyWithOwn (event);
+  //     } else {
+  //       // если такого равенства не найдено, то объект с таким ключом добавляем в объект books
+  //       flagBook = false;
+  //     }
+  //   }
+  //   //console.log(flagBook);
+
+  //   if (flagBook === false) {
+  //     object.books[keyBook] = `${nameBook}, ${authorBook}`;
+  //     //console.log(keyBook);
+  //   };
+
+  //   // записываем изменения в local storage изменения
+
+  //   localStorage.setItem(keyActiveUser, JSON.stringify(object));
+  //   //console.log(object);
   }
 
   /* заменить buy на own */
@@ -752,6 +821,8 @@ function closeAut (key, object) {
   // находим иконку пользователя в header
   const iconProfile = document.querySelector('.header-icon').firstElementChild;
   iconProfile.outerHTML = '<img class="" src="assets/img/icon_profile.svg" alt="Icon profile">';
+
+  // кнопкам buy в favorites возвращаем первоначальный вид
 
   // закрываем drop-меню
   dropMenu[1].classList.add('profile-with-aut');
