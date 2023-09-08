@@ -629,7 +629,7 @@ function authorizedUser(key, object) {
  // console.log(key, object);
 }
 
-/*сравниваем классы последующих элементов кнопок buy с ключами объекта books в локал сторадж,
+/* при авторизации сравниваем классы последующих элементов кнопок buy с ключами объекта books в локал сторадж,
     при совпадении заменяем buy на own*/
 function markPurchasedBooks (key, object) {
   const bookItems = document.querySelectorAll('.book-item');
@@ -671,13 +671,11 @@ function markPurchasedBooks (key, object) {
 function openBuyCard () {
   modalWindows[3].classList.remove('hidden');
   modalWindows[3].firstElementChild.classList.remove('hidden');
-
-  // с неактивной кнопкой до конца не разобралась
   completionBuyCard();
 }
 
+  // с неактивной кнопкой до конца не разобралась
   /* проверка заполнения всех полей формы, иначе кнопка buy отключена*/
-
   // function completionBuyCard() {
   //   const form = modalForm2;
   //   console.log(form);
@@ -716,7 +714,6 @@ function openBuyCard () {
      /* закрыть форму */
      closeBuyCard();
     }
-
   })}
 
 
@@ -823,10 +820,25 @@ function closeAut (key, object) {
   iconProfile.outerHTML = '<img class="" src="assets/img/icon_profile.svg" alt="Icon profile">';
 
   // кнопкам buy в favorites возвращаем первоначальный вид
-
+  returnTheInitialValueOfBuy ();
   // закрываем drop-меню
   dropMenu[1].classList.add('profile-with-aut');
 }
+
+/* возврат к начальным значениям кнопок buy при выходе из режима авторизации */
+// находим кнопки own, меняем значение и удаляем классы
+function returnTheInitialValueOfBuy (key, object) {
+  const bookItems = document.querySelectorAll('.book-item');
+
+  bookItems.forEach((event) => {
+    // находим кнопкy buy
+    const btnBuy = event.querySelector('.button');
+
+    btnBuy.classList.remove('button-own');
+    btnBuy.setAttribute('disabled', false);
+    btnBuy.textContent = 'Buy';
+    })
+  }
 
 console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
 console.log('1. Вёрстка соответствует макету. Ширина экрана 768px 26/26');
