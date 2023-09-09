@@ -256,7 +256,19 @@ loginWindows.forEach((item) => {
     })
   })
 
-
+/* блок Find your Library card */
+const btnCheckTheCard = document.querySelector('.button-big');
+btnCheckTheCard.addEventListener('click', () => {
+  //если пользователь авторизирован, то этой кнопки нет
+  // - отображается другое окно, вызываемое из режима авторизации
+  if (localStorage.length > 0) {
+    // отслеживаем какую инфу вводят в полях формы,
+    // сравниваем ее с пользовательской инфой в local storage
+    // и при совпадении выводим данные.
+  } else {
+    console.log ('пусто');
+   }
+})
 
 /* проверка валидации */
 

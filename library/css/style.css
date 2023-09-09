@@ -736,7 +736,6 @@ button {
   color: #8e8e8e;
 }
 .main .library-card-form .button-big {
-  display: block;
   margin: 0 auto;
   padding-top: 2px;
   width: 240px;
@@ -753,6 +752,12 @@ button {
 }
 .main .library-card-form .button-big:hover {
   border: none;
+}
+.main .library-card-form .button-big-text {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .main .library-card .get-title {
   color: #000000;
