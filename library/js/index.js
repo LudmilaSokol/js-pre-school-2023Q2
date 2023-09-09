@@ -501,47 +501,62 @@ function findAncAtiveUser () {
 
 /* клик по buy в favorites */
 const bookItems = document.querySelectorAll('.book-item');
-
+console.log(bookItems);
+let btnBuy;
 bookItems.forEach((event) => {
-  const btnBuy = event.querySelectorAll('.button');
-  btnBuy.forEach((event) => {
-    let nextElBtnBuy;
+  //console.log (event + ' значение event для bookItens');
+  btnBuy = event.querySelectorAll('.button');
+  console.log (event + ' значение event для bookItems');
+  console.log (btnBuy + ' значение при клике на кнопку')
+
+  // следующий элемент после кнопки
+  //let nextElBtnBuy;
+  btnBuy.forEach((event)=> {
+    let flagActiveUser = false;
+    let flagLibraryCard = false;
+    let key;
+    let object = {};
+    console.log (event + ' значение event для btnBuy');
     event.addEventListener('click', () => {
       // проверяем наличие активного пользователя в local Storage
       // flagActiveUser = false если нет активного пользователя
-      let flagActiveUser = false;
-      let flagLibraryCard = false;
+
       if (localStorage.length !== 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        let key = localStorage.key(i);
-        let object = JSON.parse(localStorage.getItem(key));
-        //console.log(key, object);
-        /* если есть активный пользователь, то меняем флаг на true*/
-        if (object['active'] === true){
-          //запоминаем следующий элемент за кнопкой buy (они отличаются классами)
-          nextElBtnBuy = event.nextElementSibling;
-          flagActiveUser = true;
-          if (object['library card'] === true) {
-            flagLibraryCard = true;
+        for (let i = 0; i < localStorage.length; i++) {
+          key = localStorage.key(i);
+          object = JSON.parse(localStorage.getItem(key));
+          //console.log(key, object);
+          /* если есть активный пользователь, то меняем флаг на true*/
+          if (object['active'] === true){
+            //запоминаем следующий элемент за кнопкой buy (они отличаются классами)
+            //nextElBtnBuy = btnBuy.nextElementSibling;
+            flagActiveUser = true;
+            if (object['library card'] === true) {
+              flagLibraryCard = true;
+            }
           }
         }
       }
-    }
-    if (flagActiveUser === false){
-            /* открытие окна авторизации */
-            modalWindows[0].classList.remove('hidden');
-            modalWindows[0].firstElementChild.classList.remove('hidden');
-    } else if (flagLibraryCard === false) {
-      // действия при авторизированном пользователе и не купленном абонементе
-      // открываем окно покупки абонемента
-      openBuyCard ();
-    } else {
-      /* действия при авторизированном пользователе и купленном абонементе
-       (купить книгу при клике на buy в карточке книги)*/
-       rentedBooks (nextElBtnBuy);
-    }
+      if (flagActiveUser === false){
+        /* открытие окна авторизации */
+        modalWindows[0].classList.remove('hidden');
+        modalWindows[0].firstElementChild.classList.remove('hidden');
+      } else if (flagLibraryCard === false) {
+        // действия при авторизированном пользователе и не купленном абонементе
+        // открываем окно покупки абонемента
+        openBuyCard ();
+        } else {
+          /* действия при авторизированном пользователе и купленном абонементе
+          (купить книгу при клике на buy в карточке книги) передаем кнопку*/
+           
+          console.log (event, btnBuy);
+          rentedBooks (event);
+          //console.log (event);
+          }
     })
   })
+
+
 })
 
 /* состояние при авторизации */
@@ -579,12 +594,14 @@ function authorizedUser(key, object) {
     // просматриваем все книги в local storage, и если их значение совпадает со значениями ключей объекта books,
     // отключаем кнопку buy, заменяем надпись на кнопке
     console.log(object['counter books']);
+    console.log(' количество купленных книг');
     // сравниваем классы последующих элементов кнопок buy с ключами объекта books в локал сторадж,
     //при совпадении заменяем buy на own
     markPurchasedBooks (key, object);
     //replaceBuyWithOwn (event);
   } else {
     console.log(object['counter books']);
+    console.log(' количество купленных книг');
   }
 
   /* отслеживание клика по MyProfile  и переход к соответствующему окну */
@@ -708,7 +725,7 @@ function openBuyCard () {
     if (validation(form) === true){
       object['library card'] = true;
       localStorage.setItem(key, JSON.stringify(object));
-      alert('Оплата прошла успешно');
+      alert('Абонемент оплачен. Доступна покупка книг');
           /* очистка формы */
      clearForm (form);
      /* закрыть форму */
@@ -718,38 +735,89 @@ function openBuyCard () {
 
 
   /* покупка книги при наличии абонемента.
-  функция получает следующий элемент div после кнопки buy из Favorites */
+  функция получает кнопку buy из Favorites */
   function rentedBooks (event) {
-    //console.log(event);
+    //console.log(event + ' значение пришедшее для обработки клика при активном пользователе и купленном абонементе');
 
     // получаем key активного пользователя и значение для этого key (object)
     const keyActiveUser = findAncAtiveUser();
     const object = JSON.parse(localStorage.getItem(keyActiveUser));
+    console.log(keyActiveUser, object);
+    /* отслеживаем клики на buy и выполняем добавление */
+    console.log(bookItems);
+    console.log(event);
+    //event.addEventListener('click', () => {
+      console.log (event + ' значение при клике на кнопку1');
+          /* получаем название книги и автора, ищем в родительском элементе*/
+        const parent = event.parentElement;
+        const nameBook = parent.querySelector('.title').textContent;
+        console.log(nameBook);
+        const authorBook = parent.querySelector('.subtitle').textContent.slice(3);
+        console.log(authorBook);
 
-    /* получаем название книги и автора, ищем в родительском элементе*/
-    const parent = event.parentElement;
-    const nameBook = parent.querySelector('.title').textContent;
-      //console.log(nameBook);
-    const authorBook = parent.querySelector('.subtitle').textContent.slice(3);
-      //console.log(authorBook);
+        //получаем key для карточки книги, обращаясь к следующему элементу за buy
+        nextElBtnBuy = event.nextElementSibling;
+        console.log(nextElBtnBuy + 'след элемент');
 
-      //получаем key для карточки книги
-    const keyBook = event.classList[1].toString();
+        const keyBook = nextElBtnBuy.classList[1].toString();
+        console.log (keyBook + 'key для книги');
 
-      //добавляем значения в local storage
-    object.books[keyBook] = `${nameBook}, ${authorBook}`;
+        //добавляем значения в local storage
+        object.books[keyBook] = `${nameBook}, ${authorBook}`;
 
-      // увеличиваем у активного пользователя счетчик купленных книг.
-    object['counter books'] = object['counter books'] + 1;
+        // увеличиваем у активного пользователя счетчик купленных книг.
+        object['counter books'] = object['counter books'] + 1;
 
-      // записываем изменения в local storage изменения
-    localStorage.setItem(keyActiveUser, JSON.stringify(object));
+        // записываем изменения в local storage изменения
+        localStorage.setItem(keyActiveUser, JSON.stringify(object));
 
-      // кнопку buy  меняем на own и делаем не активной
-      replaceBuyWithOwn (event);
+        // кнопку buy  меняем на own и делаем не активной
+         replaceBuyWithOwn (nextElBtnBuy);
+         location.reload();
 
-      return (object);
+         //return;
+     // })
+    // bookItems.forEach((event) => {
+    //   //console.log (event + ' значение event');
+    //   btnBuy = event.querySelectorAll('.button');
+    //   console.log (btnBuy + ' значение при клике на кнопку');
+    
+    //   // следующий элемент после кнопки
+    //   //let nextElBtnBuy;
+    //   btnBuy.forEach((el) => {
+    //     console.log (el);
+    //     el.addEventListener('click', (el) => {
+    //       console.log (el + ' значение при клике на кнопку1');
+    //           /* получаем название книги и автора, ищем в родительском элементе*/
+    //   const parent = el.parentElement;
+    //   const nameBook = parent.querySelector('.title').textContent;
+    //     console.log(nameBook);
+    //   const authorBook = parent.querySelector('.subtitle').textContent.slice(3);
+    //     console.log(authorBook);
+  
+    //     //получаем key для карточки книги, обращаясь к следующему элементу за buy
+    //   nextElBtnBuy = el.nextElementSibling;
+    //     //console.log(nextElBtnBuy);
+  
+    //   const keyBook = nextElBtnBuy.classList[1].toString();
+    //   console.log (keyBook);
+  
+    //     //добавляем значения в local storage
+    //   object.books[keyBook] = `${nameBook}, ${authorBook}`;
+  
+    //     // увеличиваем у активного пользователя счетчик купленных книг.
+    //   object['counter books'] = object['counter books'] + 1;
+  
+    //     // записываем изменения в local storage изменения
+    //   localStorage.setItem(keyActiveUser, JSON.stringify(object));
+  
+    //     // кнопку buy  меняем на own и делаем не активной
+    //     replaceBuyWithOwn (el);
+    //       })
+    //   })
 
+    
+    // })
 
   //   //console.log(keyBook);
   //   let flagBook = false;
@@ -798,7 +866,7 @@ function openBuyCard () {
   //   //console.log(object);
   }
 
-  /* заменить buy на own */
+  /* заменить buy на own, получает последующий элемент после кнопки buy */
   function replaceBuyWithOwn (event) {
     event.previousElementSibling.classList.add('button-own');
     event.previousElementSibling.setAttribute('disabled', true);
@@ -831,11 +899,11 @@ function returnTheInitialValueOfBuy (key, object) {
   const bookItems = document.querySelectorAll('.book-item');
 
   bookItems.forEach((event) => {
-    // находим кнопкy buy
+    // находим кнопкy own
     const btnBuy = event.querySelector('.button');
 
     btnBuy.classList.remove('button-own');
-    btnBuy.setAttribute('disabled', false);
+    btnBuy.removeAttribute('disabled');
     btnBuy.textContent = 'Buy';
     })
   }
