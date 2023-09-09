@@ -1231,6 +1231,14 @@ button {
   color: #bb945f;
   text-align: center;
 }
+.modal-profile .box2 .card-copy:hover,
+.modal-profile .box2 .card-copy:focus {
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+.modal-profile .box2 .card-copy:active {
+  opacity: 0.4;
+}
 .modal-profile .box2 .card-copy-img {
   margin-bottom: 2px;
 }

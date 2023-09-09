@@ -495,8 +495,6 @@ bookItems.forEach((event) => {
   //console.log (event + ' значение event для bookItems');
   //console.log (btnBuy + ' значение при клике на кнопку')
 
-  // следующий элемент после кнопки
-  //let nextElBtnBuy;
   btnBuy.forEach((event)=> {
     let flagActiveUser = false;
     let flagLibraryCard = false;
@@ -610,10 +608,16 @@ function authorizedUser(key, object) {
    let countBooks = document.querySelector('.count-books');
    countBooks.textContent = object['counter books'];
 
-    // отображение card Number
+    // отображение Card Number
     let cardNumber = document.querySelector('.card-number');
     cardNumber.textContent = key;
     cardNumber.style.textTransform = 'uppercase';
+
+    // копирование Card Number в буфер обмена
+    const cardCopy = document.querySelector('.card-copy');
+    cardCopy.onclick = function() {
+      navigator.clipboard.writeText(cardNumber.textContent);
+    }
   })
 
   /* отслеживаение клика по Log Out */
