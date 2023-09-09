@@ -1212,10 +1212,12 @@ button {
 }
 .modal-profile .box2-items {
   padding-left: 30px;
+  margin: 0;
 }
 .modal-profile .box2-item {
   margin-bottom: 10px;
   letter-spacing: 2px;
+  font-size: 16px;
   text-transform: capitalize;
 }
 .modal-profile .box2 .card {

@@ -574,13 +574,18 @@ function authorizedUser(key, object) {
   if (object['counter books'] > 0) {
     // просматриваем все книги в local storage, и если их значение совпадает со значениями ключей объекта books,
     // отключаем кнопку buy, заменяем надпись на кнопке
-    console.log(object['counter books']);
-    console.log(' количество купленных книг');
+    //console.log(object['counter books']);
+    //console.log(' количество купленных книг');
+
     // сравниваем классы последующих элементов кнопок buy с ключами объекта books в локал сторадж,
     //при совпадении заменяем buy на own
     markPurchasedBooks (key, object);
-    //replaceBuyWithOwn (event);
+
+    /* выводим список купленных книг в окне My profile (показать купленные книги)*/
+    showPurchasedBooks(key, object);
   } else {
+
+    /* в окне My profile выводим сообщение, что купленных книг нет*/
     console.log(object['counter books']);
     console.log(' количество купленных книг');
   }
@@ -631,6 +636,23 @@ function authorizedUser(key, object) {
   })
  // console.log(key, object);
 }
+
+/* показать купленные книги в My profile */
+function showPurchasedBooks(key, object) {
+  //console.log(key, object);
+  const listOfBooks = document.querySelector('.box2-items');
+  console.log (listOfBooks);
+
+  for (kl in object.books) {
+    // создаем элемент li
+    let liBook = document.createElement('li');
+    liBook.classList.add('box2-item');
+    console.log (liBook);
+    liBook.textContent = object.books[kl];
+    listOfBooks.append(liBook); // вставить liBook в конец listOfBooks
+  }
+}
+
 
 /* при авторизации сравниваем классы последующих элементов кнопок buy с ключами объекта books в локал сторадж,
     при совпадении заменяем buy на own*/
