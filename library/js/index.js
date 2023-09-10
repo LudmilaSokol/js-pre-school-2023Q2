@@ -607,6 +607,7 @@ function authorizedUser(key, object) {
   const blockAfterAuthorization = document.getElementById('library-card-you');
   blockBeforeAuthorization.style.display = 'none';
   blockAfterAuthorization.style.display = 'block';
+
   /* отслеживание клика по MyProfile  и переход к соответствующему окну */
   const btnMyProfile = document.querySelector('.my-profile');
   btnMyProfile.addEventListener('click', () => {
@@ -827,6 +828,13 @@ function closeAut (key, object) {
 
   // кнопкам buy в favorites возвращаем первоначальный вид
   returnTheInitialValueOfBuy ();
+
+    /* замена блока Digital Library Cards (возвращаем начальное состояние) */
+    const blockBeforeAuthorization = document.getElementById('library-card');
+    const blockAfterAuthorization = document.getElementById('library-card-you');
+    blockBeforeAuthorization.style.display = 'block';
+    blockAfterAuthorization.style.display = 'none';
+
   // закрываем drop-меню
   dropMenu[1].classList.add('profile-with-aut');
 }
