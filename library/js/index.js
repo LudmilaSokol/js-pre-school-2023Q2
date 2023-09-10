@@ -256,7 +256,19 @@ loginWindows.forEach((item) => {
     })
   })
 
-
+/* блок Find your Library card */
+const btnCheckTheCard = document.querySelector('.button-big');
+btnCheckTheCard.addEventListener('click', () => {
+  //если пользователь авторизирован, то этой кнопки нет
+  // - отображается другое окно, вызываемое из режима авторизации
+  if (localStorage.length > 0) {
+    // отслеживаем какую инфу вводят в полях формы,
+    // сравниваем ее с пользовательской инфой в local storage
+    // и при совпадении выводим данные.
+  } else {
+    console.log ('пусто');
+   }
+})
 
 /* проверка валидации */
 
@@ -563,9 +575,9 @@ function authorizedUser(key, object) {
   headerDropMenu.style.textTransform = 'uppercase';
 
   /* вывод полного имени пользователя при наведении на иконку */
-  // определение элемента для наведения
+    // определение элемента для наведения
   const headerIconName = document.querySelector('.header-icon-name');
-  // отслеживание наведения
+    // отслеживание наведения
   headerIconName.addEventListener('mouseover', () => {
     headerIconName.title = contentTitle;
   })
@@ -584,7 +596,7 @@ function authorizedUser(key, object) {
     /* выводим список купленных книг в окне My profile (показать купленные книги)*/
     showPurchasedBooks(key, object);
   } else {
-
+    reportNoBooks();
     /* в окне My profile выводим сообщение, что купленных книг нет*/
     console.log(object['counter books']);
     console.log(' количество купленных книг');
@@ -641,16 +653,24 @@ function authorizedUser(key, object) {
 function showPurchasedBooks(key, object) {
   //console.log(key, object);
   const listOfBooks = document.querySelector('.box2-items');
-  console.log (listOfBooks);
+  //console.log (listOfBooks);
 
   for (kl in object.books) {
     // создаем элемент li
     let liBook = document.createElement('li');
     liBook.classList.add('box2-item');
-    console.log (liBook);
+    //console.log (liBook);
     liBook.textContent = object.books[kl];
     listOfBooks.append(liBook); // вставить liBook в конец listOfBooks
   }
+}
+
+/* сообщение что купленных книг нет в My Profile */
+function reportNoBooks() {
+  const listOfBooks = document.querySelector('.box2-items');
+  const report = document.createElement('p');
+  report.textContent = "You haven't bought any books yet";
+  listOfBooks.append(report);
 }
 
 
