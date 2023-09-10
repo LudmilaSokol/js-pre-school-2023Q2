@@ -608,6 +608,9 @@ function authorizedUser(key, object) {
   blockBeforeAuthorization.style.display = 'none';
   blockAfterAuthorization.style.display = 'block';
 
+  /* заполнение блока Digital Library Cards данными пользователя*/
+  fillInTheUserCardDetails (key, object);
+
   /* отслеживание клика по MyProfile  и переход к соответствующему окну */
   const btnMyProfile = document.querySelector('.my-profile');
   btnMyProfile.addEventListener('click', () => {
@@ -653,6 +656,26 @@ function authorizedUser(key, object) {
     closeAut(key, object);
   })
  // console.log(key, object);
+}
+
+/* заполнение блока Digital Library Cards данными пользователя */
+function fillInTheUserCardDetails (key, object) {
+  const counterVisits = document.querySelector('.counter-visits');
+  const counterBooks = document.querySelector('.counter-books');
+  // выводим значения из local storage
+  counterVisits.textContent = object['visits'];
+  counterBooks.textContent = object['counter books'];
+
+  // полное имя пользователя
+  const contentTitle = `${object['first-name']} ${object['last-name']}`;
+  const outputNameUser = document.querySelector('.name-user');
+
+  outputNameUser.value = contentTitle;
+
+  // номер карты
+  const outputNumberCard = document.querySelector('.number-card');
+  outputNumberCard.value = key;
+  outputNumberCard.style.textTransform = 'uppercase';
 }
 
 /* показать купленные книги в My profile */
