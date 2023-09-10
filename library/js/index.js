@@ -266,11 +266,11 @@ let rememberCardNumberUser;
 let rememberNameUser;
 cardNumberUser.addEventListener('change', () => {
   rememberCardNumberUser = cardNumberUser.value;
-  console.log(rememberCardNumberUser);
+  //console.log(rememberCardNumberUser);
 });
 nameUser.addEventListener('change', () => {
   rememberNameUser = nameUser.value;
-  console.log(rememberNameUser);
+  //console.log(rememberNameUser);
 });
 btnCheckTheCard.addEventListener('click', () => {
   //если пользователь авторизирован, то этой кнопки нет
@@ -284,34 +284,37 @@ btnCheckTheCard.addEventListener('click', () => {
     // и при совпадении выводим данные.
 
     handleInput();
-  } else {
-    console.log ('пусто');
-   }
+  } /*else {
+    //console.log ('пусто');
+   }*/
 })
 
 /* блок Find your Library card обработка вводимых данных*/
 function handleInput () {
 
-  console.log(rememberCardNumberUser);
-  console.log(rememberNameUser);
+  //console.log(rememberCardNumberUser);
+  //console.log(rememberNameUser);
     // проверка наличия введенного номера катры в local storage, результат true или false
     if (!checkTheCardNumber (rememberCardNumberUser)) {
       alert(`Карты с номером ${rememberCardNumberUser} нет`);
     } else if (checkTheNameUser (rememberCardNumberUser, rememberNameUser)) {
-      console.log(`оба поля совпадают`);
+      //console.log(`оба поля совпадают`);
+      //вывести панель информации
+      outputInformationPanel();
     } else {
       alert(`Пользователя ${rememberNameUser} нет`);
-      console.log('номер есть');
+      //console.log('номер есть');
     }
 }
 
+/* проверка наличия CardNumber введенного пользователем в Find your Library в local storage */
 function checkTheCardNumber (number) {
   let num = number;
-  console.log (typeof num);
+  //console.log (typeof num);
   let result = false;
   for (let i = 0; i < localStorage.length; i++) {
     let key = localStorage.key(i);
-    console.log(typeof key);
+    //console.log(typeof key);
 
     // если key совпадает с введенным в Find your Library card
     if (key.toUpperCase() === number.toUpperCase()){
@@ -321,6 +324,7 @@ function checkTheCardNumber (number) {
   return result;
 }
 
+/* проверка наличия NameUser введенного пользователем в Find your Library в local storage */
 function checkTheNameUser (key, name) {
   let result = false;
   // пользователь с указанным key
@@ -332,6 +336,36 @@ function checkTheNameUser (key, name) {
     result = true;
    }
    return result;
+}
+
+/* вывод панели с информацией в Find your Library */
+function outputInformationPanel() {
+  const key = rememberCardNumberUser;
+
+  //console.log(btnCheckTheCard);
+  btnCheckTheCard.outerHTML = `<div class="library-card-form-counters">
+  <div class="counter">
+    <p>visits</p>
+    <p class="counter-img"><img src="assets/img/profile/visits.svg" alt="Visits icon"></p>
+    <p class="counter-visits">23</p>
+  </div>
+  <div class="counter">
+    <p>bonuses</p>
+    <p class="counter-img"><img src="assets/img/profile/bonuses.svg" alt="Bonuses icon"></p>
+    <p>1240</p>
+  </div>
+  <div class="counter">
+    <p>Books</p>
+    <p class="counter-img"><img src="assets/img/profile/books.svg" alt="Books icon"></p>
+    <p class="counter-books">2</p>
+  </div>
+</div>`;
+  setTimeout(function() {
+    document.querySelector('.library-card-form-counters').outerHTML = `<div class="button button-big">
+    <span class="button-big-text">Check the card</span>  </div>`;
+    cardNumberUser.value = '';
+    nameUser.value = '';
+  }, 10000);
 }
 
 /* проверка валидации */
@@ -662,8 +696,8 @@ function authorizedUser(key, object) {
   } else {
     reportNoBooks();
     /* в окне My profile выводим сообщение, что купленных книг нет*/
-    console.log(object['counter books']);
-    console.log(' количество купленных книг');
+    //console.log(object['counter books']);
+    //console.log(' количество купленных книг');
   }
 
   /* замена блока Digital Library Cards */
@@ -865,7 +899,7 @@ function openBuyCard () {
     //console.log(bookItems);
     //console.log(event);
 
-      console.log (event + ' значение при клике на кнопку1');
+      //console.log (event + ' значение при клике на кнопку1');
         /* получаем название книги и автора, ищем в родительском элементе*/
         const parent = event.parentElement;
         const nameBook = parent.querySelector('.title').textContent;
@@ -945,5 +979,5 @@ function returnTheInitialValueOfBuy (key, object) {
     })
   }
 
-console.log('Task: Library#2 - Адаптивная вёрстка 50/50');
-console.log('1. Вёрстка соответствует макету. Ширина экрана 768px 26/26');
+console.log('Task: Library#3 - 198/206');
+console.log('валидация форм сырая, но минимальная вроде есть. \n i. Блок Digital Library Cards. Если введенные имя и номер карты совпадают с данными пользователя, то отображается панель с информацией, вместо кнопки Check the card на 10 секунд. +2 - проверка на совпадение введенных данных с local storage реализована. Отображение иконок в работе');
