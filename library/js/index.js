@@ -612,39 +612,43 @@ function authorizedUser(key, object) {
   fillInTheUserCardDetails (key, object);
 
   /* отслеживание клика по MyProfile  и переход к соответствующему окну */
-  const btnMyProfile = document.querySelector('.my-profile');
-  btnMyProfile.addEventListener('click', () => {
-    modalWindows[2].classList.remove('hidden');
-    modalWindows[2].firstElementChild.classList.remove('hidden');
+  const btnMyProfile = document.querySelectorAll('.my-profile');
 
-    // отображение инициалов пользователя в модальном окне
-    const avatar = document.querySelector('.avatar').firstElementChild;
-    avatar.outerHTML = `<p> ${iconUser} </p>`;
+  btnMyProfile.forEach((event) => {
+    event.addEventListener('click', () => {
+      modalWindows[2].classList.remove('hidden');
+      modalWindows[2].firstElementChild.classList.remove('hidden');
 
-    // отображение ИФ пользователя в модальном окне
-    let nameUser = document.querySelector('.name');
-    nameUser.firstElementChild.outerHTML = `<span> ${contentTitle} </span>`;
-    nameUser.setAttribute('style', 'font-size: 13px; line-height: 16px');
+      // отображение инициалов пользователя в модальном окне
+      const avatar = document.querySelector('.avatar').firstElementChild;
+      avatar.outerHTML = `<p> ${iconUser} </p>`;
 
-    // отображение счетчика визитов
-    let countVisites = document.querySelector('.count-visits');
-    countVisites.textContent = object['visits'];
+      // отображение ИФ пользователя в модальном окне
+      let nameUser = document.querySelector('.name');
+      nameUser.firstElementChild.outerHTML = `<span> ${contentTitle} </span>`;
+      nameUser.setAttribute('style', 'font-size: 13px; line-height: 16px');
 
-    // отображение счетчика купленных книг
-   let countBooks = document.querySelector('.count-books');
-   countBooks.textContent = object['counter books'];
+      // отображение счетчика визитов
+      let countVisites = document.querySelector('.count-visits');
+      countVisites.textContent = object['visits'];
 
-    // отображение Card Number
-    let cardNumber = document.querySelector('.card-number');
-    cardNumber.textContent = key;
-    cardNumber.style.textTransform = 'uppercase';
+      // отображение счетчика купленных книг
+     let countBooks = document.querySelector('.count-books');
+     countBooks.textContent = object['counter books'];
 
-    // копирование Card Number в буфер обмена
-    const cardCopy = document.querySelector('.card-copy');
-    cardCopy.onclick = function() {
-      navigator.clipboard.writeText(cardNumber.textContent);
-    }
+      // отображение Card Number
+      let cardNumber = document.querySelector('.card-number');
+      cardNumber.textContent = key;
+      cardNumber.style.textTransform = 'uppercase';
+
+      // копирование Card Number в буфер обмена
+      const cardCopy = document.querySelector('.card-copy');
+      cardCopy.onclick = function() {
+        navigator.clipboard.writeText(cardNumber.textContent);
+      }
+    })
   })
+
 
   /* отслеживаение клика по Log Out */
   const btnLogOut = document.querySelector('.out');
