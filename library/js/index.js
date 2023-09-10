@@ -602,40 +602,53 @@ function authorizedUser(key, object) {
     console.log(' количество купленных книг');
   }
 
+  /* замена блока Digital Library Cards */
+  const blockBeforeAuthorization = document.getElementById('library-card');
+  const blockAfterAuthorization = document.getElementById('library-card-you');
+  blockBeforeAuthorization.style.display = 'none';
+  blockAfterAuthorization.style.display = 'block';
+
+  /* заполнение блока Digital Library Cards данными пользователя*/
+  fillInTheUserCardDetails (key, object);
+
   /* отслеживание клика по MyProfile  и переход к соответствующему окну */
-  const btnMyProfile = document.querySelector('.my-profile');
-  btnMyProfile.addEventListener('click', () => {
-    modalWindows[2].classList.remove('hidden');
-    modalWindows[2].firstElementChild.classList.remove('hidden');
+  const btnMyProfile = document.querySelectorAll('.my-profile');
 
-    // отображение инициалов пользователя в модальном окне
-    const avatar = document.querySelector('.avatar').firstElementChild;
-    avatar.outerHTML = `<p> ${iconUser} </p>`;
+  btnMyProfile.forEach((event) => {
+    event.addEventListener('click', () => {
+      modalWindows[2].classList.remove('hidden');
+      modalWindows[2].firstElementChild.classList.remove('hidden');
 
-    // отображение ИФ пользователя в модальном окне
-    let nameUser = document.querySelector('.name');
-    nameUser.firstElementChild.outerHTML = `<span> ${contentTitle} </span>`;
-    nameUser.setAttribute('style', 'font-size: 13px; line-height: 16px');
+      // отображение инициалов пользователя в модальном окне
+      const avatar = document.querySelector('.avatar').firstElementChild;
+      avatar.outerHTML = `<p> ${iconUser} </p>`;
 
-    // отображение счетчика визитов
-    let countVisites = document.querySelector('.count-visits');
-    countVisites.textContent = object['visits'];
+      // отображение ИФ пользователя в модальном окне
+      let nameUser = document.querySelector('.name');
+      nameUser.firstElementChild.outerHTML = `<span> ${contentTitle} </span>`;
+      nameUser.setAttribute('style', 'font-size: 13px; line-height: 16px');
 
-    // отображение счетчика купленных книг
-   let countBooks = document.querySelector('.count-books');
-   countBooks.textContent = object['counter books'];
+      // отображение счетчика визитов
+      let countVisites = document.querySelector('.count-visits');
+      countVisites.textContent = object['visits'];
 
-    // отображение Card Number
-    let cardNumber = document.querySelector('.card-number');
-    cardNumber.textContent = key;
-    cardNumber.style.textTransform = 'uppercase';
+      // отображение счетчика купленных книг
+     let countBooks = document.querySelector('.count-books');
+     countBooks.textContent = object['counter books'];
 
-    // копирование Card Number в буфер обмена
-    const cardCopy = document.querySelector('.card-copy');
-    cardCopy.onclick = function() {
-      navigator.clipboard.writeText(cardNumber.textContent);
-    }
+      // отображение Card Number
+      let cardNumber = document.querySelector('.card-number');
+      cardNumber.textContent = key;
+      cardNumber.style.textTransform = 'uppercase';
+
+      // копирование Card Number в буфер обмена
+      const cardCopy = document.querySelector('.card-copy');
+      cardCopy.onclick = function() {
+        navigator.clipboard.writeText(cardNumber.textContent);
+      }
+    })
   })
+
 
   /* отслеживаение клика по Log Out */
   const btnLogOut = document.querySelector('.out');
@@ -647,6 +660,26 @@ function authorizedUser(key, object) {
     closeAut(key, object);
   })
  // console.log(key, object);
+}
+
+/* заполнение блока Digital Library Cards данными пользователя */
+function fillInTheUserCardDetails (key, object) {
+  const counterVisits = document.querySelector('.counter-visits');
+  const counterBooks = document.querySelector('.counter-books');
+  // выводим значения из local storage
+  counterVisits.textContent = object['visits'];
+  counterBooks.textContent = object['counter books'];
+
+  // полное имя пользователя
+  const contentTitle = `${object['first-name']} ${object['last-name']}`;
+  const outputNameUser = document.querySelector('.name-user');
+
+  outputNameUser.value = contentTitle;
+
+  // номер карты
+  const outputNumberCard = document.querySelector('.number-card');
+  outputNumberCard.value = key;
+  outputNumberCard.style.textTransform = 'uppercase';
 }
 
 /* показать купленные книги в My profile */
@@ -822,6 +855,13 @@ function closeAut (key, object) {
 
   // кнопкам buy в favorites возвращаем первоначальный вид
   returnTheInitialValueOfBuy ();
+
+    /* замена блока Digital Library Cards (возвращаем начальное состояние) */
+    const blockBeforeAuthorization = document.getElementById('library-card');
+    const blockAfterAuthorization = document.getElementById('library-card-you');
+    blockBeforeAuthorization.style.display = 'block';
+    blockAfterAuthorization.style.display = 'none';
+
   // закрываем drop-меню
   dropMenu[1].classList.add('profile-with-aut');
 }

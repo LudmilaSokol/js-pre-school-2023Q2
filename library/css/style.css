@@ -671,7 +671,14 @@ button {
   width: 696px;
   height: 414px;
 }
+.main .wrapper-library-card {
+  position: relative;
+  min-height: 650px;
+}
 .main .library-card {
+  position: absolute;
+  display: block;
+  width: 100%;
   padding-top: 31px;
 }
 .main .library-card-inner {
@@ -805,6 +812,152 @@ button {
 .main .library-card .button-small:hover {
   border: none;
 }
+.main .library-card-you {
+  position: absolute;
+  display: none;
+  padding-top: 31px;
+  height: 614px;
+  width: 100%;
+}
+.main .library-card-you .library-card-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 21px 0;
+}
+.main .library-card-you .header-find {
+  color: #000000;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  line-height: normal;
+  letter-spacing: 0.6px;
+}
+.main .library-card-you .library-card-form {
+  width: 600px;
+  height: 387px;
+  margin-bottom: 40px;
+  border: 3px solid #bb945f;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.main .library-card-you .library-card-form-box {
+  margin: 20px 20px 15px 20px;
+  padding: 0;
+  width: 556px;
+  height: 270px;
+  background: #bb945f;
+  border: 1px solid #bb945f;
+}
+.main .library-card-you .library-card-form-box .form-title {
+  padding-left: 20px;
+  margin: 16px 0 0 -4px;
+  color: #000000;
+  font-family: 'Forum-Regular', serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+}
+.main .library-card-you .library-card-form-box-input {
+  width: 93%;
+  height: 68px;
+  padding: 15px 0 8px 20px;
+  margin: 18px 16px 6px;
+  font-family: 'Forum-Regular', serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+  border: 1px solid #bb945f;
+  border-radius: 10px;
+  background: #ffffff;
+}
+.main .library-card-you .library-card-form-box-input::placeholder {
+  height: 50px;
+  color: #bb945f;
+}
+.main .library-card-you .library-card-form .button-big {
+  display: block;
+  margin: 0 auto;
+  padding-top: 2px;
+  width: 240px;
+  height: 46px;
+  color: #0c0c0e;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  border: 1px solid #0c0c0e;
+}
+.main .library-card-you .library-card-form-counters {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  font-family: 'Inter-Regular', sans-serif;
+  color: #000000;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+}
+.main .library-card-you .library-card-form-counters .counter-img {
+  height: 21px;
+}
+.main .library-card-you .library-card-form-counters .counter p {
+  margin: 0;
+  text-align: center;
+}
+.main .library-card-you .get-title {
+  color: #000000;
+  text-align: right;
+  font-family: 'Forum-Regular', serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.6px;
+}
+.main .library-card-you .get-text {
+  width: 456px;
+  margin: 35px 0;
+  color: #000000;
+  text-align: right;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0.4px;
+}
+.main .library-card-you .button-box {
+  display: flex;
+  justify-content: flex-end;
+}
+.main .library-card-you .button-small {
+  display: inline-flex;
+  width: 75px;
+  height: 30px;
+  margin-left: 20px;
+  justify-content: center;
+  align-items: center;
+  color: #0c0c0e;
+  font-family: 'Inter-Regular', sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  border: 1px solid #0c0c0e;
+}
 .footer-container {
   display: flex;
   flex-direction: column;
@@ -873,150 +1026,6 @@ button {
 }
 .footer .rss-link {
   margin-left: 186px;
-}
-.library-card-you {
-  display: none;
-  padding-top: 31px;
-  height: 614px;
-}
-.library-card-you .library-card-inner {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 21px 0;
-}
-.library-card-you .header-find {
-  color: #000000;
-  font-family: 'Inter-Regular', sans-serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  text-align: center;
-  line-height: normal;
-  letter-spacing: 0.6px;
-}
-.library-card-you .library-card-form {
-  width: 600px;
-  height: 387px;
-  margin-bottom: 40px;
-  border: 3px solid #bb945f;
-  background: #ffffff;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-.library-card-you .library-card-form-box {
-  margin: 20px 20px 15px 20px;
-  padding: 0;
-  width: 556px;
-  height: 270px;
-  background: #bb945f;
-  border: 1px solid #bb945f;
-}
-.library-card-you .library-card-form-box .form-title {
-  padding-left: 20px;
-  margin: 16px 0 0 -4px;
-  color: #000000;
-  font-family: 'Forum-Regular', serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 50px;
-  letter-spacing: 0.6px;
-}
-.library-card-you .library-card-form-box-input {
-  width: 93%;
-  height: 68px;
-  padding: 15px 0 8px 20px;
-  margin: 18px 16px 6px;
-  font-family: 'Forum-Regular', serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 50px;
-  letter-spacing: 0.6px;
-  border: 1px solid #bb945f;
-  border-radius: 10px;
-  background: #ffffff;
-}
-.library-card-you .library-card-form-box-input::placeholder {
-  height: 50px;
-  color: #bb945f;
-}
-.library-card-you .library-card-form .button-big {
-  display: block;
-  margin: 0 auto;
-  padding-top: 2px;
-  width: 240px;
-  height: 46px;
-  color: #0c0c0e;
-  font-family: 'Inter-Regular', sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 1px;
-  border-radius: 2px;
-  border: 1px solid #0c0c0e;
-}
-.library-card-you .library-card-form-counters {
-  display: flex;
-  gap: 35px;
-  justify-content: center;
-  font-family: 'Inter-Regular', sans-serif;
-  color: #000000;
-  font-size: 10px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 20px;
-  letter-spacing: 0.2px;
-}
-.library-card-you .library-card-form-counters .counter-img {
-  height: 21px;
-}
-.library-card-you .library-card-form-counters .counter p {
-  margin: 0;
-  text-align: center;
-}
-.library-card-you .get-title {
-  color: #000000;
-  text-align: right;
-  font-family: 'Forum-Regular', serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 0.6px;
-}
-.library-card-you .get-text {
-  width: 456px;
-  margin: 35px 0;
-  color: #000000;
-  text-align: right;
-  font-family: 'Inter-Regular', sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 40px;
-  letter-spacing: 0.4px;
-}
-.library-card-you .button-box {
-  display: flex;
-  justify-content: flex-end;
-}
-.library-card-you .button-small {
-  display: inline-flex;
-  width: 75px;
-  height: 30px;
-  margin-left: 20px;
-  justify-content: center;
-  align-items: center;
-  color: #0c0c0e;
-  font-family: 'Inter-Regular', sans-serif;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 1px;
-  border-radius: 2px;
-  border: 1px solid #0c0c0e;
 }
 .pop-up {
   position: absolute;
@@ -1406,6 +1415,9 @@ button {
   .main .contacts-inner-map .iframe {
     width: 100%;
   }
+  .main .wrapper-library-card {
+    min-height: 850px;
+  }
   .main .library-card {
     padding-top: 29px;
   }
@@ -1432,6 +1444,9 @@ button {
   }
   .main .library-card-inner-get .button-box .button-small {
     margin-left: 0;
+  }
+  .footer-container {
+    margin-top: 25px;
   }
 }
 @media (max-width: 1124px) {
