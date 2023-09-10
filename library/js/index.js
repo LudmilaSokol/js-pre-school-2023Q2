@@ -602,6 +602,11 @@ function authorizedUser(key, object) {
     console.log(' количество купленных книг');
   }
 
+  /* замена блока Digital Library Cards */
+  const blockBeforeAuthorization = document.getElementById('library-card');
+  const blockAfterAuthorization = document.getElementById('library-card-you');
+  blockBeforeAuthorization.style.display = 'none';
+  blockAfterAuthorization.style.display = 'block';
   /* отслеживание клика по MyProfile  и переход к соответствующему окну */
   const btnMyProfile = document.querySelector('.my-profile');
   btnMyProfile.addEventListener('click', () => {

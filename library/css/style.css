@@ -677,6 +677,7 @@ button {
 }
 .main .library-card {
   position: absolute;
+  display: block;
   width: 100%;
   padding-top: 31px;
 }
@@ -1414,6 +1415,9 @@ button {
   .main .contacts-inner-map .iframe {
     width: 100%;
   }
+  .main .wrapper-library-card {
+    min-height: 850px;
+  }
   .main .library-card {
     padding-top: 29px;
   }
@@ -1440,6 +1444,9 @@ button {
   }
   .main .library-card-inner-get .button-box .button-small {
     margin-left: 0;
+  }
+  .footer-container {
+    margin-top: 25px;
   }
 }
 @media (max-width: 1124px) {
