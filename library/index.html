@@ -426,35 +426,84 @@
         </div>
       </section>
 
-      <section class="section library-card" id="library-card">
-        <div class="container">
-          <h2 class="section-title">Digital Library Cards</h2>
-          <div class="line"></div>
-          <div class="library-card-inner">
-            <div class="library-card-inner-find">
-              <p class="header-find">Find your Library card</p>
-              <form class="library-card-form">
-                <fieldset class="library-card-form-box">
-                  <p class="form-title">Brooklyn Public Library</p>
-                  <input class="library-card-form-box-input" type="text" placeholder="Reader's name">
-                  <input class="library-card-form-box-input" type="text" placeholder="Card number">
-                </fieldset>
-                <div class="button button-big">
-                  <span class="button-big-text">Check the card</span>
+      <div class="wrapper-library-card">
+        <section class="section library-card" id="library-card">
+          <div class="container">
+            <h2 class="section-title">Digital Library Cards</h2>
+            <div class="line"></div>
+            <div class="library-card-inner">
+              <div class="library-card-inner-find">
+                <p class="header-find">Find your Library card</p>
+                <form class="library-card-form">
+                  <fieldset class="library-card-form-box">
+                    <p class="form-title">Brooklyn Public Library</p>
+                    <input class="library-card-form-box-input" type="text" placeholder="Reader's name">
+                    <input class="library-card-form-box-input" type="text" placeholder="Card number">
+                  </fieldset>
+                  <div class="button button-big">
+                    <span class="button-big-text">Check the card</span>
+                  </div>
+                </form>
+              </div>
+              <div class="library-card-inner-get">
+                <p class="get-title">Get a reader card</p>
+                <p class="get-text">You will be able to see a reader card after logging into account or you can register a new account</p>
+                <div class="button-box">
+                  <button class="button button-small reg">Sign Up</button>
+                  <button class="button button-small login-btn">Log in</button>
                 </div>
-              </form>
-            </div>
-            <div class="library-card-inner-get">
-              <p class="get-title">Get a reader card</p>
-              <p class="get-text">You will be able to see a reader card after logging into account or you can register a new account</p>
-              <div class="button-box">
-                <button class="button button-small reg">Sign Up</button>
-                <button class="button button-small login-btn">Log in</button>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+          <!-- LibraryCard after login in account -->
+    <!-- Читательский билет после входа в учетную запись -->
+        <section class="section library-card-you" id="library-card-you">
+          <div class="container">
+            <h2 class="section-title">Digital Library Cards</h2>
+            <div class="line"></div>
+            <div class="library-card-inner">
+              <div class="library-card-inner-find">
+                <p class="header-find">Your Library card</p>
+                <form class="library-card-form">
+                  <fieldset class="library-card-form-box">
+                    <p class="form-title">Brooklyn Public Library</p>
+                    <input class="library-card-form-box-input" type="text" placeholder="John Doe">
+                    <input class="library-card-form-box-input" type="text" placeholder="F00234030">
+                  </fieldset>
+                  <!-- блок счетчиков -->
+                  <div class="library-card-form-counters">
+                    <div class="counter">
+                      <p>visits</p>
+                      <p class="counter-img"><img src="assets/img/profile/visits.svg" alt="Visits icon"></p>
+                      <p>23</p>
+                    </div>
+                    <div class="counter">
+                      <p>bonuses</p>
+                      <p class="counter-img"><img src="assets/img/profile/bonuses.svg" alt="Bonuses icon"></p>
+                      <p>1240</p>
+                    </div>
+                    <div class="counter">
+                      <p>Books</p>
+                      <p class="counter-img"><img src="assets/img/profile/books.svg" alt="Books icon"></p>
+                      <p>2</p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="library-card-inner-get">
+                <p class="get-title">Visit your profile</p>
+                <p class="get-text">With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
+                <div class="button-box">
+                  <button class="button button-small">Profile</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
     </div>
   </main>
 
@@ -482,53 +531,6 @@
   </footer>
 
   <!-- modal windows -->
-
-  <!-- LibraryCard after login in account -->
-  <!-- Читательский билет после входа в учетную запись -->
-  <div class="section library-card-you" id="library-card-you">
-    <div class="container">
-      <h2 class="section-title">Digital Library Cards</h2>
-      <div class="line"></div>
-      <div class="library-card-inner">
-        <div class="library-card-inner-find">
-          <p class="header-find">Your Library card</p>
-          <form class="library-card-form">
-            <fieldset class="library-card-form-box">
-              <p class="form-title">Brooklyn Public Library</p>
-              <input class="library-card-form-box-input" type="text" placeholder="John Doe">
-              <input class="library-card-form-box-input" type="text" placeholder="F00234030">
-            </fieldset>
-            <!-- блок счетчиков -->
-            <div class="library-card-form-counters">
-              <div class="counter">
-                <p>visits</p>
-                <p class="counter-img"><img src="assets/img/profile/visits.svg" alt="Visits icon"></p>
-                <p>23</p>
-              </div>
-              <div class="counter">
-                <p>bonuses</p>
-                <p class="counter-img"><img src="assets/img/profile/bonuses.svg" alt="Bonuses icon"></p>
-                <p>1240</p>
-              </div>
-              <div class="counter">
-                <p>Books</p>
-                <p class="counter-img"><img src="assets/img/profile/books.svg" alt="Books icon"></p>
-                <p>2</p>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="library-card-inner-get">
-          <p class="get-title">Visit your profile</p>
-          <p class="get-text">With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
-          <div class="button-box">
-            <button class="button button-small">Profile</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
   <!-- modal_Log In -->
   <div class="pop-up hidden">
