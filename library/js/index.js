@@ -284,16 +284,16 @@ btnCheckTheCard.addEventListener('click', () => {
     // и при совпадении выводим данные.
 
     handleInput();
-  } else {
-    console.log ('пусто');
-   }
+  } /*else {
+    //console.log ('пусто');
+   }*/
 })
 
 /* блок Find your Library card обработка вводимых данных*/
 function handleInput () {
 
-  console.log(rememberCardNumberUser);
-  console.log(rememberNameUser);
+  //console.log(rememberCardNumberUser);
+  //console.log(rememberNameUser);
     // проверка наличия введенного номера катры в local storage, результат true или false
     if (!checkTheCardNumber (rememberCardNumberUser)) {
       alert(`Карты с номером ${rememberCardNumberUser} нет`);
@@ -310,11 +310,11 @@ function handleInput () {
 /* проверка наличия CardNumber введенного пользователем в Find your Library в local storage */
 function checkTheCardNumber (number) {
   let num = number;
-  console.log (typeof num);
+  //console.log (typeof num);
   let result = false;
   for (let i = 0; i < localStorage.length; i++) {
     let key = localStorage.key(i);
-    console.log(typeof key);
+    //console.log(typeof key);
 
     // если key совпадает с введенным в Find your Library card
     if (key.toUpperCase() === number.toUpperCase()){
@@ -342,7 +342,7 @@ function checkTheNameUser (key, name) {
 function outputInformationPanel() {
   const key = rememberCardNumberUser;
 
-  console.log(btnCheckTheCard);
+  //console.log(btnCheckTheCard);
   btnCheckTheCard.outerHTML = `<div class="library-card-form-counters">
   <div class="counter">
     <p>visits</p>
@@ -696,8 +696,8 @@ function authorizedUser(key, object) {
   } else {
     reportNoBooks();
     /* в окне My profile выводим сообщение, что купленных книг нет*/
-    console.log(object['counter books']);
-    console.log(' количество купленных книг');
+    //console.log(object['counter books']);
+    //console.log(' количество купленных книг');
   }
 
   /* замена блока Digital Library Cards */
@@ -899,7 +899,7 @@ function openBuyCard () {
     //console.log(bookItems);
     //console.log(event);
 
-      console.log (event + ' значение при клике на кнопку1');
+      //console.log (event + ' значение при клике на кнопку1');
         /* получаем название книги и автора, ищем в родительском элементе*/
         const parent = event.parentElement;
         const nameBook = parent.querySelector('.title').textContent;
