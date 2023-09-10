@@ -258,17 +258,81 @@ loginWindows.forEach((item) => {
 
 /* блок Find your Library card */
 const btnCheckTheCard = document.querySelector('.button-big');
+
+// сохраняем введенные пользователем имя и номер
+const nameUser = document.querySelector('.name-user');
+const cardNumberUser = document.querySelector('.card-number-user');
+let rememberCardNumberUser;
+let rememberNameUser;
+cardNumberUser.addEventListener('change', () => {
+  rememberCardNumberUser = cardNumberUser.value;
+  console.log(rememberCardNumberUser);
+});
+nameUser.addEventListener('change', () => {
+  rememberNameUser = nameUser.value;
+  console.log(rememberNameUser);
+});
 btnCheckTheCard.addEventListener('click', () => {
   //если пользователь авторизирован, то этой кнопки нет
   // - отображается другое окно, вызываемое из режима авторизации
+  //console.log(rememberCardNumberUser);
+  //console.log(rememberNameUser);
+
   if (localStorage.length > 0) {
     // отслеживаем какую инфу вводят в полях формы,
     // сравниваем ее с пользовательской инфой в local storage
     // и при совпадении выводим данные.
+
+    handleInput();
   } else {
     console.log ('пусто');
    }
 })
+
+/* блок Find your Library card обработка вводимых данных*/
+function handleInput () {
+
+  console.log(rememberCardNumberUser);
+  console.log(rememberNameUser);
+    // проверка наличия введенного номера катры в local storage, результат true или false
+    if (!checkTheCardNumber (rememberCardNumberUser)) {
+      alert(`Карты с номером ${rememberCardNumberUser} нет`);
+    } else if (checkTheNameUser (rememberCardNumberUser, rememberNameUser)) {
+      console.log(`оба поля совпадают`);
+    } else {
+      alert(`Пользователя ${rememberNameUser} нет`);
+      console.log('номер есть');
+    }
+}
+
+function checkTheCardNumber (number) {
+  let num = number;
+  console.log (typeof num);
+  let result = false;
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    console.log(typeof key);
+
+    // если key совпадает с введенным в Find your Library card
+    if (key.toUpperCase() === number.toUpperCase()){
+      result = true;
+    }
+  }
+  return result;
+}
+
+function checkTheNameUser (key, name) {
+  let result = false;
+  // пользователь с указанным key
+  const object = JSON.parse(localStorage.getItem(key));
+  // полное имя пользователя
+  //console.log(name);
+  const contentTitle1 = `${object['first-name']} ${object['last-name']}`;
+   if (name === contentTitle1) {
+    result = true;
+   }
+   return result;
+}
 
 /* проверка валидации */
 
@@ -381,7 +445,7 @@ modalForm.addEventListener('submit', (event) => {
 
 /* submit для авторизации */
 modalForm1.addEventListener('submit', (event) => {
-  //отмена стандартного поведения (перезагрузки?)
+  //отмена стандартного поведения
   event.preventDefault();
   const form = modalForm1;
 
