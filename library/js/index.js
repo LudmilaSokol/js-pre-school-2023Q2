@@ -207,10 +207,10 @@ dropMenu.forEach((index) => {
   })
 })
 
-  /* кнопки для вызова окна регистрации (массив из 3х кнопок) */
-  const regWindows = document.querySelectorAll('.reg');
-  /* массив из 4х элементов: log-in - 0, register - 1, my-profile - 2, buy-card - 3*/
-  const modalWindows = document.querySelectorAll('.pop-up');
+/* кнопки для вызова окна регистрации (массив из 3х кнопок) */
+const regWindows = document.querySelectorAll('.reg');
+/* массив из 4х элементов: log-in - 0, register - 1, my-profile - 2, buy-card - 3*/
+const modalWindows = document.querySelectorAll('.pop-up');
 
 /* открытие окна регистрации */
 regWindows.forEach((item) => {
@@ -238,23 +238,23 @@ loginWindows.forEach((item) => {
 })
 
 
-  // определяем все кнопки Закрыть (4 кнопки - 4 окна)
-  const closeBtn = document.querySelectorAll('.modal-close');
+// определяем все кнопки Закрыть (4 кнопки - 4 окна)
+const closeBtn = document.querySelectorAll('.modal-close');
 
-  /* закрытие pop-up */
-  modalWindows.forEach((event, index) => {
-    modalWindows[index].addEventListener('click', (event) => {
-      const clickModal = event.composedPath().includes(modalWindows[index].firstElementChild);
-      if (!clickModal) {
-        modalWindows[index].classList.add('hidden');
-        modalWindows[index].firstElementChild.classList.add('hidden');
-      }
-    })
-    closeBtn[index].addEventListener('click', () => {
+/* закрытие pop-up */
+modalWindows.forEach((event, index) => {
+  modalWindows[index].addEventListener('click', (event) => {
+    const clickModal = event.composedPath().includes(modalWindows[index].firstElementChild);
+    if (!clickModal) {
       modalWindows[index].classList.add('hidden');
       modalWindows[index].firstElementChild.classList.add('hidden');
-    })
+    }
   })
+  closeBtn[index].addEventListener('click', () => {
+    modalWindows[index].classList.add('hidden');
+    modalWindows[index].firstElementChild.classList.add('hidden');
+  })
+})
 
 /* блок Find your Library card */
 const btnCheckTheCard = document.querySelector('.button-big');
@@ -264,10 +264,12 @@ const nameUser = document.querySelector('.name-user');
 const cardNumberUser = document.querySelector('.card-number-user');
 let rememberCardNumberUser;
 let rememberNameUser;
+// сохраняем введенный пользователем в форме номер в переменную
 cardNumberUser.addEventListener('change', () => {
   rememberCardNumberUser = cardNumberUser.value;
   //console.log(rememberCardNumberUser);
 });
+// сохраняем введенное пользователем в форме имя
 nameUser.addEventListener('change', () => {
   rememberNameUser = nameUser.value;
   //console.log(rememberNameUser);
@@ -339,13 +341,15 @@ function checkTheNameUser (key, name) {
 /* вывод панели с информацией в Find your Library */
 function outputInformationPanel() {
   const key = rememberCardNumberUser;
-
+  console.log(key);
+  // пользователь с указанным key
+  const object = JSON.parse(localStorage.getItem(key));
   //console.log(btnCheckTheCard);
   btnCheckTheCard.outerHTML = `<div class="library-card-form-counters">
   <div class="counter">
     <p>visits</p>
     <p class="counter-img"><img src="assets/img/profile/visits.svg" alt="Visits icon"></p>
-    <p class="counter-visits">23</p>
+    <p class="counter-visits">${object['visits']}</p>
   </div>
   <div class="counter">
     <p>bonuses</p>
@@ -355,7 +359,7 @@ function outputInformationPanel() {
   <div class="counter">
     <p>Books</p>
     <p class="counter-img"><img src="assets/img/profile/books.svg" alt="Books icon"></p>
-    <p class="counter-books">2</p>
+    <p class="counter-books">${object['counter books']}</p>
   </div>
 </div>`;
   setTimeout(function() {
@@ -928,8 +932,6 @@ function openBuyCard () {
         // кнопку buy  меняем на own и делаем не активной
          replaceBuyWithOwn (nextElBtnBuy);
          location.reload();
-
-         //return;
   }
 
   /* заменить buy на own, получает последующий элемент после кнопки buy */
