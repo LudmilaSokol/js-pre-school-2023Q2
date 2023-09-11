@@ -278,15 +278,13 @@ btnCheckTheCard.addEventListener('click', () => {
   //console.log(rememberCardNumberUser);
   //console.log(rememberNameUser);
 
-  if (localStorage.length > 0) {
+  if (localStorage.length > 0 && rememberNameUser !== undefined && rememberCardNumberUser !== undefined) {
     // отслеживаем какую инфу вводят в полях формы,
     // сравниваем ее с пользовательской инфой в local storage
     // и при совпадении выводим данные.
 
     handleInput();
-  } /*else {
-    //console.log ('пусто');
-   }*/
+  }
 })
 
 /* блок Find your Library card обработка вводимых данных*/
