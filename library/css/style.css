@@ -1520,6 +1520,9 @@ button {
   .main .about .arrow-right {
     right: 75px;
   }
+  .footer-container {
+    margin-top: 35px;
+  }
 }
 @media (max-width: 1024px) {
   .main .coffee-shop-inner {
@@ -1528,8 +1531,12 @@ button {
   .main .coffee-shop-inner-box .items .item-right {
     margin-left: auto;
   }
+  .main .wrapper-library-card {
+    min-height: 870px;
+  }
   .footer-container {
     width: 100%;
+    margin-top: 60px;
   }
   .footer .rss-link {
     margin: 0;
@@ -1552,11 +1559,19 @@ button {
     font-size: 15px;
   }
 }
+@media (max-width: 700px) {
+  .main .wrapper-library-card {
+    min-height: 895px;
+  }
+}
 @media (max-width: 680px) {
   .main .about .arrow-left {
     left: 45px;
   }
   .main .about .arrow-right {
     right: 45px;
+  }
+  .footer-container {
+    margin-top: 70px;
   }
 }
