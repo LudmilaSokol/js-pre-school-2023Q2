@@ -768,9 +768,13 @@ function fillInTheUserCardDetails (key, object) {
 
   // полное имя пользователя
   const contentTitle = `${object['first-name']} ${object['last-name']}`;
-  const outputNameUser = document.querySelector('.name-user');
+  const outputNameUser = document.querySelector('.name-user1');
+
+  console.log(contentTitle);
+  console.log(outputNameUser);
 
   outputNameUser.value = contentTitle;
+  console.log(outputNameUser.value);
 
   // номер карты
   const outputNumberCard = document.querySelector('.number-card');
