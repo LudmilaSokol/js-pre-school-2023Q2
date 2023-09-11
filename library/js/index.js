@@ -207,10 +207,10 @@ dropMenu.forEach((index) => {
   })
 })
 
-  /* кнопки для вызова окна регистрации (массив из 3х кнопок) */
-  const regWindows = document.querySelectorAll('.reg');
-  /* массив из 4х элементов: log-in - 0, register - 1, my-profile - 2, buy-card - 3*/
-  const modalWindows = document.querySelectorAll('.pop-up');
+/* кнопки для вызова окна регистрации (массив из 3х кнопок) */
+const regWindows = document.querySelectorAll('.reg');
+/* массив из 4х элементов: log-in - 0, register - 1, my-profile - 2, buy-card - 3*/
+const modalWindows = document.querySelectorAll('.pop-up');
 
 /* открытие окна регистрации */
 regWindows.forEach((item) => {
@@ -238,36 +238,38 @@ loginWindows.forEach((item) => {
 })
 
 
-  // определяем все кнопки Закрыть (4 кнопки - 4 окна)
-  const closeBtn = document.querySelectorAll('.modal-close');
+// определяем все кнопки Закрыть (4 кнопки - 4 окна)
+const closeBtn = document.querySelectorAll('.modal-close');
 
-  /* закрытие pop-up */
-  modalWindows.forEach((event, index) => {
-    modalWindows[index].addEventListener('click', (event) => {
-      const clickModal = event.composedPath().includes(modalWindows[index].firstElementChild);
-      if (!clickModal) {
-        modalWindows[index].classList.add('hidden');
-        modalWindows[index].firstElementChild.classList.add('hidden');
-      }
-    })
-    closeBtn[index].addEventListener('click', () => {
+/* закрытие pop-up */
+modalWindows.forEach((event, index) => {
+  modalWindows[index].addEventListener('click', (event) => {
+    const clickModal = event.composedPath().includes(modalWindows[index].firstElementChild);
+    if (!clickModal) {
       modalWindows[index].classList.add('hidden');
       modalWindows[index].firstElementChild.classList.add('hidden');
-    })
+    }
   })
+  closeBtn[index].addEventListener('click', () => {
+    modalWindows[index].classList.add('hidden');
+    modalWindows[index].firstElementChild.classList.add('hidden');
+  })
+})
 
 /* блок Find your Library card */
 const btnCheckTheCard = document.querySelector('.button-big');
 
-// сохраняем введенные пользователем имя и номер
+  // сохраняем введенные пользователем имя и номер
 const nameUser = document.querySelector('.name-user');
 const cardNumberUser = document.querySelector('.card-number-user');
 let rememberCardNumberUser;
 let rememberNameUser;
+  // сохраняем введенный пользователем в форме номер в переменную
 cardNumberUser.addEventListener('change', () => {
   rememberCardNumberUser = cardNumberUser.value;
   //console.log(rememberCardNumberUser);
 });
+  // сохраняем введенное пользователем в форме имя
 nameUser.addEventListener('change', () => {
   rememberNameUser = nameUser.value;
   //console.log(rememberNameUser);
@@ -278,33 +280,28 @@ btnCheckTheCard.addEventListener('click', () => {
   //console.log(rememberCardNumberUser);
   //console.log(rememberNameUser);
 
-  if (localStorage.length > 0) {
+  if (localStorage.length > 0 && rememberNameUser !== undefined && rememberCardNumberUser !== undefined) {
     // отслеживаем какую инфу вводят в полях формы,
     // сравниваем ее с пользовательской инфой в local storage
     // и при совпадении выводим данные.
 
     handleInput();
-  } /*else {
-    //console.log ('пусто');
-   }*/
+  }
 })
 
 /* блок Find your Library card обработка вводимых данных*/
 function handleInput () {
-
   //console.log(rememberCardNumberUser);
   //console.log(rememberNameUser);
-    // проверка наличия введенного номера катры в local storage, результат true или false
-    if (!checkTheCardNumber (rememberCardNumberUser)) {
-      alert(`Карты с номером ${rememberCardNumberUser} нет`);
-    } else if (checkTheNameUser (rememberCardNumberUser, rememberNameUser)) {
-      //console.log(`оба поля совпадают`);
-      //вывести панель информации
-      outputInformationPanel();
-    } else {
-      alert(`Пользователя ${rememberNameUser} нет`);
-      //console.log('номер есть');
-    }
+  // проверка наличия введенного номера катры в local storage, результат true или false
+  if (!checkTheCardNumber (rememberCardNumberUser)) {
+    alert(`Карты с номером ${rememberCardNumberUser} нет`);
+  } else if (checkTheNameUser (rememberCardNumberUser, rememberNameUser)) {
+    //вывести панель информации
+    outputInformationPanel();
+  } else {
+    alert(`Пользователя ${rememberNameUser} нет`);
+  }
 }
 
 /* проверка наличия CardNumber введенного пользователем в Find your Library в local storage */
@@ -332,22 +329,24 @@ function checkTheNameUser (key, name) {
   // полное имя пользователя
   //console.log(name);
   const contentTitle1 = `${object['first-name']} ${object['last-name']}`;
-   if (name === contentTitle1) {
+  if (name === contentTitle1) {
     result = true;
-   }
-   return result;
+  }
+  return result;
 }
 
 /* вывод панели с информацией в Find your Library */
 function outputInformationPanel() {
   const key = rememberCardNumberUser;
-
+  //console.log(key);
+  // пользователь с указанным key
+  const object = JSON.parse(localStorage.getItem(key));
   //console.log(btnCheckTheCard);
   btnCheckTheCard.outerHTML = `<div class="library-card-form-counters">
   <div class="counter">
     <p>visits</p>
     <p class="counter-img"><img src="assets/img/profile/visits.svg" alt="Visits icon"></p>
-    <p class="counter-visits">23</p>
+    <p class="counter-visits">${object['visits']}</p>
   </div>
   <div class="counter">
     <p>bonuses</p>
@@ -357,9 +356,9 @@ function outputInformationPanel() {
   <div class="counter">
     <p>Books</p>
     <p class="counter-img"><img src="assets/img/profile/books.svg" alt="Books icon"></p>
-    <p class="counter-books">2</p>
+    <p class="counter-books">${object['counter books']}</p>
   </div>
-</div>`;
+  </div>`;
   setTimeout(function() {
     document.querySelector('.library-card-form-counters').outerHTML = `<div class="button button-big">
     <span class="button-big-text">Check the card</span>  </div>`;
@@ -642,8 +641,6 @@ bookItems.forEach((event) => {
         } else {
           /* действия при авторизированном пользователе и купленном абонементе
           (купить книгу при клике на buy в карточке книги) передаем кнопку*/
-
-          //console.log (event, btnBuy);
           rentedBooks (event);
           }
     })
@@ -696,8 +693,6 @@ function authorizedUser(key, object) {
   } else {
     reportNoBooks();
     /* в окне My profile выводим сообщение, что купленных книг нет*/
-    //console.log(object['counter books']);
-    //console.log(' количество купленных книг');
   }
 
   /* замена блока Digital Library Cards */
@@ -731,8 +726,8 @@ function authorizedUser(key, object) {
       countVisites.textContent = object['visits'];
 
       // отображение счетчика купленных книг
-     let countBooks = document.querySelector('.count-books');
-     countBooks.textContent = object['counter books'];
+      let countBooks = document.querySelector('.count-books');
+      countBooks.textContent = object['counter books'];
 
       // отображение Card Number
       let cardNumber = document.querySelector('.card-number');
@@ -746,7 +741,6 @@ function authorizedUser(key, object) {
       }
     })
   })
-
 
   /* отслеживаение клика по Log Out */
   const btnLogOut = document.querySelector('.out');
@@ -770,9 +764,13 @@ function fillInTheUserCardDetails (key, object) {
 
   // полное имя пользователя
   const contentTitle = `${object['first-name']} ${object['last-name']}`;
-  const outputNameUser = document.querySelector('.name-user');
+  const outputNameUser = document.querySelector('.name-user1');
+
+  //console.log(contentTitle);
+  //console.log(outputNameUser);
 
   outputNameUser.value = contentTitle;
+  //console.log(outputNameUser.value);
 
   // номер карты
   const outputNumberCard = document.querySelector('.number-card');
@@ -823,7 +821,7 @@ function markPurchasedBooks (key, object) {
 
     classNextElBtnBuy = nextElBtnBuy.classList[1].toString();
     //console.log(classNextElBtnBuy + ' класс для след элемента buy');
-      // сравниваем этот класс с ключами объекта booksto
+    // сравниваем этот класс с ключами объекта booksto
     //ищем classNextElBtnBuy в объекте Книги
     for (kl in object.books) {
       //console.log(kl + ' ключ для книги в object.books');
@@ -879,10 +877,10 @@ function openBuyCard () {
       object['library card'] = true;
       localStorage.setItem(key, JSON.stringify(object));
       alert('Абонемент оплачен. Доступна покупка книг');
-          /* очистка формы */
-     clearForm (form);
-     /* закрыть форму */
-     closeBuyCard();
+      // очистка формы
+      clearForm (form);
+      // закрыть форму
+      closeBuyCard();
     }
   })}
 
@@ -890,44 +888,34 @@ function openBuyCard () {
   /* покупка книги при наличии абонемента.
   функция получает кнопку buy из Favorites */
   function rentedBooks (event) {
-    //console.log(event + ' значение пришедшее для обработки клика при активном пользователе и купленном абонементе');
     // получаем key активного пользователя и значение для этого key (object)
     const keyActiveUser = findAncAtiveUser();
     const object = JSON.parse(localStorage.getItem(keyActiveUser));
-    //console.log(keyActiveUser, object);
+
     /* отслеживаем клики на buy и выполняем добавление */
-    //console.log(bookItems);
-    //console.log(event);
+    // получаем название книги и автора, ищем в родительском элементе
+    const parent = event.parentElement;
+    const nameBook = parent.querySelector('.title').textContent;
+    //console.log(nameBook);
+    const authorBook = parent.querySelector('.subtitle').textContent.slice(3);
+    //console.log(authorBook);
 
-      //console.log (event + ' значение при клике на кнопку1');
-        /* получаем название книги и автора, ищем в родительском элементе*/
-        const parent = event.parentElement;
-        const nameBook = parent.querySelector('.title').textContent;
-        //console.log(nameBook);
-        const authorBook = parent.querySelector('.subtitle').textContent.slice(3);
-        //console.log(authorBook);
+    //получаем key для карточки книги, обращаясь к следующему элементу за buy
+    nextElBtnBuy = event.nextElementSibling;
+    const keyBook = nextElBtnBuy.classList[1].toString();
 
-        //получаем key для карточки книги, обращаясь к следующему элементу за buy
-        nextElBtnBuy = event.nextElementSibling;
-        //console.log(nextElBtnBuy + 'след элемент');
+    //добавляем значения в local storage
+    object.books[keyBook] = `${nameBook}, ${authorBook}`;
 
-        const keyBook = nextElBtnBuy.classList[1].toString();
-        //console.log (keyBook + 'key для книги');
+    // увеличиваем у активного пользователя счетчик купленных книг.
+    object['counter books'] = object['counter books'] + 1;
 
-        //добавляем значения в local storage
-        object.books[keyBook] = `${nameBook}, ${authorBook}`;
+    // записываем изменения в local storage изменения
+    localStorage.setItem(keyActiveUser, JSON.stringify(object));
 
-        // увеличиваем у активного пользователя счетчик купленных книг.
-        object['counter books'] = object['counter books'] + 1;
-
-        // записываем изменения в local storage изменения
-        localStorage.setItem(keyActiveUser, JSON.stringify(object));
-
-        // кнопку buy  меняем на own и делаем не активной
-         replaceBuyWithOwn (nextElBtnBuy);
-         location.reload();
-
-         //return;
+    // кнопку buy  меняем на own и делаем не активной
+      replaceBuyWithOwn (nextElBtnBuy);
+      location.reload();
   }
 
   /* заменить buy на own, получает последующий элемент после кнопки buy */
@@ -954,11 +942,11 @@ function closeAut (key, object) {
   // кнопкам buy в favorites возвращаем первоначальный вид
   returnTheInitialValueOfBuy ();
 
-    /* замена блока Digital Library Cards (возвращаем начальное состояние) */
-    const blockBeforeAuthorization = document.getElementById('library-card');
-    const blockAfterAuthorization = document.getElementById('library-card-you');
-    blockBeforeAuthorization.style.display = 'block';
-    blockAfterAuthorization.style.display = 'none';
+  /* замена блока Digital Library Cards (возвращаем начальное состояние) */
+  const blockBeforeAuthorization = document.getElementById('library-card');
+  const blockAfterAuthorization = document.getElementById('library-card-you');
+  blockBeforeAuthorization.style.display = 'block';
+  blockAfterAuthorization.style.display = 'none';
 
   // закрываем drop-меню
   dropMenu[1].classList.add('profile-with-aut');
@@ -979,5 +967,5 @@ function returnTheInitialValueOfBuy (key, object) {
     })
   }
 
-console.log('Task: Library#3 - 198/206');
-console.log('валидация форм сырая, но минимальная вроде есть. \n i. Блок Digital Library Cards. Если введенные имя и номер карты совпадают с данными пользователя, то отображается панель с информацией, вместо кнопки Check the card на 10 секунд. +2 - проверка на совпадение введенных данных с local storage реализована. Отображение иконок в работе');
+console.log('Task: Library#3 - 202/206');
+console.log('валидация форм сырая, но минимальная вроде есть.');
