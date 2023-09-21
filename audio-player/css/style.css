@@ -1,0 +1,81 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/img/lemonade.png) no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: auto;
+  margin: 2px;
+}
+.player__img {
+  width: 100%;
+  height: auto;
+  border-radius: 3% 3% 0 0;
+}
+
+.player__panel {
+  width: 100%;
+  background-color: #445f4f;
+  text-align: center;
+  border-radius: 0 0 3% 3%;
+}
+
+.autor-song {
+  margin: 20px 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  color: #ada75f;
+}
+.title-song {
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #c8c7bd;
+}
+.player__progress {
+  margin: 20px auto;
+  width: 90%;
+  height: 4px;
+  background-color: #c8c7bd;
+}
+.time {
+  width: 10px;
+  height: 4px;
+  background-color: #ada75f;
+}
+.player__controls {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+.icon {
+  margin: 20px;
+  width: 40px;
+  height: 40px;
+}
+.play {
+  flex-grow: 2;
+}
+.hidden {
+  display: none;
+}

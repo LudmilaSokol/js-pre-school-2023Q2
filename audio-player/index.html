@@ -4,33 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>audio-player</title>
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/reset.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="body">
   <main class="main">
-    <div class="pleer">
-        <div class="pleer__img">
-            <img src="assets/img/lemonade.png" alt="lemonade">
+    <div class="player">
+      <img class="player__img"  src="assets/img/lemonade.png" alt="lemonade">
+      <audio src="assets/audio/beyonce.mp3"></audio>
+      <div class="player__panel">
+        <div class="autor-song">
+          Beyonce
         </div>
-        <div class="pleer__panel">
-            <div class="autor-song">
-                Beyonce
-            </div>
-            <div class="title-song">
-                Don't Hurt Yourself
-            </div>
-            <div class="play__blok">
-                <img class="play" src="assets/svg/play.svg" alt="play">
-                <img class="pause" src="assets/svg/pause.svg" alt="pause">
-                <img class="backward" src="assets/svg/backward.svg" alt="backward">
-                <img class="forward" src="assets/svg/forward.svg" alt="forward">
-            </div>
+        <div class="title-song">
+          Don't Hurt Yourself
         </div>
+        <div class="player__progress">
+          <div class="time">
+          </div>
+        </div>
+        <div class="player__controls">
+          <img class="icon play" src="assets/svg/play.svg" alt="play">
+          <img class="icon pause hidden" src="assets/svg/pause.svg" alt="pause">
+          <img class="icon backward" src="assets/svg/backward.svg" alt="backward">
+          <img class="icon forward" src="assets/svg/forward.svg" alt="forward">
+        </div>
+      </div>
     </div>
   </main>
   <footer class="footer">
-
+    <div class="container footer-container">
+      <div class="footer-content">
+        <a href="https://github.com/LudmilaSokol/rsschool-cv" target="_blank">
+          <img src="assets/img/icon-github.png" alt="GitHUB icon" width="30" height="30">
+        </a>
+      </div>
+      <div class="footer-content">
+        <p>2023</p>
+      </div>
+      <div class="footer-content">
+        <a href="https://rs.school/js/" target="_blank">
+          <img src="assets/img/rsschool-js.png" alt="rsschool icon">
+        </a>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
