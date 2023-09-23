@@ -49,7 +49,7 @@ function pauseTrack () {
   audio.pause();
 }
 
-// переключение на предыдущий трек
+// переключение на следующий трек
 
 function nextTrack () {
   treck++;
@@ -60,7 +60,7 @@ function nextTrack () {
   playTrack ();
 }
 
-// переключене на следующий трек
+// переключене на предыдущий трек
 
 function prevTrack () {
   treck--;
@@ -93,11 +93,11 @@ function updateProgress (event) {
 function rewindProgress (event) {
   //ширина контейнера прогресса
   const widthEvent = this.clientWidth;
-  console.log(widthEvent);
+  // console.log(widthEvent);
 
   //координаты клика про шкале
   const clickX = event.offsetX;
-  console.log(clickX);
+  // console.log(clickX);
 
   //длинна трека
   const audioLength = audio.duration;
@@ -128,3 +128,6 @@ audio.addEventListener('timeupdate', updateProgress);
 
 // событие перемотки трека по клику на шкале прогресса
 progressBox.addEventListener ('click', rewindProgress);
+
+// событие окончания трека
+audio.addEventListener('ended', nextTrack);
