@@ -2,6 +2,7 @@
 let body = document.querySelector('.body');
 const player = document.querySelector('.player');
 let audio = document.getElementById('audio');
+let progressBox = document.querySelector('.player__progress');
 let time = document.querySelector('.time');
 
 const btnPlay = document.querySelector('.play');
@@ -48,6 +49,8 @@ function pauseTrack () {
   audio.pause();
 }
 
+// переключение на предыдущий трек
+
 function nextTrack () {
   treck++;
   if (treck > playList.length - 1) {
@@ -57,6 +60,8 @@ function nextTrack () {
   playTrack ();
 }
 
+// переключене на следующий трек
+
 function prevTrack () {
   treck--;
   if (treck < 0) {
@@ -65,12 +70,14 @@ function prevTrack () {
   loadTreck (playList[treck]);
   playTrack ();
 }
-// шкала прогресса
+
+// шкала прогресса прогрывания трека
+
 function updateProgress (event) {
   //console.log(event.srcElement); //елемент audio, можно посмотреть свойства
   // Получаем значение на какой секунде песня
   let audioTime = audio.currentTime;
-  // Получаем всё время песни
+  // Получаем всё время песни (длинну трека)
   let audioLength = audio.duration;
   // console.log(audioTime);
   // console.log(audioLength);
@@ -82,7 +89,22 @@ function updateProgress (event) {
   time.style.width = `${progressPercent}%`;
 }
 
-audio.addEventListener('timeupdate', updateProgress);
+// перемотка
+function rewindProgress (event) {
+  //ширина контейнера прогресса
+  const widthEvent = this.clientWidth;
+  console.log(widthEvent);
+
+  //координаты клика про шкале
+  const clickX = event.offsetX;
+  console.log(clickX);
+
+  //длинна трека
+  const audioLength = audio.duration;
+
+  audio.currentTime = (clickX / widthEvent) * audioLength;
+
+};
 
 
 /* обработчик событий */
@@ -95,6 +117,14 @@ btnPause.addEventListener('click', () => {
   pauseTrack ();
 })
 
+//событие клика по кнопке вправо
 btnForvard.addEventListener('click', nextTrack);
 
+//событие клика по кнопке влево
 btnBackward.addEventListener('click', prevTrack);
+
+// событие проигрывания аудиотрека
+audio.addEventListener('timeupdate', updateProgress);
+
+// событие перемотки трека по клику на шкале прогресса
+progressBox.addEventListener ('click', rewindProgress);
