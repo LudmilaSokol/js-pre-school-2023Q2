@@ -65,6 +65,24 @@ function prevTrack () {
   loadTreck (playList[treck]);
   playTrack ();
 }
+// шкала прогресса
+function updateProgress (event) {
+  //console.log(event.srcElement); //елемент audio, можно посмотреть свойства
+  // Получаем значение на какой секунде песня
+  let audioTime = audio.currentTime;
+  // Получаем всё время песни
+  let audioLength = audio.duration;
+  // console.log(audioTime);
+  // console.log(audioLength);
+
+  // процент прогресса
+  const progressPercent = (audioTime / audioLength) * 100;
+
+  //переменной програсса присвазиваем значение меняя ширину
+  time.style.width = `${progressPercent}%`;
+}
+
+audio.addEventListener('timeupdate', updateProgress);
 
 
 /* обработчик событий */
