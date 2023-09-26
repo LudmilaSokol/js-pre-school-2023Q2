@@ -14,6 +14,9 @@ let autor = document.querySelector('.autor-song');
 let title = document.querySelector('.title-song');
 let img = document.querySelector('.player__img');
 
+const treckCurrentTime = document.querySelector('.treck__current-time');
+const treckDuration = document.querySelector('.treck__duration');
+
 /* массив с названиями песен */
 const playList = [
   'beyonce.mp3',
@@ -90,6 +93,17 @@ function updateProgress (event) {
 
   //переменной програсса присвазиваем значение меняя ширину
   time.style.width = `${progressPercent}%`;
+
+  //текущее время проигрывания
+  treckCurrentTime.innerHTML = toTime(audioTime);
+}
+/* перевод секунд в минуты и секунды */
+function toTime(seconds) {
+  minutes = Math.floor(seconds / 60);
+  sec = Math.floor(seconds % 60);
+  console.log (`${minutes}:${sec}`);
+
+  return `${minutes}:${sec}`;
 }
 
 // перемотка
@@ -106,11 +120,22 @@ function rewindProgress (event) {
   const audioLength = audio.duration;
 
   audio.currentTime = (clickX / widthEvent) * audioLength;
-
 };
 
 
 /* обработчик событий */
+
+//событие загрузки метаданных
+audio.addEventListener("loadedmetadata", (event) => {
+    // Получаем всё время песни (длинну трека)
+    let audioLength = audio.duration;
+
+    let minutes = Math.floor(audioLength / 60);
+    let sec = Math.floor(audioLength % 60);
+
+    //продолжительность трека
+    treckDuration.innerHTML = `${minutes}:${sec}`;
+});
 
 btnPlay.addEventListener('click', () => {
   playTrack ();

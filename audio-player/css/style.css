@@ -60,6 +60,7 @@
   color: #c8c7bd;
 }
 .player__progress {
+  position: relative;
   margin: 20px auto;
   width: 90%;
   height: 6px;
@@ -72,6 +73,20 @@
   height: 4px;
   background-color: #ada75f;
   border-radius: 5px;
+}
+.treck__current-time,
+.treck__duration {
+  color: #c8c7bd;
+}
+.treck__current-time {
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+.treck__duration {
+  position: absolute;
+  right: 0;
+  top: 10px;
 }
 .player__controls {
   display: flex;
