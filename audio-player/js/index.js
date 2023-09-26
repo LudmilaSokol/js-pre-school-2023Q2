@@ -21,6 +21,8 @@ const playList = [
 ];
 const autorList = ['Beyonce', 'Dua Lipa'];
 
+const titleList = ["Don't Hurt Yourself", "Don't Start Now"]
+
 let treck = 0; //индекс трека
 
 /* функции */
@@ -28,6 +30,7 @@ let treck = 0; //индекс трека
 function loadTreck () {
   audio.src = 'assets/audio/' + playList[treck];
   autor.innerHTML = autorList[treck];
+  title.innerHTML = titleList[treck];
   img.src = `assets/img/img${treck}.png`;
   body.style.background = `linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(assets/img/img${treck}.png), no-repeat`;
   body.style.backgroundSize = 'cover';
