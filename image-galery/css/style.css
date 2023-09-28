@@ -32,6 +32,8 @@
 .main__container {
 	flex-wrap: wrap;
 }
+
+/*  main */
 .card {
 	margin: 10px;
 	width: 30%;
