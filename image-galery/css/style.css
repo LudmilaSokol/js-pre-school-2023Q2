@@ -78,8 +78,8 @@
 .input__search::placeholder {
 	color: #bbb4fa;
 }
-.btn__search {
-	position: absolute;
+.btn {
+  position: absolute;
 	top: 0;
 	right: 0;
 	width: 45px;
@@ -92,8 +92,13 @@
 	border-radius: 0 8px 8px 0;
 	cursor: pointer;
 }
+
 .btn__search::before {
 	content: url(../assets/svg/icon-search.svg);
+}
+
+.btn__close::before {
+	content: url(../assets/svg/icon-close.svg);
 }
 
 .line	{

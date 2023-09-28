@@ -1,21 +1,27 @@
-/* переменные */
-let search = 'cats';
+/* переменные и константы */
+let searchUser = document.querySelector('.input__search'); //строка поиска
+const btn = document.querySelector('.btn'); //кнопка
+const btnClose = document.querySelector('.btn__close');
 const mainContainer = document.querySelector('.main__container');
+const form = document.querySelector('.form__search');
 
+//начальные значения
+let search = 'cats';
+let url = `https://api.unsplash.com/search/photos?query=${search}&per_page=8&orientation=landscape&client_id=wwbO_U0CdwVsuxSoLyZ0-93ZEdx134rB_mwV4RoiPec`;
 
-const url = `https://api.unsplash.com/search/photos?query=${search}&per_page=8&orientation=landscape&client_id=wwbO_U0CdwVsuxSoLyZ0-93ZEdx134rB_mwV4RoiPec`;
 
 /* функции */
 
 // получаем данные с сервера
-async function getData() {
+async function getData(url) {
+  mainContainer.innerHTML = '';
     const response = await fetch(url);
     console.log(response);
     const data = await response.json();
     console.log(data);
     showData(data);
   }
-  getData();
+  getData(url);
 
 
   //отображение данных на странице
@@ -43,5 +49,32 @@ async function getData() {
     card.append(img);
     mainContainer.append(card);
   }
+  //заменяем кнопку поиска на кнопку закрыть
+  function showCloseButton() {
+    btn.classList.remove('btn__search');
+    btn.classList.add('btn__close');
+  }
 
-//   showData(data);
+  // /* обработчик событий */
+
+  // btn.addEventListener('click', (e) => {
+  //   showCloseButton();
+  //   console.log('klick');
+  // });
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  search = searchUser.value;
+  const apiUrl = `https://api.unsplash.com/search/photos?query=${search}&per_page=8&orientation=landscape&client_id=wwbO_U0CdwVsuxSoLyZ0-93ZEdx134rB_mwV4RoiPec`;
+  if (search) {
+    getData(apiUrl);
+    showCloseButton();
+  }
+})
+
+  // btnClose.addEventListener('click', (e) => {
+  //   btn.classList.add('btn__search');
+  //   btn.classList.remove('btn__close');
+  //   searchUser.value = '';
+  //   console.log('klick');
+  // });
