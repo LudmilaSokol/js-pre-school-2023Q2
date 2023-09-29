@@ -1,13 +1,15 @@
+import './variable.js';
+
 /* переменные и константы */
+const apiKey = window.env.API_KEY;
 let searchUser = document.querySelector('.input__search'); //строка поиска
 const btn = document.querySelector('.btn'); //кнопка
-const btnClose = document.querySelector('.btn__close');
 const mainContainer = document.querySelector('.main__container');
 const form = document.querySelector('.form__search');
 
 //начальные значения
 let search = 'cats';
-let url = `https://api.unsplash.com/search/photos?query=${search}&per_page=8&orientation=landscape&client_id=wwbO_U0CdwVsuxSoLyZ0-93ZEdx134rB_mwV4RoiPec`;
+let url = `https://api.unsplash.com/search/photos?query=${search}&per_page=8&orientation=landscape&client_id=${apiKey}`;
 
 
 /* функции */
@@ -16,9 +18,9 @@ let url = `https://api.unsplash.com/search/photos?query=${search}&per_page=8&ori
 async function getData(url) {
   mainContainer.innerHTML = '';
     const response = await fetch(url);
-    console.log(response);
+    // console.log(response);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     showData(data);
 }
 
@@ -32,9 +34,9 @@ function showData(data) {
   let alt;
   data1 = data.results.map(function(item, index, data) {
       src = item.urls.regular;
-      console.log (src);
+      // console.log (src);
       alt = item.alt_description;
-      console.log (alt);
+      // console.log (alt);
       createCard(src, alt);
   })
   return data1;
@@ -61,7 +63,7 @@ function showCloseButton() {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   search = searchUser.value;
-  const apiUrl = `https://api.unsplash.com/search/photos?query=${search}&per_page=8&orientation=landscape&client_id=wwbO_U0CdwVsuxSoLyZ0-93ZEdx134rB_mwV4RoiPec`;
+  const apiUrl = `https://api.unsplash.com/search/photos?query=${search}&per_page=8&orientation=landscape&client_id=${apiKey}`;
   if (search) {
     getData(apiUrl);
     showCloseButton();
