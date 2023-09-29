@@ -72,9 +72,14 @@ form.addEventListener('submit', (event) => {
 
 
 btn.addEventListener('click', (e) => {
+  search = searchUser.value;
+  const apiUrl = `https://api.unsplash.com/search/photos?query=${search}&per_page=8&orientation=landscape&client_id=${apiKey}`;
   if (btn.classList.contains('btn__close')) {
     btn.classList.add('btn__search');
     btn.classList.remove('btn__close');
     searchUser.value = '';
+  } else  if (search) {
+    getData(apiUrl);
+    showCloseButton();
   }
 });
