@@ -20,47 +20,43 @@ async function getData(url) {
     const data = await response.json();
     console.log(data);
     showData(data);
-  }
-  getData(url);
+}
+
+getData(url);
 
 
-  //отображение данных на странице
-  function showData(data) {
-    let data1;
-    let src;
-    let alt;
-    data1 = data.results.map(function(item, index, data) {
-        src = item.urls.regular;
-        console.log (src);
-        alt = item.alt_description;
-        console.log (alt);
-        createCard(src, alt);
-    })
-    return data1;
-  }
-  //оздать карточку для галереи
-  function createCard(src, alt) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    const img = document.createElement('img');
-    img.classList.add('card__img');
-    img.src = `${src}`;
-    img.alt = `${alt}`;
-    card.append(img);
-    mainContainer.append(card);
-  }
-  //заменяем кнопку поиска на кнопку закрыть
-  function showCloseButton() {
-    btn.classList.remove('btn__search');
-    btn.classList.add('btn__close');
-  }
+//отображение данных на странице
+function showData(data) {
+  let data1;
+  let src;
+  let alt;
+  data1 = data.results.map(function(item, index, data) {
+      src = item.urls.regular;
+      console.log (src);
+      alt = item.alt_description;
+      console.log (alt);
+      createCard(src, alt);
+  })
+  return data1;
+}
+//оздать карточку для галереи
+function createCard(src, alt) {
+  const card = document.createElement('div');
+  card.classList.add('card');
+  const img = document.createElement('img');
+  img.classList.add('card__img');
+  img.src = `${src}`;
+  img.alt = `${alt}`;
+  card.append(img);
+  mainContainer.append(card);
+}
+//заменяем кнопку поиска на кнопку закрыть
+function showCloseButton() {
+  btn.classList.remove('btn__search');
+  btn.classList.add('btn__close');
+}
 
-  // /* обработчик событий */
-
-  // btn.addEventListener('click', (e) => {
-  //   showCloseButton();
-  //   console.log('klick');
-  // });
+/* обработчик событий */
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -72,9 +68,11 @@ form.addEventListener('submit', (event) => {
   }
 })
 
-  // btnClose.addEventListener('click', (e) => {
-  //   btn.classList.add('btn__search');
-  //   btn.classList.remove('btn__close');
-  //   searchUser.value = '';
-  //   console.log('klick');
-  // });
+
+btn.addEventListener('click', (e) => {
+  if (btn.classList.contains('btn__close')) {
+    btn.classList.add('btn__search');
+    btn.classList.remove('btn__close');
+    searchUser.value = '';
+  }
+});
