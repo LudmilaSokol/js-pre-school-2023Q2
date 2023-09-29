@@ -31,12 +31,13 @@
 }
 .main__container {
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 /*  main */
 .card {
 	margin: 10px;
-	width: 30%;
+	width: 350px;
 	height: 250px;
 	background-color: antiquewhite;
 	box-shadow: 5px 5px 15px gray;
