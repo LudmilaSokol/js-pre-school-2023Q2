@@ -16,18 +16,27 @@ ctx.strokeStyle = '#957474';
 //цвет заливки
 ctx.fillStyle = '#cb9898';
 //создаем объект еды
+//переменная для изображения еды
 let foodImg = new Image();
 foodImg.src = "assets/svg/food_1.svg";
+//координаты еды
+let food = {
+  x : Math.floor((Math.random() * cellCountX)) * cellSize,
+  y : Math.floor((Math.random() * cellCountY)) * cellSize
+}
+
+//закрашиваем игровое поле
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+//рисуем ячейки игрового поля
+drawCells();
 
 
 //рисуем элементы игры
 function draw() {
-	//закрашиваем весь прямоугольник
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  //рисуем ячейки игрового поля
-	drawCells();
+  //еда
   drawFood();
 }
+
 //вызов функции с указанной периодичностью
 let game = setInterval(draw, 100);
 
@@ -41,6 +50,6 @@ function drawCells() {
 // рисуем еду
 function drawFood() {
   //разместить изображение в клетке случайным образом
-    ctx.drawImage(foodImg, 2, 2);
+    ctx.drawImage(foodImg, food.x + 2, food.y + 3);
 }
 
