@@ -1,0 +1,17 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    margin: 0 auto;
+    width: 586px;
+    height: 700px;
+    background-color: #cb9898;
+    border: 3px solid #4e2424;
+}
+
+.canvas {
+    width: 100%;
+    height: auto%;
+}
