@@ -32,12 +32,16 @@ snake[0] = {
   x : Math.floor((cellCountX * cellSize) / 2),
   y : Math.floor((cellCountY * cellSize) / 2)
 }
+//направление движения (зависит от нажатой клавиши)
+let dir;
 
 //закрашиваем игровое поле
 ctx.fillRect (0, 0, canvas.width, canvas.height);
 //рисуем ячейки игрового поля
 drawCells ();
 
+
+/* функции */
 
 //рисуем элементы игры
 function draw () {
@@ -46,6 +50,9 @@ function draw () {
 
   //змейка
   drawSnake ();
+
+  //перемещение змейки
+  moveSnake ();
 }
 
 //вызов функции с указанной периодичностью
@@ -74,3 +81,40 @@ function drawSnake () {
   }
 }
 
+function direction (event) {
+ if (event.keyCode === 37 && dir !== 'ridht') {
+  dir = 'left';
+ } else if (event.keyCode === 38 && dir !== 'down') {
+  dir = 'up';
+ } else if (event.keyCode === 39 && dir !== 'left') {
+  dir = 'right';
+ } else if (event.keyCode === 40 && dir !=='up') {
+  dir = 'down';
+ }
+}
+function moveSnake () {
+  //положение головы
+  let snakeX = snake[0].x;
+  let snakeY = snake[0].y;
+
+  //удаляем последний элемент змейки
+  snake.pop();
+
+  //меняем координаты головы в зависимости от нажатой клавиши
+  if (dir === 'left') {snakeX = snakeX - cellSize};
+  if (dir === 'right') {snakeX = snakeX + cellSize};
+  if (dir === 'up') {snakeY = snakeY - cellSize};
+  if (dir === 'down') {snakeY = snakeY + cellSize};
+  //создаем элемент для головы массива с новыми координатами
+  let newHead = {
+    x : snakeX,
+    y : snakeY
+  }
+  //добавляем новый  элемент в начало массива змейки
+  snake.unshift(newHead);
+}
+
+
+/* обработчики событий */
+//отслеживает нажатие клавиш на клавиатуре
+document.addEventListener('keydown', direction);
