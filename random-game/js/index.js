@@ -16,35 +16,43 @@ ctx.strokeStyle = '#957474';
 // ctx.lineWidth = 1;
 //цвет заливки
 ctx.fillStyle = '#cb9898';
+
 //создаем объект еды
 //переменная для изображения еды
 let foodImg = new Image();
 foodImg.src = "assets/svg/food_1.svg";
+
 //координаты еды
 let food = {
   x : Math.floor((Math.random() * cellCountX)) * cellSize,
   y : Math.floor((Math.random() * cellCountY)) * cellSize
 }
+
 //массив для элемента змея
 let snake = [];
+
 //голова змейки
 snake[0] = {
   x : Math.floor((cellCountX * cellSize) / 2),
   y : Math.floor((cellCountY * cellSize) / 2)
 }
+
 //направление движения (зависит от нажатой клавиши)
 let dir;
 
-//закрашиваем игровое поле
-ctx.fillRect (0, 0, canvas.width, canvas.height);
-//рисуем ячейки игрового поля
-drawCells ();
+  //закрашиваем игровое поле
+  ctx.fillRect (0, 0, canvas.width, canvas.height);
 
 
 /* функции */
 
 //рисуем элементы игры
 function draw () {
+  //очистка области перед прорисовкой (стирает предыдущий рисунок)
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  //рисуем ячейки игрового поля
+  drawCells ();
 
   //еда
   drawFood ();
@@ -66,6 +74,7 @@ function drawCells () {
 			// рисуем ячейку
       ctx.strokeRect(i * cellSize, j * cellSize, cellSize, cellSize);
 }
+
 // рисуем еду
 function drawFood () {
   //разместить изображение в клетке случайным образом
@@ -81,7 +90,7 @@ function drawSnake () {
     ctx.fillRect(snake[i].x, snake[i].y, cellSize, cellSize);
   }
 }
-
+//определяем какие клавиши нажаты
 function direction (event) {
  if (event.keyCode === 37 && dir !== 'ridht') {
   dir = 'left';
@@ -93,6 +102,7 @@ function direction (event) {
   dir = 'down';
  }
 }
+//перемещение змейки
 function moveSnake () {
   //положение головы
   let snakeX = snake[0].x;
