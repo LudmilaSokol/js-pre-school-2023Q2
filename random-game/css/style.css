@@ -1,0 +1,37 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+    margin: 0 auto;
+    width: 586px;
+    height: 700px;
+    background-color: #cb9898;
+    border: 3px solid #4e2424;
+}
+
+.container__header {
+    color: #4e2424;
+}
+.canvas {
+    width: 100%;
+    height: auto;
+}
+/* .wrapper__btn {
+    display: flex;
+    justify-content: space-evenly;
+} */
+.btn {
+    width: 120px;
+    height: 40px;
+    margin: 0 80px;
+    font-weight: 700;
+    background-color: #7a4b4b;
+    color: #301717;
+}
+.btn:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
