@@ -68,7 +68,7 @@ function draw () {
 }
 
 //вызов функции с указанной периодичностью
-let game = setInterval(draw, 200);
+let game = setInterval(draw, 230);
 
 // рисуем ячейки игрового поля
 function drawCells () {
@@ -144,9 +144,20 @@ function moveSnake () {
 
   //добавляем новый  элемент в начало массива змейки
   snake.unshift(newHead);
+
+  //проверяем не пытается ли змейка съесть себя
+  eatYourself (newHead, snake);
 }
 
-
+//проверка на поедение змейки самой себя
+function eatYourself (head, arrSnake) {
+  for (let i = 1; i < arrSnake.length; i++) {
+    if (head.x === arrSnake[i].x && head.y === arrSnake[i].y) {
+      clearInterval (game);
+      alert(' конец игры ');
+    }
+  }
+}
 
 /* обработчики событий */
 //отслеживает нажатие клавиш на клавиатуре
