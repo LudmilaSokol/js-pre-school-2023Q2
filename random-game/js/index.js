@@ -111,6 +111,12 @@ function moveSnake () {
   //удаляем последний элемент змейки
   snake.pop();
 
+  //проверка положения головы змейки (не должна выходить за границу поля, иначе конец игры)
+  if (snakeX < 0 || snakeX > (cellCountX-1) * cellSize || snakeY < 0 || snakeY > (cellCountY-1) * cellSize) {
+    clearInterval (game);
+    alert(' конец игры ');
+  }
+
   //меняем координаты головы в зависимости от нажатой клавиши
   if (dir === 'left') {snakeX = snakeX - cellSize};
   if (dir === 'right') {snakeX = snakeX + cellSize};
