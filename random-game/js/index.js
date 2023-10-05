@@ -40,8 +40,11 @@ snake[0] = {
 //направление движения (зависит от нажатой клавиши)
 let dir;
 
-  //закрашиваем игровое поле
-  ctx.fillRect (0, 0, canvas.width, canvas.height);
+// счетчик еды/баллов
+let countFood = 0;
+
+//закрашиваем игровое поле
+ctx.fillRect (0, 0, canvas.width, canvas.height);
 
 
 /* функции */
@@ -65,7 +68,7 @@ function draw () {
 }
 
 //вызов функции с указанной периодичностью
-let game = setInterval(draw, 150);
+let game = setInterval(draw, 200);
 
 // рисуем ячейки игрового поля
 function drawCells () {
@@ -108,8 +111,19 @@ function moveSnake () {
   let snakeX = snake[0].x;
   let snakeY = snake[0].y;
 
-  //удаляем последний элемент змейки
-  snake.pop();
+  if (snakeX === food.x && snakeY === food.y) {
+    //увеличиваем счетчик еды
+    countFood = countFood + 1;
+    console.log (countFood);
+    //поясляется новая еда
+    food = {
+      x : Math.floor((Math.random() * cellCountX)) * cellSize,
+      y : Math.floor((Math.random() * cellCountY)) * cellSize
+    }
+  } else {
+      //удаляем последний элемент змейки и перемещаем змейку
+      snake.pop();
+  }
 
   //проверка положения головы змейки (не должна выходить за границу поля, иначе конец игры)
   if (snakeX < 0 || snakeX > (cellCountX-1) * cellSize || snakeY < 0 || snakeY > (cellCountY-1) * cellSize) {
@@ -127,9 +141,11 @@ function moveSnake () {
     x : snakeX,
     y : snakeY
   }
+
   //добавляем новый  элемент в начало массива змейки
   snake.unshift(newHead);
 }
+
 
 
 /* обработчики событий */
