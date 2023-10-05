@@ -45,6 +45,7 @@ drawCells ();
 
 //рисуем элементы игры
 function draw () {
+
   //еда
   drawFood ();
 
@@ -56,7 +57,7 @@ function draw () {
 }
 
 //вызов функции с указанной периодичностью
-let game = setInterval(draw, 100);
+let game = setInterval(draw, 150);
 
 // рисуем ячейки игрового поля
 function drawCells () {
