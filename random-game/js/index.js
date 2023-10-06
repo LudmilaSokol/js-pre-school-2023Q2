@@ -1,4 +1,5 @@
 /* переменные и константы */
+let countScore = document.querySelector('.count-score');
 
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
@@ -90,7 +91,7 @@ function drawFood () {
 function drawSnake () {
   for (let i = 0; i < snake.length; i++) {
     //цвет заливки
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = i === 0 ? '#4e2424' : '#b01919';
     //закрашиваем звенья змейки
     ctx.fillRect(snake[i].x, snake[i].y, cellSize, cellSize);
   }
@@ -117,6 +118,7 @@ function moveSnake () {
   if (snakeX === food.x && snakeY === food.y) {
     //увеличиваем счетчик еды
     countFood = countFood + 1;
+    countScore.textContent = countFood;
     console.log (countFood);
     //поясляется новая еда
     food = {
