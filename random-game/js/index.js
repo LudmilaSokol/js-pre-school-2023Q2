@@ -60,11 +60,13 @@ function draw () {
   //еда
   drawFood ();
 
-  //змейка
-  drawSnake ();
 
   //перемещение змейки
   moveSnake ();
+
+    //змейка
+  drawSnake ();
+
 }
 
 //вызов функции с указанной периодичностью
@@ -105,9 +107,10 @@ function direction (event) {
   dir = 'down';
  }
 }
+
 //перемещение змейки
 function moveSnake () {
-  //положение головы
+  // положение головы
   let snakeX = snake[0].x;
   let snakeY = snake[0].y;
 
@@ -136,23 +139,25 @@ function moveSnake () {
   if (dir === 'right') {snakeX = snakeX + cellSize};
   if (dir === 'up') {snakeY = snakeY - cellSize};
   if (dir === 'down') {snakeY = snakeY + cellSize};
+
   //создаем элемент для головы массива с новыми координатами
   let newHead = {
     x : snakeX,
     y : snakeY
   }
 
-  //добавляем новый  элемент в начало массива змейки
-  snake.unshift(newHead);
-
   //проверяем не пытается ли змейка съесть себя
   eatYourself (newHead, snake);
+
+  //добавляем новый  элемент в начало массива змейки
+  snake.unshift(newHead);
 }
 
 //проверка на поедение змейки самой себя
 function eatYourself (head, arrSnake) {
   for (let i = 1; i < arrSnake.length; i++) {
     if (head.x === arrSnake[i].x && head.y === arrSnake[i].y) {
+      console.log (' съела себя');
       clearInterval (game);
       alert(' конец игры ');
     }
