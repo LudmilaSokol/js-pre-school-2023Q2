@@ -1,6 +1,9 @@
 /* переменные и константы */
 let countScore = document.querySelector('.count-score');
 const btnStart = document.querySelector('.start');
+const btnRules = document.querySelector('.rules');
+const btnClose = document.querySelector('.btn-close');
+const popupRules = document.querySelector('.pop-up__rules');
 
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
@@ -179,4 +182,10 @@ btnStart.addEventListener('click', () => {
     clearInterval (game);
     btnStart.textContent = "Start";
   }
+})
+btnRules.addEventListener('click', () => {
+  popupRules.classList.remove('close');
+})
+btnClose.addEventListener('click', () => {
+  popupRules.classList.add('close');
 })
