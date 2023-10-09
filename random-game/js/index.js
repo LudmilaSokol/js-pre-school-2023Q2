@@ -44,9 +44,14 @@ snake[0] = {
 
 //направление движения (зависит от нажатой клавиши)
 let dir;
-
 // счетчик еды/баллов
 let countFood = 0;
+
+//время игры
+let startTime,
+  endTime,
+  timeGameMs = 0,
+  timeGame;
 
 //закрашиваем игровое поле
 ctx.fillRect (0, 0, canvas.width, canvas.height);
@@ -99,15 +104,15 @@ function drawSnake () {
 }
 //определяем какие клавиши нажаты
 function direction (event) {
- if (event.keyCode === 37 && dir !== 'right') {
-  dir = 'left';
- } else if (event.keyCode === 38 && dir !== 'down') {
-  dir = 'up';
- } else if (event.keyCode === 39 && dir !== 'left') {
-  dir = 'right';
- } else if (event.keyCode === 40 && dir !=='up') {
-  dir = 'down';
- }
+  if (event.keyCode === 37 && dir !== 'right') {
+    dir = 'left';
+  }  else if (event.keyCode === 38 && dir !== 'down') {
+    dir = 'up';
+  }  else if (event.keyCode === 39 && dir !== 'left') {
+    dir = 'right';
+  }  else if (event.keyCode === 40 && dir !=='up') {
+    dir = 'down';
+  }
 }
 
 //перемещение змейки
@@ -120,8 +125,7 @@ function moveSnake () {
     //увеличиваем счетчик еды
     countFood = countFood + 1;
     countScore.textContent = countFood;
-    console.log (countFood);
-    //поясляется новая еда
+    //появляется новая еда
     food = {
       x : Math.floor((Math.random() * cellCountX)) * cellSize,
       y : Math.floor((Math.random() * cellCountY)) * cellSize
@@ -140,8 +144,7 @@ function moveSnake () {
 
   //проверка положения головы змейки (не должна выходить за границу поля, иначе конец игры)
   if (snakeX < 0 || snakeX > (cellCountX-1) * cellSize || snakeY < 0 || snakeY > (cellCountY-1) * cellSize) {
-    clearInterval (game);
-    alert(' конец игры ');
+    finishGame ();
   }
 
   //создаем элемент для головы массива с новыми координатами
@@ -162,10 +165,35 @@ function eatYourself (head, arrSnake) {
   for (let i = 1; i < arrSnake.length; i++) {
     if (head.x === arrSnake[i].x && head.y === arrSnake[i].y) {
       console.log (' съела себя');
-      clearInterval (game);
-      alert(' конец игры ');
+      finishGame ();
     }
   }
+}
+
+//завершение игры и вывод результатов
+function finishGame () {
+  clearInterval (game);
+  alert(' конец игры ');
+  endTime = new Date();
+  // console.log (endTime);
+  timeGameMs = timeGameMs + (endTime - startTime);
+  // console.log(timeGameMs)
+  let hours = Math.floor(timeGameMs / 60000 / 60);
+  let minutes = Math.floor(timeGameMs / 60000);
+  let sec = Math.floor((timeGameMs / 1000) % 60);
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (sec < 10) {
+    sec = `0${sec}`;
+  }
+
+  timeGame = `${hours} : ${minutes} : ${sec}`;
+  // console.log (timeGame);
 }
 
 /* обработчики событий */
@@ -174,6 +202,10 @@ function eatYourself (head, arrSnake) {
 btnStart.addEventListener('click', () => {
   if (btnStart.innerHTML === 'Start') {
     game = setInterval(draw, 230);
+
+    //старт времени игры
+    startTime = new Date();
+    // console.log (startTime)
     //отслеживает нажатие клавиш на клавиатуре после старта игры
     document.addEventListener('keydown', direction);
     //кнопка start меняется на pause
@@ -181,6 +213,9 @@ btnStart.addEventListener('click', () => {
   } else {
     clearInterval (game);
     btnStart.textContent = "Start";
+    //останавливаем время на период паузы и запоминаем значение
+    endTime = new Date();
+    timeGameMs = timeGameMs + (endTime - startTime);
   }
 })
 btnRules.addEventListener('click', () => {
