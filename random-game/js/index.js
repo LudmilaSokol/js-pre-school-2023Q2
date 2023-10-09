@@ -98,7 +98,7 @@ function drawSnake () {
 }
 //определяем какие клавиши нажаты
 function direction (event) {
- if (event.keyCode === 37 && dir !== 'ridht') {
+ if (event.keyCode === 37 && dir !== 'right') {
   dir = 'left';
  } else if (event.keyCode === 38 && dir !== 'down') {
   dir = 'up';
