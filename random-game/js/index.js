@@ -1,5 +1,6 @@
 /* переменные и константы */
 let countScore = document.querySelector('.count-score');
+const btnStart = document.querySelector('.start');
 
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
@@ -47,7 +48,6 @@ let countFood = 0;
 //закрашиваем игровое поле
 ctx.fillRect (0, 0, canvas.width, canvas.height);
 
-
 /* функции */
 
 //рисуем элементы игры
@@ -61,17 +61,15 @@ function draw () {
   //еда
   drawFood ();
 
-
   //перемещение змейки
   moveSnake ();
 
-    //змейка
+  //змейка
   drawSnake ();
-
 }
 
-//вызов функции с указанной периодичностью
-let game = setInterval(draw, 230);
+//вызов изображения до старта игры
+let game = setTimeout(draw, 230);
 
 // рисуем ячейки игрового поля
 function drawCells () {
@@ -168,5 +166,17 @@ function eatYourself (head, arrSnake) {
 }
 
 /* обработчики событий */
-//отслеживает нажатие клавиш на клавиатуре
-document.addEventListener('keydown', direction);
+
+//запуск игры при клике на кнопку start
+btnStart.addEventListener('click', () => {
+  if (btnStart.innerHTML === 'Start') {
+    game = setInterval(draw, 230);
+    //отслеживает нажатие клавиш на клавиатуре после старта игры
+    document.addEventListener('keydown', direction);
+    //кнопка start меняется на pause
+    btnStart.textContent = 'Pause';
+  } else {
+    clearInterval (game);
+    btnStart.textContent = "Start";
+  }
+})
