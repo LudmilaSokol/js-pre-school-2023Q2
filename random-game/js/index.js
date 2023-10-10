@@ -4,6 +4,17 @@ const btnStart = document.querySelector('.start');
 const btnRules = document.querySelector('.rules');
 const btnClose = document.querySelector('.btn-close');
 const popupRules = document.querySelector('.pop-up__rules');
+const countTimeGame = document.querySelector('.time__game');
+const countFoods = document.querySelector('.count-food');
+const gameOver = document.querySelector('.pop-up__game-over');
+const btnCloseGameOver = document.querySelector('.btn-close__game-over');
+
+const results = [];
+results[0] = {
+  'Time Game' : 'Time Game',
+  Score : 'Score'
+}
+localStorage.setItem('0', JSON.stringify(results[0]));
 
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
@@ -17,8 +28,6 @@ let cellSize = (canvas.width) / cellCountX;
 canvas.height = cellCountY * cellSize;
 //цвет линий
 ctx.strokeStyle = '#957474';
-//ширина линий
-// ctx.lineWidth = 1;
 //цвет заливки
 ctx.fillStyle = '#cb9898';
 
@@ -26,7 +35,6 @@ ctx.fillStyle = '#cb9898';
 //переменная для изображения еды
 let foodImg = new Image();
 foodImg.src = "assets/svg/food_1.svg";
-
 //координаты еды
 let food = {
   x : Math.floor((Math.random() * cellCountX)) * cellSize,
@@ -35,7 +43,6 @@ let food = {
 
 //массив для элемента змея
 let snake = [];
-
 //голова змейки
 snake[0] = {
   x : Math.floor((cellCountX * cellSize) / 2),
@@ -44,6 +51,7 @@ snake[0] = {
 
 //направление движения (зависит от нажатой клавиши)
 let dir;
+
 // счетчик еды/баллов
 let countFood = 0;
 
@@ -55,6 +63,9 @@ let startTime,
 
 //закрашиваем игровое поле
 ctx.fillRect (0, 0, canvas.width, canvas.height);
+
+//вызов изображения до старта игры
+let game = setTimeout(draw, 230);
 
 /* функции */
 
@@ -75,9 +86,6 @@ function draw () {
   //змейка
   drawSnake ();
 }
-
-//вызов изображения до старта игры
-let game = setTimeout(draw, 230);
 
 // рисуем ячейки игрового поля
 function drawCells () {
@@ -102,6 +110,7 @@ function drawSnake () {
     ctx.fillRect(snake[i].x, snake[i].y, cellSize, cellSize);
   }
 }
+
 //определяем какие клавиши нажаты
 function direction (event) {
   if (event.keyCode === 37 && dir !== 'right') {
@@ -145,6 +154,7 @@ function moveSnake () {
   //проверка положения головы змейки (не должна выходить за границу поля, иначе конец игры)
   if (snakeX < 0 || snakeX > (cellCountX-1) * cellSize || snakeY < 0 || snakeY > (cellCountY-1) * cellSize) {
     finishGame ();
+    console.log('за пределами')
   }
 
   //создаем элемент для головы массива с новыми координатами
@@ -173,7 +183,8 @@ function eatYourself (head, arrSnake) {
 //завершение игры и вывод результатов
 function finishGame () {
   clearInterval (game);
-  alert(' конец игры ');
+
+  // alert(' конец игры ');
   endTime = new Date();
   // console.log (endTime);
   timeGameMs = timeGameMs + (endTime - startTime);
@@ -194,6 +205,37 @@ function finishGame () {
 
   timeGame = `${hours} : ${minutes} : ${sec}`;
   // console.log (timeGame);
+  // console.log (countFood)
+
+  //выводим значения в модальном окне завершения игры
+  countTimeGame.textContent = timeGame;
+  countFoods.textContent = countFood;
+
+  //показать модальное окно завершения игры
+  gameOver.classList.remove('close');
+}
+
+//рестарт игры после закрытия модального окна game over
+function startGame () {
+//очищаем массив змейки
+snake = [];
+//голова змейки
+snake[0] = {
+  x : Math.floor((cellCountX * cellSize) / 2),
+  y : Math.floor((cellCountY * cellSize) / 2)
+}
+
+// обнуляем значение направления движения
+dir = '';
+// счетчик еды/баллов
+countFood = 0;
+
+countScore.textContent = countFood;
+
+//время игры
+timeGameMs = 0;
+// timeGame = 0;
+btnStart.textContent = "Start";
 }
 
 /* обработчики событий */
@@ -205,22 +247,32 @@ btnStart.addEventListener('click', () => {
 
     //старт времени игры
     startTime = new Date();
-    // console.log (startTime)
+    console.log (startTime)
     //отслеживает нажатие клавиш на клавиатуре после старта игры
     document.addEventListener('keydown', direction);
     //кнопка start меняется на pause
     btnStart.textContent = 'Pause';
-  } else {
+  } else  if (btnStart.innerHTML === 'Pause') {
     clearInterval (game);
     btnStart.textContent = "Start";
     //останавливаем время на период паузы и запоминаем значение
     endTime = new Date();
     timeGameMs = timeGameMs + (endTime - startTime);
-  }
+    }
 })
+//открыть окно с правилами игры
 btnRules.addEventListener('click', () => {
   popupRules.classList.remove('close');
 })
+
+//закрыть модальное окно кнопкой close
 btnClose.addEventListener('click', () => {
-  popupRules.classList.add('close');
+    popupRules.classList.add('close');
+  })
+
+//закрытваем окно результатов окончания игры и restart игры
+btnCloseGameOver.addEventListener('click', () => {
+  gameOver.classList.add('close');
+    //перерисовать стартовое поле
+  startGame();
 })

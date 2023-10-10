@@ -92,7 +92,8 @@
 .modal__item {
   padding-bottom: 10px;
 }
-.btn-close {
+.btn-close,
+.btn-close__game-over {
   position: relative;
   top: 140px;
   left: 80px;
