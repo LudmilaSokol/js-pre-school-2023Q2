@@ -8,13 +8,10 @@ const countTimeGame = document.querySelector('.time__game');
 const countFoods = document.querySelector('.count-food');
 const gameOver = document.querySelector('.pop-up__game-over');
 const btnCloseGameOver = document.querySelector('.btn-close__game-over');
+const modalGameOver = document.querySelector('.game-over');
+const table = document.querySelector('.table__results')
 
 const results = [];
-results[0] = {
-  'Time Game' : 'Time Game',
-  Score : 'Score'
-}
-localStorage.setItem('0', JSON.stringify(results[0]));
 
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
@@ -140,8 +137,8 @@ function moveSnake () {
       y : Math.floor((Math.random() * cellCountY)) * cellSize
     }
   } else {
-      //удаляем последний элемент змейки
-      snake.pop();
+    //удаляем последний элемент змейки
+    snake.pop();
   }
   // перемещаем змейку
 
@@ -154,7 +151,7 @@ function moveSnake () {
   //проверка положения головы змейки (не должна выходить за границу поля, иначе конец игры)
   if (snakeX < 0 || snakeX > (cellCountX-1) * cellSize || snakeY < 0 || snakeY > (cellCountY-1) * cellSize) {
     finishGame ();
-    console.log('за пределами')
+    // console.log('за пределами')
   }
 
   //создаем элемент для головы массива с новыми координатами
@@ -211,6 +208,20 @@ function finishGame () {
   countTimeGame.textContent = timeGame;
   countFoods.textContent = countFood;
 
+  //сохраняем значения в массиве
+  lengthResults = localStorage.length + 1;
+  console.log(lengthResults);
+  results[lengthResults] = {
+    'Time Game' : `${timeGame}`,
+    'Score' : `${countFood}`
+  }
+
+  //передать данные в локал сторадж
+  localStorage.setItem(lengthResults, JSON.stringify(results[lengthResults]));
+
+  //выгрузить результирующие данные из Локал сторадж
+  creatingTable ();
+
   //показать модальное окно завершения игры
   gameOver.classList.remove('close');
 }
@@ -238,6 +249,59 @@ timeGameMs = 0;
 btnStart.textContent = "Start";
 }
 
+//выгрузка массива из local storage
+function getTable (){
+  //выгружаем массив из локал стородж
+  let res = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    res[i] = JSON.parse(localStorage.getItem(i));
+    console.log(res[i]);
+  }
+  return res;
+}
+
+function creatingTable () {
+  //получаем массив из локал сторадж
+  let results = getTable ();
+  //создаем таблицу результатов
+
+  //заголовок таблицы
+  let tr = document.createElement('tr');
+  let th1 = document.createElement('th');
+  let th2 = document.createElement('th');
+
+  th1.textContent = 'Time Game';
+  th2.textContent = 'Score';
+  th1.style.width = '150px';
+  th2.style.width = '150px';
+
+  tr.appendChild(th1);
+  tr.appendChild(th2);
+  table.appendChild(tr);
+
+  for (let j = 1; j < results.length; j++) {
+    console.log (results[j]);
+    tr = document.createElement('tr');
+    let td1 = document.createElement('td');
+    let td2 = document.createElement('td');
+
+    td1.style.width = '150px';
+    td2.style.width = '150px';
+    td1.style.textAlign = 'center';
+    td2.style.textAlign = 'center';
+
+    td1.textContent = results[j]['Time Game'];
+    console.log (results[j]['Time Game']);
+
+    td2.textContent = results[j]['Score'];
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+
+    table.appendChild(tr);
+  }
+}
+
 /* обработчики событий */
 
 //запуск игры при клике на кнопку start
@@ -247,7 +311,7 @@ btnStart.addEventListener('click', () => {
 
     //старт времени игры
     startTime = new Date();
-    console.log (startTime)
+    // console.log (startTime)
     //отслеживает нажатие клавиш на клавиатуре после старта игры
     document.addEventListener('keydown', direction);
     //кнопка start меняется на pause
@@ -273,6 +337,10 @@ btnClose.addEventListener('click', () => {
 //закрытваем окно результатов окончания игры и restart игры
 btnCloseGameOver.addEventListener('click', () => {
   gameOver.classList.add('close');
-    //перерисовать стартовое поле
+  //перерисовать стартовое поле
   startGame();
+  //очистить таблицу результатов в модальном окне
+  while (table.firstChild) {
+    table.removeChild(table.firstChild);
+}
 })
