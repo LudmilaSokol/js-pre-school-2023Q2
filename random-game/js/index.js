@@ -262,7 +262,7 @@ function getTable (){
   let min;
   //удаляем из локал сторадж самую старую запись, если количество элементов больше 10
   //запомнить min key и удалить
-  if (localStorage.length > 10) {
+  if (localStorage.length > 11) {
     min = localStorage.key(0);
     for (let i = 1; i < localStorage.length; i++) {
       if (localStorage.key(i) < min) {
