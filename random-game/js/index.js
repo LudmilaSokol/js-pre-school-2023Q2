@@ -11,7 +11,8 @@ const btnCloseGameOver = document.querySelector('.btn-close__game-over');
 const modalGameOver = document.querySelector('.game-over');
 const table = document.querySelector('.table__results')
 
-const results = [];
+// const results = {};
+let key;
 
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
@@ -209,15 +210,19 @@ function finishGame () {
   countFoods.textContent = countFood;
 
   //сохраняем значения в массиве
-  lengthResults = localStorage.length + 1;
-  console.log(lengthResults);
-  results[lengthResults] = {
-    'Time Game' : `${timeGame}`,
-    'Score' : `${countFood}`
-  }
+  key = endTime
+  // lengthResults = localStorage.length + 1;
+  // console.log(lengthResults);
+  // results[lengthResults] = {
+  //   'Time Game' : `${timeGame}`,
+  //   'Score' : `${countFood}`
+  // }
 
   //передать данные в локал сторадж
-  localStorage.setItem(lengthResults, JSON.stringify(results[lengthResults]));
+  localStorage.setItem(endTime, JSON.stringify({
+    'Time Game' : `${timeGame}`,
+    'Score' : `${countFood}`
+  }));
 
   //выгрузить результирующие данные из Локал сторадж
   creatingTable ();
@@ -252,10 +257,13 @@ btnStart.textContent = "Start";
 //выгрузка массива из local storage
 function getTable (){
   //выгружаем массив из локал стородж
-  let res = [];
+  let res = {};
+  let key1;
   for (let i = 0; i < localStorage.length; i++) {
-    res[i] = JSON.parse(localStorage.getItem(i));
-    console.log(res[i]);
+    key1 = localStorage.key(i);
+    // console.log(key1);
+    res[key1] = JSON.parse(localStorage.getItem(key1));
+    // console.log(res[key1]);
   }
   return res;
 }
@@ -279,8 +287,9 @@ function creatingTable () {
   tr.appendChild(th2);
   table.appendChild(tr);
 
-  for (let j = 1; j < results.length; j++) {
-    console.log (results[j]);
+  for (let j = 1; j < localStorage.length; j++) {
+    let key = localStorage.key(j);
+
     tr = document.createElement('tr');
     let td1 = document.createElement('td');
     let td2 = document.createElement('td');
@@ -290,10 +299,10 @@ function creatingTable () {
     td1.style.textAlign = 'center';
     td2.style.textAlign = 'center';
 
-    td1.textContent = results[j]['Time Game'];
-    console.log (results[j]['Time Game']);
+    td1.textContent = results[key]['Time Game'];
+    console.log (results[key]['Time Game']);
 
-    td2.textContent = results[j]['Score'];
+    td2.textContent = results[key]['Score'];
 
     tr.appendChild(td1);
     tr.appendChild(td2);
