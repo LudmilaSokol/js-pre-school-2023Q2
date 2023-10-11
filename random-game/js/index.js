@@ -259,6 +259,21 @@ function getTable (){
   //выгружаем массив из локал стородж
   let res = {};
   let key1;
+  let min;
+  //удаляем из локал сторадж самую старую запись, если количество элементов больше 10
+  //запомнить min key и удалить
+  if (localStorage.length > 10) {
+    min = localStorage.key(0);
+    for (let i = 1; i < localStorage.length; i++) {
+      if (localStorage.key(i) < min) {
+        min = localStorage.key(i);
+      }
+    console.log(min);
+    }
+    // Удаляем элемент из локал сторадж
+    delete localStorage[min];
+  }
+
   for (let i = 0; i < localStorage.length; i++) {
     key1 = localStorage.key(i);
     // console.log(key1);
@@ -267,7 +282,7 @@ function getTable (){
   }
   return res;
 }
-
+//создаем таблицу
 function creatingTable () {
   //получаем массив из локал сторадж
   let results = getTable ();
@@ -300,7 +315,7 @@ function creatingTable () {
     td2.style.textAlign = 'center';
 
     td1.textContent = results[key]['Time Game'];
-    console.log (results[key]['Time Game']);
+    // console.log (results[key]['Time Game']);
 
     td2.textContent = results[key]['Score'];
 
