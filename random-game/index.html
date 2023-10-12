@@ -8,17 +8,26 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="body">
-  <div class="main">
+  <main class="main">
     <div class="container">
       <h1 class="container__title">Score: <span class="count-score">0</span></h1>
+      <audio class="audio" src="assets/audio/snake.mp3" loop></audio>
+      <button class="btn btn__settings">
+        <img class="img__settings" src="assets/svg/gear_wheel.svg" alt="Settings game">
+      </button>
+      <div class="modal__settings">
+        <!-- <button class="btn btn__settings"> -->
+        <div class="melody" title="Melody"></div>
+        <!-- </button> -->
+      </div>
       <canvas class="canvas" source-over>
       </canvas>
       <div class="wrapper__btn">
         <button class="btn start">Start</button>
         <button class="btn rules">Rules</button>
       </div>
-    </div>
-  </div>
+    </div> <!--container-->
+  </main>
   <footer class="footer">
     <div class="line"></div>
     <div class="footer__container">

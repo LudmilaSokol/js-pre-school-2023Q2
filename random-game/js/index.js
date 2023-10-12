@@ -9,7 +9,11 @@ const countFoods = document.querySelector('.count-food');
 const gameOver = document.querySelector('.pop-up__game-over');
 const btnCloseGameOver = document.querySelector('.btn-close__game-over');
 const modalGameOver = document.querySelector('.game-over');
-const table = document.querySelector('.table__results')
+const table = document.querySelector('.table__results');
+const audio = document.querySelector('.audio');
+const btnSettings = document.querySelector('.btn__settings');
+const modalSettings = document.querySelector('.modal__settings');
+const melody = document.querySelector('.melody');
 
 // const results = {};
 let key;
@@ -64,6 +68,9 @@ ctx.fillRect (0, 0, canvas.width, canvas.height);
 
 //вызов изображения до старта игры
 let game = setTimeout(draw, 230);
+
+//запуск фоновой мелодии
+setInterval(loadMelody, 300);
 
 /* функции */
 
@@ -209,14 +216,8 @@ function finishGame () {
   countTimeGame.textContent = timeGame;
   countFoods.textContent = countFood;
 
-  //сохраняем значения в массиве
+  //ключ для записи в локал сторадж
   key = endTime
-  // lengthResults = localStorage.length + 1;
-  // console.log(lengthResults);
-  // results[lengthResults] = {
-  //   'Time Game' : `${timeGame}`,
-  //   'Score' : `${countFood}`
-  // }
 
   //передать данные в локал сторадж
   localStorage.setItem(endTime, JSON.stringify({
@@ -326,6 +327,17 @@ function creatingTable () {
   }
 }
 
+function loadMelody () {
+  //если звук выключен
+  const flagMelody = melody.classList.contains('off');
+  if (flagMelody) {
+    //поставить проигрыватель на паузу
+    audio.pause();
+  } else {
+    audio.play();
+  }
+}
+
 /* обработчики событий */
 
 //запуск игры при клике на кнопку start
@@ -367,4 +379,24 @@ btnCloseGameOver.addEventListener('click', () => {
   while (table.firstChild) {
     table.removeChild(table.firstChild);
 }
+})
+
+//показать меню настройки
+btnSettings.addEventListener('click', () => {
+  modalSettings.style.opacity = '.8';
+})
+
+//закрыть меню настройки
+document.addEventListener('click', (event) => {
+  const modSetting = event.composedPath().includes(modalSettings); //true, если клик по модальному окну
+  const btnSett = event.composedPath().includes(btnSettings); //true, если клик по кнопке вызова модального окна
+  if (!modSetting && !btnSett) {
+    modalSettings.style.opacity = '0';
+  }
+})
+
+//включение, отключение фонового звука
+melody.addEventListener('click', () => {
+  melody.classList.toggle('off');
+  console.log('click');
 })
