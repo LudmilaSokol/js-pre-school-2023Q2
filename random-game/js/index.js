@@ -139,6 +139,9 @@ function moveSnake () {
     //увеличиваем счетчик еды
     countFood = countFood + 1;
     countScore.textContent = countFood;
+    //звук при поедании
+    let audio = new Audio('assets/audio/pisk.mp3');
+    audio.autoplay = 'true';
     //появляется новая еда
     food = {
       x : Math.floor((Math.random() * cellCountX)) * cellSize,
@@ -158,6 +161,9 @@ function moveSnake () {
 
   //проверка положения головы змейки (не должна выходить за границу поля, иначе конец игры)
   if (snakeX < 0 || snakeX > (cellCountX-1) * cellSize || snakeY < 0 || snakeY > (cellCountY-1) * cellSize) {
+    //звук попытке выйти за границу
+    let audio = new Audio('assets/audio/wall.mp3');
+    audio.autoplay = 'true';
     finishGame ();
     // console.log('за пределами')
   }
@@ -180,6 +186,10 @@ function eatYourself (head, arrSnake) {
   for (let i = 1; i < arrSnake.length; i++) {
     if (head.x === arrSnake[i].x && head.y === arrSnake[i].y) {
       console.log (' съела себя');
+
+      //звук при попытке съесть себя
+      let audio = new Audio('assets/audio/wall.mp3');
+      audio.autoplay = 'true';
       finishGame ();
     }
   }
@@ -230,6 +240,12 @@ function finishGame () {
 
   //показать модальное окно завершения игры
   gameOver.classList.remove('close');
+
+  setTimeout (() => {
+    //звук при выводе модального окна завершения игры
+    let audio = new Audio('assets/audio/game_over.mp3');
+    audio.autoplay = 'true';
+  }, 500);
 }
 
 //рестарт игры после закрытия модального окна game over
@@ -283,6 +299,7 @@ function getTable (){
   }
   return res;
 }
+
 //создаем таблицу
 function creatingTable () {
   //получаем массив из локал сторадж
@@ -327,6 +344,7 @@ function creatingTable () {
   }
 }
 
+//постановка на паузу фонового звука
 function loadMelody () {
   //если звук выключен
   const flagMelody = melody.classList.contains('off');
@@ -337,6 +355,7 @@ function loadMelody () {
     audio.play();
   }
 }
+
 
 /* обработчики событий */
 
