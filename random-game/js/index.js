@@ -310,35 +310,50 @@ function creatingTable () {
   let tr = document.createElement('tr');
   let th1 = document.createElement('th');
   let th2 = document.createElement('th');
+  let th3 = document.createElement('th');
+  let caption = document.createElement('caption');
 
-  th1.textContent = 'Time Game';
-  th2.textContent = 'Score';
-  th1.style.width = '150px';
+  caption.textContent = 'Results of the last 10 games';
+  caption.style.marginBottom = '10px';
+  caption.style.fontWeight = '900';
+  th1.textContent = 'Date';
+  th2.textContent = 'Time Game';
+  th3.textContent = 'Score';
+  th1.style.width = '250px';
   th2.style.width = '150px';
+  th3.style.width = '150px';
 
   tr.appendChild(th1);
   tr.appendChild(th2);
+  tr.appendChild(th3);
+
+  table.appendChild(caption);
   table.appendChild(tr);
 
   for (let j = 1; j < localStorage.length; j++) {
     let key = localStorage.key(j);
-
+    console.log(key);
+    let k = key.slice(4, 24);
+    console.log(k);
     tr = document.createElement('tr');
     let td1 = document.createElement('td');
     let td2 = document.createElement('td');
+    let td3 = document.createElement('td');
 
-    td1.style.width = '150px';
+    td1.style.width = '250px';
     td2.style.width = '150px';
+    td3.style.width = '150px';
     td1.style.textAlign = 'center';
     td2.style.textAlign = 'center';
+    td3.style.textAlign = 'center';
 
-    td1.textContent = results[key]['Time Game'];
-    // console.log (results[key]['Time Game']);
-
-    td2.textContent = results[key]['Score'];
+    td1.textContent = k;
+    td2.textContent = results[key]['Time Game'];
+    td3.textContent = results[key]['Score'];
 
     tr.appendChild(td1);
     tr.appendChild(td2);
+    tr.appendChild(td3);
 
     table.appendChild(tr);
   }
