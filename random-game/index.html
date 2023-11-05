@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random-game Snake</title>
+  <link rel="stylesheet" href="css/reset.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="body">
+  <main class="main">
+    <div class="container">
+      <h1 class="container__title">Score: <span class="count-score">0</span></h1>
+      <audio class="audio" src="assets/audio/snake.mp3" loop></audio>
+      <button class="btn btn__settings">
+        <img class="img__settings" src="assets/svg/gear_wheel.svg" alt="Settings game">
+      </button>
+      <div class="modal__settings">
+        <!-- <button class="btn btn__settings"> -->
+        <div class="melody" title="Melody"></div>
+        <!-- </button> -->
+      </div>
+      <canvas class="canvas" source-over>
+      </canvas>
+      <div class="wrapper__btn">
+        <button class="btn start">Start</button>
+        <button class="btn rules">Rules</button>
+      </div>
+    </div> <!--container-->
+  </main>
+  <footer class="footer">
+    <div class="line"></div>
+    <div class="footer__container">
+      <div class="footer-content">
+        <a class="icon" href="https://rs.school/js/" target="_blank">
+          <img class="logo__rs-school" src="assets/svg/logo-rs-school.svg" alt="rsschool icon">
+        </a>
+      </div>
+      <div class="footer__content">
+        <a class="icon" href="https://github.com/LudmilaSokol" target="_blank">
+          <img src="assets/svg/icon-github.svg" alt="GitHUB icon" width="30" height="30">
+        </a>
+      </div>
+      <div class="footer-content">
+        <p>2023</p>
+      </div>
+    </div>
+  </footer>
+  <div class="pop-up close pop-up__rules">
+    <div class="modal rules-game">
+      <h2 class="modal__title">Rules game</h2>
+      <h3 class="modal__subtitle">We recommend that you familiarize yourself with these rules before starting the game</h3>
+      <ul>
+        <li class="modal__item">The game starts when you click on the Start button</li>
+        <li class="modal__item">Control the snake with the keys up, down, right, left</li>
+        <li class="modal__item">The game ends when the snake eats itself or when the snake tries to leave the playing field</li>
+      </ul>
+      <button class="btn btn-close">Close</button>
+    </div> <!--modal-->
+  </div> <!--pop-up-->
+  <div class="pop-up close pop-up__game-over">
+    <div class="modal game-over">
+      <h2 class="modal__title">game over</h2>
+      <h3 class="modal__subtitle">Your results:</h3>
+      <div class="result__game">
+        <p>Time game: <span class="time__game">0</span></p>
+        <p>Score: <span class="count-food">0</span></p>
+      </div>
+      <table class="table__results"></table>
+      <button class="btn btn-close__game-over">Close</button>
+    </div> <!--modal-->
+  </div> <!--pop-up-->
+
+  <script src="js/index.js"></script>
+</body>
+</html>
