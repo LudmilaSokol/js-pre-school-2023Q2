@@ -1,0 +1,144 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/img/lemonade.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: auto;
+  margin: 2px;
+  background-color: #445f4f;
+  border-radius: 3%;
+}
+.player__img {
+  width: 100%;
+  height: auto;
+  border-radius: 3% 3% 0 0;
+}
+
+.player__img.active {
+  animation: fadeIn 3s ease-in;
+}
+
+.player__panel {
+  width: 100%;
+  background-color: #445f4f;
+  text-align: center;
+  border-radius: 0 0 3% 3%;
+}
+
+.autor-song {
+  margin: 20px 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  color: #ada75f;
+}
+.title-song {
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #c8c7bd;
+}
+.player__progress {
+  position: relative;
+  margin: 20px auto;
+  width: 90%;
+  height: 6px;
+  background-color: #c8c7bd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.time {
+  width: 0;
+  height: 6px;
+  background-color: #ada75f;
+  border-radius: 5px;
+}
+.treck__current-time,
+.treck__duration {
+  color: #c8c7bd;
+}
+.treck__current-time {
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+.treck__duration {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+.player__controls {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+.icon {
+  margin: 20px;
+  width: 40px;
+  height: 40px;
+}
+.icon:hover {
+  cursor: pointer;
+  opacity: .5;
+}
+.play,
+.pause {
+  flex-grow: 2;
+}
+.hidden {
+  display: none;
+}
+.footer__container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #445f4f;
+}
+.footer-content {
+  font-size: 26px;
+  font-weight: 500;
+  color: #c8c7bd;
+}
+.logo__rs-school {
+  width: 120px;
+  height: auto;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0);
+    opacity: 0.0;
+  }
+  60% {
+    transform: scale(0.3);
+  }
+  80% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
